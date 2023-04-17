@@ -15,9 +15,9 @@ Rails.application.routes.draw do
     get "/trang-chu", to: "home#admin_page"
     resource :tests
     get 'tests/:id', to: 'tests#show', as: 'test'
+    get 'tests/edit/:id', to: 'tests#edit'
   end
 
-
-
+  match "text_images" => "text_images#create", via: :post
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

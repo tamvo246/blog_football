@@ -1,19 +1,46 @@
 tinymce.init({
   selector: '.tinymce',
   height: 500,
-  menubar: false,
   plugins: [
-    'advlist autolink lists link image charmap print preview anchor',
-    'searchreplace visualblocks code fullscreen',
-    'insertdatetime media table paste code help'
+    'image', "lists"
   ],
   toolbar: 'undo redo | formatselect | ' +
-  ' bold italic backcolor | alignleft aligncenter ' +
+  ' bold italic | alignleft aligncenter ' +
   ' alignright alignjustify | bullist numlist outdent indent | ' +
   ' removeformat | help | forecolor backcolor image',
-  paste_block_drop: false,
-  paste_data_images: true,
-  paste_as_text: true,
+  // Enable title field in the Image dialog
+  image_title: true,
+  // Enable automatic uploads of images represented by blob or data URIs
+  automatic_uploads: true,
+  // URL of your upload handler
+  // (YOU SHOULD MAKE AN ENDPOINT TO RECEIVE THIS AND RETURN A JSON CONTAINING: {location: remote_image_url})
+  images_upload_url: '/text_images',
+  // Here we add custom filepicker only to Image dialog
+  file_picker_types: 'image',
+
+  document_base_url: '/',
+  // And here's your custom image picker
+  file_picker_callback: function(cb, value, meta) {
+    var input = document.createElement('input');
+    input.setAttribute('type', 'file');
+    input.setAttribute('accept', 'image/*');
+
+    input.onchange = function() {
+      var file = this.files[0];
+
+      // Note: Now we need to register the blob in TinyMCEs image blob
+      // registry.
+      var id = 'blobid' + (new Date()).getTime();
+      var blobCache = tinymce.activeEditor.editorUpload.blobCache;
+      var blobInfo = blobCache.create(id, file);
+      blobCache.add(blobInfo);
+
+      // Call the callback and populate the Title field with the file name
+      cb(blobInfo.blobUri(), { title: file.name });
+    };
+
+    input.click();
+  },
   color_map: [
     '#BFEDD2', 'Light Green',
     '#FBEEB8', 'Light Yellow',
@@ -42,5 +69,44 @@ tinymce.init({
     '#000000', 'Black',
     '#ffffff', 'White'
   ]
-
 });
+
+// tinymce.init({
+//   selector: '.tinymce',
+//   height: 500,
+//   // Include image plugin on plugin list
+//   plugins: [ 'image'],
+//   // Include image button on toolbar
+//   toolbar: ['image'],
+//   // Enable title field in the Image dialog
+//   image_title: true,
+//   // Enable automatic uploads of images represented by blob or data URIs
+//   automatic_uploads: true,
+//   // URL of your upload handler
+//   // (YOU SHOULD MAKE AN ENDPOINT TO RECEIVE THIS AND RETURN A JSON CONTAINING: {location: remote_image_url})
+//   images_upload_url: '/text_images',
+//   // Here we add custom filepicker only to Image dialog
+//   file_picker_types: 'image',
+//   // And here's your custom image picker
+//   file_picker_callback: function(cb, value, meta) {
+//     var input = document.createElement('input');
+//     input.setAttribute('type', 'file');
+//     input.setAttribute('accept', 'image/*');
+
+//     input.onchange = function() {
+//       var file = this.files[0];
+
+//       // Note: Now we need to register the blob in TinyMCEs image blob
+//       // registry.
+//       var id = 'blobid' + (new Date()).getTime();
+//       var blobCache = tinymce.activeEditor.editorUpload.blobCache;
+//       var blobInfo = blobCache.create(id, file);
+//       blobCache.add(blobInfo);
+
+//       // Call the callback and populate the Title field with the file name
+//       cb(blobInfo.blobUri(), { title: file.name });
+//     };
+
+//     input.click();
+//   }
+// });

@@ -1,6 +1,15 @@
+# config/tinymce.yml
 toolbar:
-  - styleselect | bold italic | undo redo
-  - image | link
+  - bold italic underline strikethrough
+  # 'image' button will open a modal with a lot of option to user: width, height, url, and a tab to upload image
+  # 'quickimage' button will just open the file explorer to user upload directly. Use the better to you.
+  - image | quickimage
 plugins:
   - image
-  - link
+  - quickbars
+
+quickbars_image_toolbar: alignleft aligncenter alignright
+images_upload_url: "/tinymce_assets"
+menubar: false
+branding: false
+quickbars_insert_toolbar: false

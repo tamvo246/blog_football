@@ -36,6 +36,12 @@ gem 'devise'
 gem "font-awesome-sass", "~> 6.4.0"
 
 gem 'tinymce-rails'
+
+gem 'carrierwave'
+gem 'mini_magick'
+
+gem 'pry'
+# gem 'tinymce-rails-imageupload's
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
 
