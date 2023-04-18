@@ -1,0 +1,103 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway:400,700');
+
+body {
+  background: #c0c0c0;
+  font-family: Raleway, sans-serif;
+  color: #666;
+}
+
+.login {
+  margin: 100px auto;
+  padding: 40px 50px;
+  max-width: 300px;
+  border-radius: 5px;
+  background: #fff;
+  box-shadow: 2px 2px 2px #666;
+
+  input {
+    width: 100%;
+    display: block;
+    box-sizing: border-box;
+    margin: 10px 0;
+    padding: 14px 12px;
+    font-size: 16px;
+    border-radius: 10px;
+    font-family: Raleway, sans-serif;
+  }
+
+  input[type=text],
+  input[type=password] {
+    border: 1px solid #c0c0c0;
+    transition: .2s;
+  }
+
+  input[type=text]:hover {
+    border-color: #1fd033;
+    outline: none;
+    transition: all .2s ease-in-out;
+  }
+
+  input[type=submit] {
+    border: none;
+    background: #1fd033;
+    color: white;
+    font-weight: bold;
+    transition: 0.2s;
+    margin: 20px 0px;
+  }
+
+  input[type=submit]:hover {
+    background: #1fd033;
+  }
+
+  h2 {
+    margin: 20px 0 0;
+    color: #1fd033;
+    font-size: 28px;
+    text-align: center;
+  }
+
+  p {
+    margin-bottom: 40px;
+    text-align: center;
+  }
+
+  a {
+    text-align: center;
+    text-decoration: none;
+    font-size: .8em;
+  }
+
+  .links {
+    display: table;
+    width: 100%;
+    box-sizing: border-box;
+    border-top: 1px solid #c0c0c0;
+    margin-bottom: 10px;
+  }
+
+  .links a {
+    display: table-cell;
+    padding-top: 10px;
+  }
+
+  .links a:first-child {
+    text-align: left;
+  }
+
+  .links a:last-child {
+    text-align: right;
+  }
+
+  a:visited {
+    color: inherit;
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
+  label.error, .alert, .notice{
+    color: red;
+  }
+
+}

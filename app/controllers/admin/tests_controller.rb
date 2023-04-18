@@ -1,5 +1,4 @@
-class Admin::TestsController < ApplicationController
-  layout 'admin'
+class Admin::TestsController < Admin::BaseController
 
   def index
     @test = Test.all

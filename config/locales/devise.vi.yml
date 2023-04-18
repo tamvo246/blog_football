@@ -1,0 +1,4 @@
+vi:
+  devise:
+    failure:
+      invalid: "Email hoặc mật khẩu không đúng."
