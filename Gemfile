@@ -38,7 +38,10 @@ gem "font-awesome-sass", "~> 6.4.0"
 gem 'tinymce-rails'
 
 gem 'carrierwave'
+
 gem 'mini_magick'
+
+gem 'cancancan'
 
 gem 'pry'
 # gem 'tinymce-rails-imageupload's

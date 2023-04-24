@@ -6,6 +6,10 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  def admin?
+    role.name == "Admin"
+  end
+
   def index
     @user = User.all
   end

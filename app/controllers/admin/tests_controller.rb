@@ -1,4 +1,5 @@
 class Admin::TestsController < Admin::BaseController
+  # load_and_authorize_resource
 
   def index
     @test = Test.all
@@ -17,6 +18,7 @@ class Admin::TestsController < Admin::BaseController
   end
 
   def update
+    authorize! :update, @test
     if @test.update(test_params)
       redirect_to @test
     else
@@ -26,6 +28,7 @@ class Admin::TestsController < Admin::BaseController
 
   def edit
     @test = Test.find(params[:id])
+    authorize! :update, @test
   end
 
   private
