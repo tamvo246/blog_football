@@ -1,0 +1,16 @@
+<%= javascript_pack_tag 'tinymce', 'data-turbolinks-track': 'reload' %>
+<%= form_with(model: [:admin, @about], local: true ) do |form| %>
+  <%= form.label :title %>
+  <%= form.text_field :title, class: "form-control" %>
+
+  <%= form.label :slug %>
+  <%= form.text_field :slug, class: "form-control" %>
+
+  <%= form.label :content %>
+  <%= form.text_area :content, class: "form-control tinymce" %>
+
+  <%= form.label :hide_status %>
+  <%= form.check_box :hide_status, {}, true, false %>
+
+  <%= form.submit %>
+<% end %>

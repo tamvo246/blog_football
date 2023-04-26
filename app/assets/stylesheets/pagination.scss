@@ -1,0 +1,39 @@
+:root {
+  --primary: #23adad;
+  --greyLight: #23adade1;
+  --greyLight-2: #cbe0dd;
+  --greyDark: #2d4848;
+}
+
+.pagination{
+  // min-height: 100vh;
+  display: flex;
+  // flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: var(--greyDark);
+
+  span{
+    padding: 0 10px;
+    border-radius: 5px;
+    a{
+      color: black;
+      text-decoration: none;
+    }
+  }
+
+  .current{
+    color: white;
+    background-color: var(--greyLight);
+  }
+
+  .first, .prev, .last, .next{
+    a:hover{
+      color: var(--greyLight);;
+    }
+  }
+}
+
+.pagination_infor{
+  float: right;
+}

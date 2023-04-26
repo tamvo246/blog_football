@@ -1,0 +1,12 @@
+table {
+  width: 100%;
+  table-layout: fixed; /* Ensure that table has a fixed layout */
+  height: 100px; /* Set a fixed height for the table */
+  overflow: hidden; /* Hide any content that overflows the table */
+}
+
+td {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

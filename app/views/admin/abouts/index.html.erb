@@ -1,0 +1,33 @@
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">Title</th>
+      <th scope="col">Slug</th>
+      <th scope="col">Content</th>
+      <th scope="col">Hide</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @abouts.each do |a| %>
+      <tr>
+        <td><%= a.title%></td>
+        <td><%= raw a.slug%></td>
+        <td><%= raw a.content%></td>
+        <td><%= a.hide_status%></td>
+        <td>
+          <div>
+            <%= link_to "Sửa",  edit_admin_about_path(a)%>
+            <%= link_to "Xoá", admin_about_path(a),method: :delete, data: {confirm: 'Bạn có muốn xoá?' } %>
+          </div>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= paginate @abouts, outer_window: 2 %>
+<div class="pagination_infor">
+  <%= page_entries_info @abouts %>
+</div>
+
+

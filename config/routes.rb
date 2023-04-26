@@ -12,11 +12,16 @@ Rails.application.routes.draw do
     sessions: 'users/sessions',
   }
   namespace :admin do
-    get "/trang-chu", to: "home#admin_page"
+    get "/trang-chu", to: "home#admin_page", as: :home_page
     resource :tests
     get 'tests/:id', to: 'tests#show', as: 'test'
     get 'tests/edit/:id', to: 'tests#edit'
+
+    resources :abouts, path: 'gioi-thieu'
+
   end
+
+  get '/gioi-thieu/:slug', to: 'abouts#show'
 
   match "text_images" => "text_images#create", via: :post
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
