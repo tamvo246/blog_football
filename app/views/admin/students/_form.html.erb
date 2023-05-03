@@ -1,0 +1,23 @@
+<%= form_with(model: [:admin, @student], local: true ) do |form| %>
+  <%= form.label :name %>
+  <%= form.text_field :name, class: "form-control" %>
+
+  <%= form.label :address %>
+  <%= form.text_field :address, class: "form-control" %>
+
+  <%= form.label :birth_day %>
+  <%= form.date_field :birth_day, class: "form-control" %>
+
+  <%= form.label :course %>
+  <br>
+  <%= form.select :course_id, Course.all.map{|r| [r.name, r.id] }%>
+  <br>
+
+  <%= form.file_field :avatar, id: :student_image %>
+  <br>
+  <%= image_tag("", id: "preview", style: "display: none; height: 200px; with: 200px") %>
+  <br>
+
+  <%= form.submit %>
+<% end %>
+<%= javascript_pack_tag 'student_load_image'%>

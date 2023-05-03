@@ -1,0 +1,9 @@
+<%= form_with(model: [:admin, @course], local: true ) do |form| %>
+  <%= form.label :name %>
+  <%= form.text_field :name, class: "form-control" %>
+
+  <%= form.label :slug %>
+  <%= form.text_field :slug, class: "form-control" %>
+
+  <%= form.submit %>
+<% end %>

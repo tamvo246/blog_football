@@ -1,0 +1,35 @@
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Address</th>
+      <th scope="col">Birth day</th>
+      <th scope="col">Course</th>
+      <th scope="col">Avatar</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @students.each do |c| %>
+      <tr>
+        <td><%= c.name%></td>
+        <td><%= c.address%></td>
+        <td><%= c.birth_day.strftime('%d/%m/%Y')%></td>
+        <td><%= c.course_id%></td>
+        <td><%= image_tag c.avatar.thumb.url %></td>
+        <td>
+          <div>
+            <%= link_to "Sửa",  edit_admin_student_path(c)%>
+            <%= link_to "Xoá", admin_student_path(c),method: :delete, data: {confirm: 'Bạn có muốn xoá?' } %>
+          </div>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= paginate @students, outer_window: 2 %>
+<div class="pagination_infor">
+  <%= page_entries_info @students %>
+</div>
+
+

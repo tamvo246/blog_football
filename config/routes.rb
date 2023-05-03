@@ -18,6 +18,8 @@ Rails.application.routes.draw do
     get 'tests/edit/:id', to: 'tests#edit'
 
     resources :abouts, path: 'gioi-thieu'
+    resources :courses, path: 'khoa-hoc'
+    resources :students, path: 'hoc-vien'
 
   end
 

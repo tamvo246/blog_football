@@ -1,0 +1,29 @@
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Slug</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @courses.each do |c| %>
+      <tr>
+        <td><%= c.name%></td>
+        <td><%= c.slug%></td>
+        <td>
+          <div>
+            <%= link_to "Sửa",  edit_admin_course_path(c)%>
+            <%= link_to "Xoá", admin_course_path(c),method: :delete, data: {confirm: 'Bạn có muốn xoá?' } %>
+          </div>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= paginate @courses, outer_window: 2 %>
+<div class="pagination_infor">
+  <%= page_entries_info @courses %>
+</div>
+
+
