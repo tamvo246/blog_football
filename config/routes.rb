@@ -20,10 +20,13 @@ Rails.application.routes.draw do
     resources :abouts, path: 'gioi-thieu'
     resources :courses, path: 'khoa-hoc'
     resources :students, path: 'hoc-vien'
+    resources :categories, path: 'the-loai'
+    resources :posts, path: 'bai-viet'
 
   end
 
   get '/gioi-thieu/:slug', to: 'abouts#show'
+  get '/khoa-hoc/:slug', to: 'courses#show'
 
   match "text_images" => "text_images#create", via: :post
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

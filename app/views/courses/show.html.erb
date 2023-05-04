@@ -1,0 +1,11 @@
+
+<% @students.each do|s| %>
+  <div>
+    <div><%= s.name %></div>
+    <div><%= s.address %></div>
+    <div><%= s.birth_day.strftime('%d/%m/%Y') %></div>
+    <div><%= s.course_id %></div>
+    <div><%= image_tag s.avatar.thumb.url %></div>
+  </div>
+  <br>
+<% end %>

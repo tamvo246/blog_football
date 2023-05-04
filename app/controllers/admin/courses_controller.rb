@@ -30,7 +30,7 @@ class Admin::CoursesController < Admin::BaseController
 
   def destroy
     @course = Course.find(params[:id])
-    authorize! :destroy, @about
+    authorize! :destroy, @course
     @course.destroy
     redirect_to admin_courses_path
   end
