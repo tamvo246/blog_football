@@ -16,7 +16,7 @@
         <td><%= c.address%></td>
         <td><%= c.birth_day.strftime('%d/%m/%Y')%></td>
         <td><%= c.course_id%></td>
-        <td><%= image_tag c.avatar.thumb.url %></td>
+        <td><%= image_tag c.avatar.url %></td>
         <td>
           <div>
             <%= link_to "Sửa",  edit_admin_student_path(c)%>

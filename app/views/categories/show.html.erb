@@ -1,0 +1,39 @@
+<main>
+    <section class="site-breadcrumb">
+        <div class="container">
+            <h2 class="breadcrumb-title"><%= @category.name %></h2>
+            <ul class="breadcrumb">
+            <li><%= link_to 'Trang chủ', '/'%></li>
+            <li class="breadcrumb-active"><%= @category.name %></li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="section-blog py-120">
+        <div class="container">
+            <div class="row">
+            <% @posts.each do |p| %>
+                <div class="col-lg-4 col-md-6">
+                    <div class="blog-item">
+                        <div class="blog-item-img">
+                            <%= image_tag File.join(root_path, p.show_random_image) %>
+                        </div>
+                        <div class="blog-item-info">
+                            <h4 class="blog-title">
+                                <%= link_to p.title, category_post_path(@category.slug, p.slug)%>
+                            </h4>
+                            <p><%= p.intro %></p>
+                            <%= link_to 'Xem thêm <i class="fa fa-arrow-right"></i>'.html_safe, category_post_path(@category.slug, p.slug), class: 'btn-theme'%>
+                        </div>
+                    </div>
+                </div>
+            <% end %>
+            </div>
+        </div>
+    </section>
+    <section>
+        <div class="container">
+            <%= paginate @posts, outer_window: 2 %>
+        </div>
+    </section>
+</main>

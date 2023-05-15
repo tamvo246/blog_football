@@ -1,0 +1,71 @@
+
+<section class="site-breadcrumb">
+    <div class="container">
+        <h2 class="breadcrumb-title">LIÊN HỆ</h2>
+        <ul class="breadcrumb-menu">
+            <li><%= link_to 'Trang chủ', '/'%></li>
+            <li class="active">Liên hệ</li>
+        </ul>
+    </div>
+</section>
+<section class="section-contact">
+  <div class="container">
+    <div class="row">
+        <div class="col-lg-6">
+          <% flash.each do |type, msg| %>
+            <div class="alert alert-info">
+              <%= msg %>
+            </div>
+          <% end %>
+          <div class="box-form">
+            <%= form_with(model: @contact, url: contact_path, local: true ) do |form| %>
+              <div class="form-group">
+                <%= form.text_field :full_name, class: "form-control", placeholder: "Họ tên"%>
+              </div>
+
+              <div class="form-group">
+                <%= form.text_field :address, class: "form-control", placeholder: "Địa chỉ" %>
+              </div>
+
+              <div class="form-group">
+                <%= form.email_field :email, class: "form-control", require: true , placeholder: "Email"%>
+              </div>
+
+              <div class="form-group">
+                <%= form.phone_field :phone, class: "form-control", placeholder: "Điện thoại"%>
+              </div>
+
+              <div class="form-group">
+                <%= form.text_field :title, class: "form-control", placeholder: "Tiêu đề" %>
+              </div>
+
+              <div class="form-group">
+                <%= form.text_area :content, class: "form-control", placeholder: "Nội dung" %>
+              </div>
+
+              <div class="form-group">
+                <%= form.submit 'Gửi', :class => 'btn-theme' %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="box-info">
+              <h2>Học viện bóng đá NutiFood</h2>
+              <address>
+                  J4, Bửu Long,<br>
+                  Phường 15, Quận 10, TP. Hồ Chí Minh<br>
+                  <span class="call">Điện thoại: (84-8) 39 700 886</span>
+              </address>
+              <div class="box-map">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.376404771841!2d106.65921527475184!3d10.7824560893667!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752ecfa88639b9%3A0x2ad8a819a390d885!2zQuG7rXUgTG9uZywgQ8awIHjDoSBC4bqvYyBI4bqjaSwgUGjGsOG7nW5nIDE1LCBRdeG6rW4gMTAsIFRow6BuaCBwaOG7kSBI4buTIENow60gTWluaCwgVmnhu4d0IE5hbQ!5e0!3m2!1svi!2s!4v1683422813642!5m2!1svi!2s"
+                    width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"></iframe>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</section>
+

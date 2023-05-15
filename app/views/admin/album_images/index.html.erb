@@ -1,0 +1,29 @@
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">Title</th>
+      <th scope="col">Avatar</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @album_images.each do |a| %>
+      <tr>
+        <td><%= a.title%></td>
+        <td><%= image_tag a.image.url %></td>
+        <td>
+          <div>
+            <%= link_to "Sửa",  edit_admin_album_image_path(a)%>
+            <%= link_to "Xoá", admin_album_image_path(a),method: :delete, data: {confirm: 'Bạn có muốn xoá?' } %>
+          </div>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= paginate @album_images, outer_window: 2 %>
+<div class="pagination_infor">
+  <%= page_entries_info @album_images %>
+</div>
+
+

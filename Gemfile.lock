@@ -300,6 +300,7 @@ DEPENDENCIES
   kaminari
   listen (~> 3.3)
   mini_magick
+  nokogiri
   pg
   pry
   puma (~> 5.0)

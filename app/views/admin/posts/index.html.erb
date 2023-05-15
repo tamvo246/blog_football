@@ -3,6 +3,7 @@
     <tr>
       <th scope="col">Title</th>
       <th scope="col">Slug</th>
+      <th scope="col">Intro</th>
       <th scope="col">Content</th>
       <th scope="col">Category</th>
       <th scope="col">Action</th>
@@ -11,8 +12,9 @@
   <tbody>
     <% @posts.each do |c| %>
       <tr>
-        <td><%= c.title%></td>
-        <td><%= c.slug%></td>
+        <td><%= c.title %></td>
+        <td><%= c.slug %></td>
+        <td><%= c.intro %></td>
         <td><%= c.content%></td>
         <td><%= c.category.name%></td>
         <td>

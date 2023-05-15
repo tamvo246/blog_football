@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_05_03_020855) do
+ActiveRecord::Schema.define(version: 2023_05_14_091653) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,10 +24,28 @@ ActiveRecord::Schema.define(version: 2023_05_03_020855) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "album_images", force: :cascade do |t|
+    t.string "image"
+    t.string "title"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "categories", force: :cascade do |t|
     t.string "name"
     t.string "slug"
     t.boolean "hide_status"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "contacts", force: :cascade do |t|
+    t.string "full_name"
+    t.string "address"
+    t.string "email"
+    t.string "phone"
+    t.string "title"
+    t.text "content"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -46,6 +64,7 @@ ActiveRecord::Schema.define(version: 2023_05_03_020855) do
     t.bigint "category_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "intro"
     t.index ["category_id"], name: "index_posts_on_category_id"
   end
 

@@ -11,7 +11,6 @@ class Admin::StudentsController < Admin::BaseController
 
   def create
     @student = Student.new(student_params)
-    @student.avatar = params[:file]
     @student.save
     redirect_to admin_students_path
   end

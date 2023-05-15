@@ -1,4 +1,5 @@
 <%= javascript_pack_tag 'tinymce', 'data-turbolinks-track': 'reload' %>
+
 <%= form_with(model: [:admin, @about], local: true ) do |form| %>
   <%= form.label :title %>
   <%= form.text_field :title, class: "form-control" %>

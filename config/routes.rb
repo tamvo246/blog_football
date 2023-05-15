@@ -22,12 +22,19 @@ Rails.application.routes.draw do
     resources :students, path: 'hoc-vien'
     resources :categories, path: 'the-loai'
     resources :posts, path: 'bai-viet'
+    resources :album_images, path: 'hinh-anh'
 
   end
 
-  get '/gioi-thieu/:slug', to: 'abouts#show'
-  get '/khoa-hoc/:slug', to: 'courses#show'
+  get '/gioi-thieu/:slug', to: 'abouts#show', as: :about
+  get '/khoa-hoc/:slug', to: 'courses#show', as: :course
+
+  get '/the-loai/:slug', to: 'categories#show', as: :category
+  get '/the-loai/:category_slug/:slug', to: 'posts#show', as: :category_post
 
   match "text_images" => "text_images#create", via: :post
+
+  get '/lien-he', to: 'contacts#new', as: :contact
+  post '/lien-he', to: 'contacts#create'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

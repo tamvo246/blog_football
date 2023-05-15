@@ -1,0 +1,29 @@
+<main class="site-main">
+    <section class="site-breadcrumb">
+    <div class="container">
+        <h2 class="breadcrumb-title"><%= @category.name %></h2>
+        <ul class="breadcrumb">
+          <li><%= link_to 'Trang chủ', '/'%></li>
+          <li class="breadcrumb-active"><%= @category.name %></li>
+        </ul>
+    </div>
+  </section>
+    <section class="post-detail">
+      <div class="container">
+        <span class="created-day"><%= @post.created_at.strftime('%d/%m/%Y') %></span>
+        <h2 class="title"><%= @post.title %></h2>
+        <div class="content"><%= raw @post.content %></div>
+      </div>
+    </section>
+    <section class="other-new">
+      <div class="container">
+       <span>Các tin khác:</span>
+      <% @random_records.each do |r| %>
+        <div class="news-item">
+          <span class="news-created"><%= r.created_at.strftime('%d/%m/%Y')%> |</span>
+          <span class="news-title"><%= link_to r.title, category_post_path(@category.slug, r.slug)%></span>
+        <div>
+      <% end %>
+      </div>
+    </section>
+</main>

@@ -17,7 +17,7 @@ class Admin::AboutsController < Admin::BaseController
   def update
     authorize! :update, @about
     if @about.update(about_params)
-      redirect_to @about
+      redirect_to admin_abouts_path
     else
       render :edit
     end

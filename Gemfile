@@ -48,6 +48,8 @@ gem 'cancancan'
 gem 'pry'
 
 gem 'kaminari'
+
+gem 'nokogiri'
 # gem 'tinymce-rails-imageupload's
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false

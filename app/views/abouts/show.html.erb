@@ -1,2 +1,33 @@
-<div><%= raw @about.title %></div>
-<div><%= raw @about.content %></div>
+<main>
+  <section class="site-breadcrumb">
+    <div class="container">
+        <h2 class="breadcrumb-title">GIỚI THIỆU</h2>
+        <ul class="breadcrumb">
+          <li><%= link_to 'Trang chủ', '/'%></li>
+          <li><%= link_to 'Giới thiệu', about_path(About.first.slug)%></li>
+          <li class="breadcrumb-active"><%= @about.title %></li>
+        </ul>
+    </div>
+  </section>
+  <section>
+    <div class="container">
+      <div class="about">
+        <nav>
+          <ul>
+            <% @abouts.each do |a|%>
+              <li><%= link_to a.title, about_path(a.slug), class: (a.slug == params["slug"] ? "about-active" : "")%></li>
+            <% end %>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </section>
+  <section>
+    <div class="container">
+      <%= raw @about.content%>
+    </div>
+  </section>
+</main>
+
+
+

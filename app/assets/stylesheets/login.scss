@@ -44,6 +44,7 @@ body {
     font-weight: bold;
     transition: 0.2s;
     margin: 20px 0px;
+    cursor: pointer;
   }
 
   input[type=submit]:hover {
@@ -93,9 +94,6 @@ body {
     color: inherit;
   }
 
-  a:hover {
-    text-decoration: underline;
-  }
   label.error, .alert, .notice{
     color: red;
   }

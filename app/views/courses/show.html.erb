@@ -1,11 +1,49 @@
-
-<% @students.each do|s| %>
-  <div>
-    <div><%= s.name %></div>
-    <div><%= s.address %></div>
-    <div><%= s.birth_day.strftime('%d/%m/%Y') %></div>
-    <div><%= s.course_id %></div>
-    <div><%= image_tag s.avatar.thumb.url %></div>
-  </div>
-  <br>
-<% end %>
+<main>
+  <section class="site-breadcrumb">
+    <div class="container">
+        <h2 class="breadcrumb-title">GIỚI THIỆU</h2>
+        <ul class="breadcrumb">
+          <li><%= link_to 'Trang chủ', '/'%></li>
+          <li><%= link_to 'Khóa học', course_path(Course.first.slug)%></li>
+          <li class="breadcrumb-active"><%= @course.name %></li>
+        </ul>
+    </div>
+  </section>
+  <section>
+    <div class="container">
+      <div class="about">
+        <nav>
+          <ul>
+            <% @courses.each do |c|%>
+              <li><%= link_to c.name, course_path(c.slug), class: (c.slug == params["slug"] ? "about-active" : "")%></li>
+            <% end %>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </section>
+  <section>
+    <div class="container">
+      <div class="row">
+        <% @students.each do |s|%>
+          <div class="card col-3">
+            <div class="card-img">
+              <%= image_tag s.avatar.avatar_thumb.url, class: "card-img-top" %>
+            </div>
+            <div class="card-body">
+              <h5 class="card-title"></h5>
+              <p class="card-text">Tên: <%= s.name %></p>
+              <p class="card-text">Địa chỉ: <%= s.address %></p>
+              <p class="card-text">Ngày sinh: <%= s.birth_day.strftime('%d/%m/%Y') %></p>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </section>
+  <section>
+    <div class="container" style="margin-top: 20px">
+      <%= paginate @students, outer_window: 2 %>
+    </div>
+  </section>
+</main>

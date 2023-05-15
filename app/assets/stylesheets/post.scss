@@ -1,0 +1,37 @@
+section.post-detail{
+  margin-top: 20px;
+
+  .container{
+
+    .title{
+      padding: 20px 0;
+      border-bottom: 1px solid #cccccc;
+      color: #009c31;
+    }
+    .created-day{
+      font-size: 14px;
+      color: #c2bcbc;
+    }
+    .content{
+      margin-top: 20px;
+      border-bottom: 1px solid #cccccc;
+    }
+  }
+}
+section.other-new{
+  margin: 20px;
+
+  .news-item{
+    margin: 20px 0px;
+    .news-created{
+      color: #c2bcbc;
+    }
+    a{
+      color: #009c31;
+
+      &:hover{
+        color: #f8c24f;
+      }
+    }
+  }
+}

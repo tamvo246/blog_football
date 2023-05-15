@@ -1,2 +1,51 @@
-<div>Home page</div>
-<%= link_to "Improve Your Ruby Skills", "/dang-nhap" %>
+<main>
+    <section class="banner">
+        <div class="container">
+          <%= image_tag asset_path('banner.jpg') %>
+        </div>
+    </section>
+    <section class="category">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-6">
+                    <div class="category-item">
+                        <figure>
+                            <%= link_to(image_tag File.join(root_path, @about.show_random_image) ) %>
+                            <figcaption>
+                                <h3><%= link_to "Giới thiệu", about_path(About.first.slug) %></h3>
+                                <div class="desc"><%= @about.title%></div>
+                                <%= link_to 'Xem thêm <i class="fa fa-angle-right"></i>'.html_safe, "#", class: 'readmore', target: '_self', title: 'Giới thiệu' %>
+                            </figcaption>
+                        </figure>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="category-item">
+                        <figure>
+                            <%= link_to(image_tag File.join(root_path, @post.show_random_image) ) %>
+                            <figcaption>
+                                <h3><%= link_to @post.title, category_post_path(@post.category.slug, @post.slug)%></h3>
+                                <div class="desc"><%=@post.intro %></div>
+                                <%= link_to 'Xem thêm <i class="fa fa-angle-right"></i>'.html_safe, "#", class: 'readmore', target: '_self', title: 'Tin tức' %>
+                            </figcaption>
+                        </figure>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="category-item">
+                        <figure>
+                            <a href="#" target="_self"><img alt="Giới thiệu" src="assets/images/hvntf.jpg"></a>
+                            <figcaption>
+                                <h3><a href="#" target="_self">Media</a></h3>
+                                <div class="desc">Một ngày học tập và rèn luyện của các em tại Học viện NutiFood
+                                </div>
+                                <a class="readmore" href="#" target="_self" title="Giới thiệu">Xem thêm <i
+                                        class="fa fa-angle-right"></i></a>
+                            </figcaption>
+                        </figure>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
