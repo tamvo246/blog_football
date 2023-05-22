@@ -1,33 +1,52 @@
-<table class="table table-hover">
-  <thead>
-    <tr>
-      <th scope="col">Title</th>
-      <th scope="col">Slug</th>
-      <th scope="col">Content</th>
-      <th scope="col">Hide</th>
-      <th scope="col">Action</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @abouts.each do |a| %>
-      <tr>
-        <td><%= a.title%></td>
-        <td><%= raw a.slug%></td>
-        <td><%= raw a.content%></td>
-        <td><%= a.hide_status%></td>
-        <td>
-          <div>
-            <%= link_to "Sửa",  edit_admin_about_path(a)%>
-            <%= link_to "Xoá", admin_about_path(a),method: :delete, data: {confirm: 'Bạn có muốn xoá?' } %>
+<div class="main-panel">
+  <div class="content-wrapper">
+    <div class="row">
+      <div class="col-lg-12 grid-margin stretch-card">
+        <div class="card">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-9">
+                <h4 class="card-title">Giới thiệu</h4>
+              </div>
+              <div class="col-3 text-right">
+                <%= link_to "+ Thêm giới thiệu ",  new_admin_about_path(), class: "btn btn-new-item btn-icon-text"%>
+              </div>
+            </div>
+            <div class="table-responsive">
+              <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th scope="col">Tiêu đề</th>
+                    <th scope="col">Liên kết</th>
+                    <th scope="col">Nội dung</th>
+                    <th scope="col">Ẩn</th>
+                    <th scope="col">Thao tác</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% @abouts.each do |a| %>
+                    <tr>
+                      <td><%= a.title%></td>
+                      <td><%= raw a.slug%></td>
+                      <td><%= raw a.content%></td>
+                      <td><%= a.hide_status%></td>
+                      <td>
+                        <div>
+                          <%= link_to '<i class="fa-solid fa-pen-to-square"></i>'.html_safe,  edit_admin_about_path(a), class: "btn btn-edit"%>
+                          <%= link_to '<i class="fa-solid fa-trash"></i>'.html_safe, admin_about_path(a),method: :delete, data: {confirm: 'Bạn có muốn xoá?'}, class: "btn btn-delete"  %>
+                        </div>
+                      </td>
+                    </tr>
+                  <% end %>
+                </tbody>
+              </table>
+              <%= paginate @abouts, outer_window: 2 %>
+            <div>
           </div>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-<%= paginate @abouts, outer_window: 2 %>
-<div class="pagination_infor">
-  <%= page_entries_info @abouts %>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
 

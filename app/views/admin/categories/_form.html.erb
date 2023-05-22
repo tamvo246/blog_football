@@ -1,9 +1,22 @@
-<%= form_with(model: [:admin, @category], local: true ) do |form| %>
-  <%= form.label :name %>
-  <%= form.text_field :name, class: "form-control" %>
+<div class="main-panel">
+  <div class="content-wrapper">
+    <div class="row">
+      <div class="col-12 grid-margin stretch-card">
+        <div class="card">
+          <div class="card-body">
+            <h4 class="card-title">Thể loại tin</h4>
+            <%= form_with(model: [:admin, @category], local: true, class: "form-group" ) do |form| %>
+              <%= form.label :name, "Tên" %>
+              <%= form.text_field :name, class: "form-control" %>
 
-  <%= form.label :slug %>
-  <%= form.text_field :slug, class: "form-control" %>
+              <%= form.label :slug, "Liên kết" %>
+              <%= form.text_field :slug, class: "form-control" %>
 
-  <%= form.submit %>
-<% end %>
+              <%= form.submit form.object.new_record? ? "Thêm" : "Chỉnh sửa", class: "btn btn-action-form" %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

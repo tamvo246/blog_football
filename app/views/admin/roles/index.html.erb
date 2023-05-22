@@ -6,37 +6,37 @@
           <div class="card-body">
             <div class="row">
               <div class="col-9">
-                <h4 class="card-title">Thể loại tin</h4>
+                <h4 class="card-title">Phân quyền</h4>
               </div>
               <div class="col-3 text-right">
-                <%= link_to "+ Thêm thể loại ",  new_admin_category_path(), class: "btn btn-new-item btn-icon-text"%>
+                <%= link_to "+ Thêm quyền ",  new_admin_role_path(), class: "btn btn-new-item btn-icon-text"%>
               </div>
             </div>
             <div class="table-responsive">
-              <table class="table table-hover">
+              <table class="table table-striped">
                 <thead>
                   <tr>
-                    <th scope="col">Tên</th>
-                    <th scope="col">Liên kết</th>
+                    <th scope="col">Tên quyền</th>
+                    <th scope="col">Mô tả</th>
                     <th scope="col">Thao tác</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <% @categories.each do |c| %>
+                  <% @roles.each do |c| %>
                     <tr>
                       <td><%= c.name%></td>
-                      <td><%= c.slug%></td>
+                      <td><%= c.description%></td>
                       <td>
                         <div>
-                          <%= link_to '<i class="fa-solid fa-pen-to-square"></i>'.html_safe,  edit_admin_category_path(c), class: "btn btn-edit" %>
-                          <%= link_to '<i class="fa-solid fa-trash"></i>'.html_safe, admin_category_path(c),method: :delete, data: {confirm: 'Bạn có muốn xoá?' }, class: "btn btn-delete" %>
+                          <%= link_to '<i class="fa-solid fa-pen-to-square"></i>'.html_safe,  edit_admin_role_path(c), class: "btn btn-edit"%>
+                          <%= link_to '<i class="fa-solid fa-trash"></i>'.html_safe, admin_role_path(c),method: :delete, data: {confirm: 'Bạn có muốn xoá?' }, class: "btn btn-delete" %>
                         </div>
                       </td>
                     </tr>
                   <% end %>
                 </tbody>
               </table>
-              <%= paginate @categories, outer_window: 2 %>
+              <%= paginate @roles, outer_window: 2 %>
             <div>
           </div>
         </div>

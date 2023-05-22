@@ -1,23 +1,42 @@
-<%= form_with(model: [:admin, @student], local: true ) do |form| %>
-  <%= form.label :name %>
-  <%= form.text_field :name, class: "form-control" %>
+<div class="main-panel">
+  <div class="content-wrapper">
+    <div class="row">
+      <div class="col-12 grid-margin stretch-card">
+        <div class="card">
+          <div class="card-body">
+            <h4 class="card-title">Khoá học</h4>
+            <%= form_with(model: [:admin, @student], local: true, class: "form-group" ) do |form| %>
+              <%= form.label :name, "Tên" %>
+              <%= form.text_field :name, class: "form-control" %>
 
-  <%= form.label :address %>
-  <%= form.text_field :address, class: "form-control" %>
+              <%= form.label :address, "Địa chỉ" %>
+              <%= form.text_field :address, class: "form-control" %>
 
-  <%= form.label :birth_day %>
-  <%= form.date_field :birth_day, class: "form-control" %>
+              <%= form.label :birth_day, "Ngày sinh" %>
+              <%= form.date_field :birth_day, class: "form-control" %>
 
-  <%= form.label :course %>
-  <br>
-  <%= form.select :course_id, Course.all.map{|r| [r.name, r.id] }%>
-  <br>
+              <%= form.label :course, "Khoá học" %>
+              <br>
+              <%= form.select :course_id, Course.all.map{|r| [r.name, r.id] }, class: "form-control"%>
 
-  <%= form.file_field :avatar, id: :student_image %>
-  <br>
-  <%= image_tag("", id: "preview", style: "display: none; height: 200px; with: 200px") %>
-  <br>
+              <br>
+              <br>
+              <%= form.label :avatar, "Ảnh đại diện" %>
+              <br>
+              <%= form.file_field :avatar, id: :student_image %>
+              <br>
+              <br>
+              <%= image_tag("", id: "preview", style: "display: none; height: 200px; with: 200px") %>
+              <br>
+              <br>
 
-  <%= form.submit %>
-<% end %>
+               <%= form.submit form.object.new_record? ? "Thêm" : "Chỉnh sửa", class: "btn btn-action-form" %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 <%= javascript_pack_tag 'student_load_image'%>
+

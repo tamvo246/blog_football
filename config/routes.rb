@@ -23,6 +23,8 @@ Rails.application.routes.draw do
     resources :categories, path: 'the-loai'
     resources :posts, path: 'bai-viet'
     resources :album_images, path: 'hinh-anh'
+    resources :contacts, path: 'lien-he', only: [:index, :destroy]
+    resources :roles, path: 'phan-quyen'
 
   end
 
@@ -36,5 +38,6 @@ Rails.application.routes.draw do
 
   get '/lien-he', to: 'contacts#new', as: :contact
   post '/lien-he', to: 'contacts#create'
+  get '/forbidden', to: 'errors#forbidden', as: 'forbidden'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

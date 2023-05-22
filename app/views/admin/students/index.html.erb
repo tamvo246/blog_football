@@ -1,35 +1,52 @@
-<table class="table table-hover">
-  <thead>
-    <tr>
-      <th scope="col">Name</th>
-      <th scope="col">Address</th>
-      <th scope="col">Birth day</th>
-      <th scope="col">Course</th>
-      <th scope="col">Avatar</th>
-      <th scope="col">Action</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @students.each do |c| %>
-      <tr>
-        <td><%= c.name%></td>
-        <td><%= c.address%></td>
-        <td><%= c.birth_day.strftime('%d/%m/%Y')%></td>
-        <td><%= c.course_id%></td>
-        <td><%= image_tag c.avatar.url %></td>
-        <td>
-          <div>
-            <%= link_to "Sửa",  edit_admin_student_path(c)%>
-            <%= link_to "Xoá", admin_student_path(c),method: :delete, data: {confirm: 'Bạn có muốn xoá?' } %>
+<div class="main-panel">
+  <div class="content-wrapper">
+    <div class="row">
+      <div class="col-lg-12 grid-margin stretch-card">
+        <div class="card">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-9">
+                <h4 class="card-title">Học viên</h4>
+              </div>
+              <div class="col-3 text-right">
+                <%= link_to "+ Thêm học viên ",  new_admin_student_path(), class: "btn btn-new-item btn-icon-text"%>
+              </div>
+            </div>
+            <div class="table-responsive">
+              <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th scope="col">Tên</th>
+                    <th scope="col">Địa chỉ</th>
+                    <th scope="col">Ngày sinh</th>
+                    <th scope="col">Khoá học</th>
+                    <th scope="col">Ảnh đại diện</th>
+                    <th scope="col">Thao tác</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% @students.each do |c| %>
+                    <tr>
+                      <td><%= c.name%></td>
+                      <td><%= c.address%></td>
+                      <td><%= c.birth_day.strftime('%d/%m/%Y')%></td>
+                      <td><%= c.course.name%></td>
+                      <td><%= image_tag c.avatar.url %></td>
+                      <td>
+                        <div>
+                          <%= link_to '<i class="fa-solid fa-pen-to-square"></i>'.html_safe,  edit_admin_student_path(c), class: "btn btn-edit"%>
+                          <%= link_to '<i class="fa-solid fa-trash"></i>'.html_safe, admin_student_path(c),method: :delete, data: {confirm: 'Bạn có muốn xoá?' }, class: "btn btn-delete" %>
+                        </div>
+                      </td>
+                    </tr>
+                  <% end %>
+                </tbody>
+              </table>
+              <%= paginate @students, outer_window: 2 %>
+            <div>
           </div>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-<%= paginate @students, outer_window: 2 %>
-<div class="pagination_infor">
-  <%= page_entries_info @students %>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
-
-

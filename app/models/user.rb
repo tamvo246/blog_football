@@ -7,7 +7,11 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   def admin?
-    role.name == "Admin"
+    role.name == "admin"
+  end
+
+  def supper_admin?
+    role.name == "supper_admin"
   end
 
   def index

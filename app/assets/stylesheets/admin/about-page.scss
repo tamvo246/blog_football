@@ -9,4 +9,50 @@ td {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  vertical-align: middle !important;
+
+  p{
+    margin-bottom: 0px !important;
+  }
+
+  .btn-edit{
+    background-color: #4B49AC;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    i{
+      color: white;
+    }
+  }
+
+  .btn-delete{
+    background-color: #FF4747;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    i{
+      color: white;
+    }
+  }
 }
+
+.form-group{
+
+  .form-control{
+    margin-bottom: 1.5rem;
+  }
+
+  .btn-action-form{
+    background-color: #4B49AC;
+    padding: 10px 20px;
+    border-radius: 20px;
+    color: white;
+
+    &:hover{
+      cursor: pointer;
+      color: white;
+    }
+  }
+}
+
+

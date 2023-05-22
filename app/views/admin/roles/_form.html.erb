@@ -4,13 +4,13 @@
       <div class="col-12 grid-margin stretch-card">
         <div class="card">
           <div class="card-body">
-            <h4 class="card-title">Khoá học</h4>
-            <%= form_with(model: [:admin, @course], local: true, class: "form-group" ) do |form| %>
-              <%= form.label :name, "Tên khoá học" %>
+            <h4 class="card-title">Phân quyền</h4>
+            <%= form_with(model: [:admin, @role], local: true, class: "form-group" ) do |form| %>
+              <%= form.label :name, "Tên quyền" %>
               <%= form.text_field :name, class: "form-control" %>
 
-              <%= form.label :slug, "Liên kết" %>
-              <%= form.text_field :slug, class: "form-control" %>
+              <%= form.label :description, "Mô tả" %>
+              <%= form.text_field :description, class: "form-control" %>
 
               <%= form.submit form.object.new_record? ? "Thêm" : "Chỉnh sửa", class: "btn btn-action-form" %>
             <% end %>

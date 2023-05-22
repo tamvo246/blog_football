@@ -1,0 +1,49 @@
+<div class="main-panel">
+  <div class="content-wrapper">
+    <div class="row">
+      <div class="col-lg-12 grid-margin stretch-card">
+        <div class="card">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-9">
+                <h4 class="card-title">Liên hệ</h4>
+              </div>
+            </div>
+            <div class="table-responsive">
+              <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th scope="col">Họ tên</th>
+                    <th scope="col">Địa chỉ</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Điện thoại</th>
+                    <th scope="col">Tiêu đề</th>
+                    <th scope="col">Nội dung</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% @contacts.each do |c| %>
+                    <tr>
+                      <td><%= c.full_name%></td>
+                      <td><%= c.address%></td>
+                      <td><%= c.email %></td>
+                      <td><%= c.phone%></td>
+                      <td><%= c.title%></td>
+                      <td><%= c.content%></td>
+                      <td>
+                        <div>
+                          <%= link_to '<i class="fa-solid fa-trash"></i>'.html_safe, admin_contact_path(c),method: :delete, data: {confirm: 'Bạn có muốn xoá?' }, class: "btn btn-delete" %>
+                        </div>
+                      </td>
+                    </tr>
+                  <% end %>
+                </tbody>
+              </table>
+              <%= paginate @contacts, outer_window: 2 %>
+            <div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,69 +1,88 @@
-<div class="container-fluid">
-    <div class="row d-flex d-md-block flex-nowrap wrapper">
-        <div class="col-md-3 float-left col-1 pl-0 pr-0 collapse width show" id="sidebar">
-            <div class="list-group border-0 text-center text-md-left">
-                <a href="#menu1" class="list-group-item d-inline-block collapsed" data-toggle="collapse" aria-expanded="false"><i class="fa fa-dashboard"></i> <span class="d-none d-md-inline">Dashboard</span> </a>
-                <div class="collapse" id="menu1" data-parent="#sidebar">
-                    <a href="#menu1sub1" class="list-group-item" data-toggle="collapse" aria-expanded="false">Subitem 1 </a>
-                    <div class="collapse" id="menu1sub1" data-parent="#menu1">
-                        <a href="#" class="list-group-item" data-parent="#menu1sub1">Subitem a</a>
-                        <a href="#" class="list-group-item" data-parent="#menu1sub1">Subitem b</a>
-                        <a href="#menu1sub1sub1" class="list-group-item" data-toggle="collapse" aria-expanded="false">Subitem c </a>
-                        <div class="collapse" id="menu1sub1sub1">
-                            <a href="#" class="list-group-item" data-parent="#menu1sub1sub1">Subitem c.1</a>
-                            <a href="#" class="list-group-item" data-parent="#menu1sub1sub1">Subitem c.2</a>
-                        </div>
-                        <a href="#" class="list-group-item" data-parent="#menu1sub1">Subitem d</a>
-                        <a href="#menu1sub1sub2" class="list-group-item" data-toggle="collapse" aria-expanded="false">Subitem e </a>
-                        <div class="collapse" id="menu1sub1sub2">
-                            <a href="#" class="list-group-item">Subitem e.1</a>
-                            <a href="#" class="list-group-item">Subitem e.2</a>
-                        </div>
-                    </div>
-                    <a href="#menu1sub2" class="list-group-item" data-toggle="collapse" aria-expanded="false">Subitem 2</a>
-                    <div class="collapse" id="menu1sub2" data-parent="#menu1">
-                        <a href="#" class="list-group-item" data-parent="#menu1sub1">Subitem 1 a</a>
-                        <a href="#" class="list-group-item" data-parent="#menu1sub1">Subitem 2 b</a>
-                        <a href="#menu1sub1sub1" class="list-group-item" data-toggle="collapse" aria-expanded="false">Subitem 3 c </a>
-                        <div class="collapse" id="menu1sub1sub1">
-                            <a href="#" class="list-group-item" data-parent="#menu1sub1sub1">Subitem 3 c.1</a>
-                            <a href="#" class="list-group-item" data-parent="#menu1sub1sub1">Subitem 3 c.2</a>
-                        </div>
-                        <a href="#" class="list-group-item" data-parent="#menu1sub1">Subitem 4 d</a>
-                        <a href="#menu1sub1sub2" class="list-group-item" data-toggle="collapse" aria-expanded="false">Subitem 5 e </a>
-                        <div class="collapse" id="menu1sub1sub2">
-                            <a href="#" class="list-group-item" data-parent="#menu1sub1sub2">Subitem 5 e.1</a>
-                            <a href="#" class="list-group-item" data-parent="#menu1sub1sub2">Subitem 5 e.2</a>
-                        </div>
-                    </div>
-                    <a href="#" class="list-group-item">Subitem 3</a>
-                </div>
-                <a href="#" class="list-group-item d-inline-block collapsed"><i class="fa fa-film"></i> <span class="d-none d-md-inline">Item 2</span></a>
-                <a href="#menu3" class="list-group-item d-inline-block collapsed" data-toggle="collapse" aria-expanded="false"><i class="fa fa-book"></i> <span class="d-none d-md-inline">Item 3 </span></a>
-                <div class="collapse" id="menu3" data-parent="#sidebar">
-                    <a href="#" class="list-group-item" data-parent="#menu3">3.1</a>
-                    <a href="#menu3sub2" class="list-group-item" data-toggle="collapse" aria-expanded="false">3.2 </a>
-                    <div class="collapse" id="menu3sub2">
-                        <a href="#" class="list-group-item" data-parent="#menu3sub2">3.2 a</a>
-                        <a href="#" class="list-group-item" data-parent="#menu3sub2">3.2 b</a>
-                        <a href="#" class="list-group-item" data-parent="#menu3sub2">3.2 c</a>
-                    </div>
-                    <a href="#" class="list-group-item" data-parent="#menu3">3.3</a>
-                </div>
-                <a href="#" class="list-group-item d-inline-block collapsed" data-parent="#sidebar"><i class="fa fa-heart"></i> <span class="d-none d-md-inline">Item 4</span></a>
-                <a href="#" class="list-group-item d-inline-block collapsed" data-parent="#sidebar"><i class="fa fa-list"></i> <span class="d-none d-md-inline">Item 5</span></a>
-                <a href="#" class="list-group-item d-inline-block collapsed" data-parent="#sidebar"><i class="fa fa-clock-o"></i> <span class="d-none d-md-inline">Link</span></a>
-                <a href="#" class="list-group-item d-inline-block collapsed" data-parent="#sidebar"><i class="fa fa-th"></i> <span class="d-none d-md-inline">Link</span></a>
-                <a href="#" class="list-group-item d-inline-block collapsed" data-parent="#sidebar"><i class="fa fa-gear"></i> <span class="d-none d-md-inline">Link</span></a>
-                <a href="#" class="list-group-item d-inline-block collapsed" data-parent="#sidebar"><i class="fa fa-calendar"></i> <span class="d-none d-md-inline">Link</span></a>
-                <a href="#" class="list-group-item d-inline-block collapsed" data-parent="#sidebar"><i class="fa fa-envelope"></i> <span class="d-none d-md-inline">Link</span></a>
-                <a href="#" class="list-group-item d-inline-block collapsed" data-parent="#sidebar"><i class="fa fa-bar-chart-o"></i> <span class="d-none d-md-inline">Link</span></a>
-                <a href="#" class="list-group-item d-inline-block collapsed" data-parent="#sidebar"><i class="fa fa-star"></i> <span class="d-none d-md-inline">Link</span></a>
+<nav class="sidebar sidebar-offcanvas" id="sidebar">
+    <ul class="nav">
+        <li class="nav-item">
+        <a class="nav-link" href="/admin/trang-chu">
+            <i class="fa-solid fa-house menu-icon"></i>
+            <span class="menu-title">Dashboard</span>
+        </a>
+        </li>
+
+        <li class="nav-item">
+        <a class="nav-link" href="/admin/gioi-thieu">
+            <i class="fa-sharp fa-regular fa-address-card menu-icon"></i>
+            <span class="menu-title">Giới thiệu</span>
+        </a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="#collapseArticle" aria-expanded="false"
+                aria-controls="collapseArticle">
+                <i class="fas fa-graduation-cap menu-icon"></i>
+                <span class="menu-title">Đào tạo</span>
+                <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="collapseArticle">
+                <ul class="nav flex-column sub-menu">
+                <li class="nav-item"> <a class="nav-link" href="/admin/khoa-hoc">Khoá học</a></li>
+                <li class="nav-item"> <a class="nav-link" href="/admin/hoc-vien">Học viên</a></li>
+                </ul>
             </div>
+        </li>
+
+
+        <li class="nav-item">
+        <a class="nav-link" data-toggle="collapse" href="#collapseCategory" aria-expanded="false"
+            aria-controls="collapseCategory">
+            <i class="fa-sharp fa-solid fa-pen-to-square"></i>
+            <span class="menu-title">Phân loại - bài viết</span>
+            <i class="menu-arrow"></i>
+        </a>
+        <div class="collapse" id="collapseCategory">
+            <ul class="nav flex-column sub-menu">
+                <li class="nav-item"> <a class="nav-link" href="/admin/the-loai">Phân loại tin</a></li>
+                <li class="nav-item"> <a class="nav-link" href="/admin/bai-viet">Bài viết</a></li>
+            </ul>
         </div>
-        <main class="col-md-9 float-left col px-5 pl-md-2 pt-2 main">
-            <a href="#" data-target="#sidebar" data-toggle="collapse"><i class="text-dark fa fa-navicon fa-lg py-2 p-1"></i></a>
-            <%= yield %>
-        </main>
-    </div>
-</div>
+        </li>
+
+        <li class="nav-item">
+        <a class="nav-link" href="/admin/lien-he">
+            <i class="fa fa-phone-square" aria-hidden="true"></i>
+            <span class="menu-title">Liên hệ</span>
+        </a>
+        </li>
+
+        </li>
+        <li class="nav-item">
+        <a class="nav-link" data-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
+            <i class="fa fa-key" aria-hidden="true"></i>
+            <span class="menu-title">Tài khoản - phân quyền</span>
+            <i class="menu-arrow"></i>
+        </a>
+        <div class="collapse" id="auth">
+            <ul class="nav flex-column sub-menu">
+            <li class="nav-item"> <a class="nav-link" href="/admin/phan-quyen">Phân quyền</a></li>
+            <li class="nav-item"> <a class="nav-link" href="#">Thêm tài khoản mới</a></li>
+            </ul>
+        </div>
+        </li>
+        <li class="nav-item">
+        <a class="nav-link" href="#">
+            <i class="ti-email menu-icon"></i>
+            <span class="menu-title">Liên hệ</span>
+        </a>
+        </li>
+        <li class="nav-item">
+        <a class="nav-link" href="#">
+            <i class="ti-settings menu-icon"></i>
+            <span class="menu-title">Cài đặt</span>
+        </a>
+        </li>
+        <li class="nav-item">
+        <a class="nav-link" href="#">
+            <i class="ti-location-arrow menu-icon"></i>
+            <span class="menu-title">Trang chủ</span>
+        </a>
+        </li>
+    </ul>
+</nav>

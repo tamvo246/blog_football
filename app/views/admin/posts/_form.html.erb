@@ -1,24 +1,80 @@
-<%= javascript_pack_tag 'tinymce', 'data-turbolinks-track': 'reload' %>
-<%= form_with(model: [:admin, @post], local: true ) do |form| %>
-  <%= form.label :title %>
-  <%= form.text_field :title, class: "form-control" %>
 
-  <%= form.label :slug %>
-  <%= form.text_field :slug, class: "form-control" %>
+<div class="main-panel">
+  <div class="content-wrapper">
+    <div class="row">
+      <div class="col-12 grid-margin stretch-card">
+        <div class="card">
+          <div class="card-body">
+            <h4 class="card-title">Bài viết</h4>
+            <%= form_with(model: [:admin, @post], local: true, class: "form-group" ) do |form| %>
+              <%= form.label :title, "Tiêu đề" %>
+              <%= form.text_field :title, class: "form-control" %>
 
-  <%= form.label :intro %>
-  <%= form.text_area :intro, class: "form-control" %>
+              <%= form.label :slug, "Liên kết" %>
+              <%= form.text_field :slug, class: "form-control" %>
 
-  <%= form.label :content %>
-  <%= form.text_area :content, class: "form-control tinymce" %>
+              <%= form.label :intro, "Đoạn giới thiệu" %>
+              <%= form.text_area :intro, class: "form-control" %>
 
-  <%= form.label :category %>
-  <br>
-  <%= form.select :category_id, Category.all.map{|r| [r.name, r.id] }%>
-  <br>
+              <%= form.label :content, "Nội dung" %>
+              <%= form.text_area :content, class: "form-control tinymce" %>
+              <br>
+              <%= form.label :category, "Thể loại bài viết" %>
+              <br>
+              <%= form.select :category_id, Category.all.map{|r| [r.name, r.id] }%>
+              <br>
+              <br>
 
-  <%= form.label :hide_status %>
-  <%= form.check_box :hide_status, {}, true, false %>
+              <%= form.label :hide_status, "Ẩn" %>
+              <%= form.check_box :hide_status, {}, true, false %>
+              <br>
+              <%= form.submit form.object.new_record? ? "Thêm" : "Chỉnh sửa", class: "btn btn-action-form" %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+  document.addEventListener('turbolinks:load', function() {
+    tinymce.remove(); // Remove any existing instances of TinyMCE
+    tinymce.init({
+    selector: '.tinymce',
+    height: 500,
+    plugins: [
+      'image', "lists"
+    ],
+    toolbar: 'undo redo | formatselect | ' +
+    ' bold italic | alignleft aligncenter ' +
+    ' alignright alignjustify | bullist numlist outdent indent | ' +
+    ' removeformat | help | forecolor backcolor image',
+    image_title: true,
+    automatic_uploads: true,
+    images_upload_url: '/text_images',
+    file_picker_types: 'image',
 
-  <%= form.submit %>
-<% end %>
+    document_base_url: '/',
+
+    file_picker_callback: function(cb, value, meta) {
+      var input = document.createElement('input');
+      input.setAttribute('type', 'file');
+      input.setAttribute('accept', 'image/*');
+
+      input.onchange = function() {
+        var file = this.files[0];
+
+        var id = 'blobid' + (new Date()).getTime();
+        var blobCache = tinymce.activeEditor.editorUpload.blobCache;
+        var blobInfo = blobCache.create(id, file);
+        blobCache.add(blobInfo);
+
+        cb(blobInfo.blobUri(), { title: file.name });
+      };
+
+      input.click();
+    }
+    });
+  });
+</script>
+
