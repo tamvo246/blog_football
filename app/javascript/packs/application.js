@@ -10,6 +10,8 @@ import "channels"
 import 'jquery'
 import 'bootstrap'
 import "./admin_page"
+import "./magnific_popup"
+import "./main"
 
 Rails.start()
 Turbolinks.start()

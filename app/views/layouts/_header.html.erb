@@ -26,9 +26,10 @@
                             </div>
                             <div class="search">
                                 <div class="search-box">
-                                    <input type="text" title="Tìm kiếm" class="search-input" placeholder="Tìm kiếm">
+                                    <input type="text" title="Tìm kiếm" id="search-input-header" class="search-input" placeholder="Tìm kiếm">
                                     <button class="search-button">
-                                        <i class="fa fa-search"></i>
+
+                                        <%= link_to '<i class="fa fa-search"></i>'.html_safe, search_path() %>
                                     </button>
                                 </div>
                             </div>
@@ -88,3 +89,14 @@
             </div>
         </div>
     </header>
+    <script>
+        $(document).ready(function() {
+            $('.search-button').click(function(e) {
+            e.preventDefault();
+            var searchValue = $('#search-input-header').val();
+            var newPath = '<%=  search_path()%>';
+            newPath += '?search=' + encodeURIComponent(searchValue);
+            window.location.href = newPath;
+            });
+        });
+    </script>

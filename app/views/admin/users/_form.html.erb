@@ -1,0 +1,33 @@
+<div class="main-panel">
+  <div class="content-wrapper">
+    <div class="row">
+      <div class="col-12 grid-margin stretch-card">
+        <div class="card">
+          <div class="card-body">
+            <h4 class="card-title">Tài khoản</h4>
+            <%= form_with(model: [:admin, @user], local: true, class: "form-group" ) do |form| %>
+              <%= form.label :email %><br />
+              <%= form.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
+
+              <%= form.label :role %><br />
+              <%= form.select :role_id, Role.all.map{|r| [r.name, r.id] }%>
+              <br />
+              <%= form.label :password %>
+              <% if @minimum_password_length %>
+              <em>(Ít nhất <%= @minimum_password_length %>) 8 kí tự</em>
+              <% end %><br />
+              <%= form.password_field :password, autocomplete: "new-password", class: "form-control w-50"%>
+
+              <%= form.label :password_confirmation %><br />
+              <%= form.password_field :password_confirmation, autocomplete: "new-password", class: "form-control w-50" %>
+
+              <%= form.submit form.object.new_record? ? "Thêm" : "Chỉnh sửa", class: "btn btn-action-form" %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<%= javascript_pack_tag 'student_load_image'%>
+

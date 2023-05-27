@@ -2,7 +2,7 @@
     <ul class="nav">
         <li class="nav-item">
         <a class="nav-link" href="/admin/trang-chu">
-            <i class="fa-solid fa-house menu-icon"></i>
+            <i class="fas fa-tachometer-average"></i>
             <span class="menu-title">Dashboard</span>
         </a>
         </li>
@@ -62,25 +62,28 @@
         <div class="collapse" id="auth">
             <ul class="nav flex-column sub-menu">
             <li class="nav-item"> <a class="nav-link" href="/admin/phan-quyen">Phân quyền</a></li>
-            <li class="nav-item"> <a class="nav-link" href="#">Thêm tài khoản mới</a></li>
+            <li class="nav-item"> <a class="nav-link" href="/admin/tai-khoan/sign_up">Thêm tài khoản mới</a></li>
             </ul>
         </div>
         </li>
+
         <li class="nav-item">
-        <a class="nav-link" href="#">
-            <i class="ti-email menu-icon"></i>
-            <span class="menu-title">Liên hệ</span>
+        <a class="nav-link" data-toggle="collapse" href="#media" aria-expanded="false" aria-controls="auth">
+            <i class="fas fa-photo-video"></i>
+            <span class="menu-title">Media</span>
+            <i class="menu-arrow"></i>
         </a>
+        <div class="collapse" id="media">
+            <ul class="nav flex-column sub-menu">
+            <li class="nav-item"> <a class="nav-link" href="/admin/hinh-anh">Thư viện ảnh</a></li>
+            <%# <li class="nav-item"> <a class="nav-link" href="/admin/tai-khoan/sign_up">Thêm tài khoản mới</a></li> %>
+            </ul>
+        </div>
         </li>
+
         <li class="nav-item">
-        <a class="nav-link" href="#">
-            <i class="ti-settings menu-icon"></i>
-            <span class="menu-title">Cài đặt</span>
-        </a>
-        </li>
-        <li class="nav-item">
-        <a class="nav-link" href="#">
-            <i class="ti-location-arrow menu-icon"></i>
+        <a class="nav-link" href="/">
+            <i class="fa-solid fa-house menu-icon"></i>
             <span class="menu-title">Trang chủ</span>
         </a>
         </li>

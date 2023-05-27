@@ -1,0 +1,50 @@
+
+ <main class="site-main">
+  <section class="site-breadcrumb">
+      <div class="container">
+          <h2 class="breadcrumb-title">Thư viện ảnh</h2>
+          <ul class="breadcrumb">
+              <li><a href="/">Trang chủ</a></li>
+              <li class="breadcrumb-active">Thư viện ảnh</li>
+          </ul>
+      </div>
+  </section>
+  <section>
+    <div class="container">
+      <div class="about">
+        <nav>
+          <ul>
+            <li><%= link_to "Thư viện ảnh", album_image_path(), class: "about-active"%></li>
+            <li><%= link_to "Video", album_image_path(), class:  ""%></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </section>
+  <section class="section-media">
+      <div class="container">
+          <div class="row">
+              <% @album_images.each do |a| %>
+                <div class="col-lg-4 col-md-6">
+                    <%= link_to a.image.url, class: 'image-popup' do %>
+                      <div class="media-item">
+                        <div class="media-item-img">
+                          <%= image_tag(a.image.url) %>
+                          <div class="overplay">
+                            <i class="fa-regular fa-image"></i>
+                          </div>
+                        </div>
+                        <div class="media-item-info">
+                          <h4 class="media-title">
+                            <%= a.title %>
+                          </h4>
+                        </div>
+                      </div>
+                    <% end %>
+                </div>
+              <% end %>
+          </div>
+      </div>
+  </section>
+</main>
+

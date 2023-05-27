@@ -1,12 +1,29 @@
-<%= form_with(model: [:admin, @album_image], local: true ) do |form| %>
-  <%= form.label :title %>
-  <%= form.text_field :title, class: "form-control" %>
-
-  <%= form.file_field :image, id: :album_image %>
-  <br>
-  <%= image_tag("", id: "preview", style: "display: none; height: 200px; with: 200px") %>
-  <br>
-
-  <%= form.submit %>
-<% end %>
+<div class="main-panel">
+  <div class="content-wrapper">
+    <div class="row">
+      <div class="col-12 grid-margin stretch-card">
+        <div class="card">
+          <div class="card-body">
+            <h4 class="card-title">Hình ảnh</h4>
+            <%= form_with(model: [:admin, @album_image], local: true, class: "form-group" ) do |form| %>
+              <%= form.label :title, "Tiêu đề" %>
+              <%= form.text_field :title, class: "form-control" %>
+              <%= form.file_field :image, id: :album_image %>
+              <br>
+              <br>
+              <% if @album_image&.image&.url %>
+                 <%= image_tag(@album_image.image.url, id: "preview", style: "height: 200px; with: 200px") %>
+                 <br>
+              <% else %>
+                  <%= image_tag("", id: "preview", style: "display: none; height: 200px; with: 200px") %>
+              <% end %>
+              <br>
+              <%= form.submit form.object.new_record? ? "Thêm" : "Chỉnh sửa", class: "btn btn-action-form" %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 <%= javascript_pack_tag 'album_load_image'%>

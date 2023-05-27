@@ -7,9 +7,11 @@ Rails.application.routes.draw do
     # password: 'forgot_password',
     # confirmation: 'verification',
     # unlock: 'unlock_account',
-    # registration: 'account'
+    registration: '/admin/tai-khoan'
   },controllers: {
     sessions: 'users/sessions',
+    registrations: 'users/registrations'
+
   }
   namespace :admin do
     get "/trang-chu", to: "home#admin_page", as: :home_page
@@ -25,15 +27,19 @@ Rails.application.routes.draw do
     resources :album_images, path: 'hinh-anh'
     resources :contacts, path: 'lien-he', only: [:index, :destroy]
     resources :roles, path: 'phan-quyen'
-
+    # devise_for :admin, controllers: {
+    #   registration: 'tai-khoan',
+    # }
+    # resources :users, path: 'tai-khoan'
+    # get 'tai-khoan/new', to: "devise/registrations#new"
   end
 
   get '/gioi-thieu/:slug', to: 'abouts#show', as: :about
   get '/khoa-hoc/:slug', to: 'courses#show', as: :course
-
+  get '/media/hinh-anh', to: 'album_images#show', as: :album_image
   get '/the-loai/:slug', to: 'categories#show', as: :category
   get '/the-loai/:category_slug/:slug', to: 'posts#show', as: :category_post
-
+  get '/tim-kiem', to: 'home#search', as: :search
   match "text_images" => "text_images#create", via: :post
 
   get '/lien-he', to: 'contacts#new', as: :contact

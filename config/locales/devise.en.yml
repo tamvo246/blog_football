@@ -36,6 +36,9 @@ en:
       send_paranoid_instructions: "If your email address exists in our database, you will receive a password recovery link at your email address in a few minutes."
       updated: "Your password has been changed successfully. You are now signed in."
       updated_not_active: "Your password has been changed successfully."
+      minimum_password_length: "aaaa"
+      user:
+        minimum_password_length: "aaaa"
     registrations:
       destroyed: "Bye! Your account has been successfully cancelled. We hope to see you again soon."
       signed_up: "Welcome! You have signed up successfully."
@@ -63,3 +66,21 @@ en:
       not_saved:
         one: "1 error prohibited this %{resource} from being saved:"
         other: "%{count} errors prohibited this %{resource} from being saved:"
+  activerecord:
+    errors:
+      models:
+        user:
+          attributes:
+            email:
+              blank: "không được để trống"
+              taken: "đã tồn tại, vui lòng nhập lại email"
+              invalid: "Please Specify a valid Email id"
+            password:
+              too_short: "quá ngắn (tối thiểu %{count} kí tự)"
+              blank: "không được để trống"
+              confirmation: "bạn nhập không khớp, vui lòng nhập lại Password"
+            password_confirmation:
+              blank: "không được để trống"
+      messages:
+        :taken: "đã tồn tại, vui lòng nhập lại email"
+        :confirmation: "bạn nhập không khớp, vui lòng nhập lại Password"

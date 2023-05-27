@@ -2,7 +2,7 @@ class Admin::PostsController < Admin::BaseController
   load_and_authorize_resource
 
   def index
-    @posts = Post.order(created_at: :desc).page(params[:page]).per(2)
+    @posts = Post.order(created_at: :desc).page(params[:page]).per(10)
   end
 
   def new

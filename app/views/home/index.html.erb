@@ -14,7 +14,7 @@
                             <figcaption>
                                 <h3><%= link_to "Giới thiệu", about_path(About.first.slug) %></h3>
                                 <div class="desc"><%= @about.title%></div>
-                                <%= link_to 'Xem thêm <i class="fa fa-angle-right"></i>'.html_safe, "#", class: 'readmore', target: '_self', title: 'Giới thiệu' %>
+                                <%= link_to 'Xem thêm <i class="fa fa-angle-right"></i>'.html_safe, about_path(About.first.slug), class: 'readmore', target: '_self', title: 'Giới thiệu' %>
                             </figcaption>
                         </figure>
                     </div>
@@ -26,7 +26,7 @@
                             <figcaption>
                                 <h3><%= link_to @post.title, category_post_path(@post.category.slug, @post.slug)%></h3>
                                 <div class="desc"><%=@post.intro %></div>
-                                <%= link_to 'Xem thêm <i class="fa fa-angle-right"></i>'.html_safe, "#", class: 'readmore', target: '_self', title: 'Tin tức' %>
+                                <%= link_to 'Xem thêm <i class="fa fa-angle-right"></i>'.html_safe, category_post_path(@post.category.slug, @post.slug), class: 'readmore', target: '_self', title: 'Tin tức' %>
                             </figcaption>
                         </figure>
                     </div>
@@ -34,13 +34,11 @@
                 <div class="col-lg-4 col-md-6">
                     <div class="category-item">
                         <figure>
-                            <a href="#" target="_self"><img alt="Giới thiệu" src="assets/images/hvntf.jpg"></a>
+                            <%= link_to(image_tag File.join(root_path, @album_image.image.url) ) %>
                             <figcaption>
-                                <h3><a href="#" target="_self">Media</a></h3>
-                                <div class="desc">Một ngày học tập và rèn luyện của các em tại Học viện NutiFood
-                                </div>
-                                <a class="readmore" href="#" target="_self" title="Giới thiệu">Xem thêm <i
-                                        class="fa fa-angle-right"></i></a>
+                                <h3><%= link_to "Media", album_image_path()%></h3>
+                                <div class="desc"> <%=@album_image.title %> </div>
+                                <%= link_to 'Xem thêm <i class="fa fa-angle-right"></i>'.html_safe, album_image_path(), class: 'readmore', target: '_self'%>
                             </figcaption>
                         </figure>
                     </div>

@@ -2,7 +2,7 @@ class Admin::CoursesController < Admin::BaseController
   load_and_authorize_resource
 
   def index
-    @courses = Course.order(created_at: :desc).page(params[:page]).per(2)
+    @courses = Course.order(created_at: :desc).page(params[:page]).per(10)
   end
 
   def new
