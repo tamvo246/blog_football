@@ -1,23 +1,41 @@
 # frozen_string_literal: true
 
 class Users::RegistrationsController < Devise::RegistrationsController
+  # load_and_authorize_resource
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
+
+  skip_before_action :require_no_authentication, only: [:new, :create]
   layout 'admin'
-  def sign_up(resource_name, resource)
-    # Skip the sign-in after sign up
-    # You can customize this logic if needed
-  end
+  # def sign_up(resource_name, resource)
+  #   # Skip the sign-in after sign up
+  #   # You can customize this logic if needed
+  # end
 
   # GET /resource/sign_up
-  # def new
-  #   super
-  # end
+  def new
+    authorize! :new, @user
+    super
+  end
 
   # POST /resource
-  # def create
-  #   super
-  # end
+  def create
+    if current_user.supper_admin?
+      build_resource(sign_up_params)
+      resource.save
+      yield resource if block_given?
+      if resource.persisted?
+        # Redirect to the desired path after user creation
+        redirect_to admin_users_path, notice: "User created successfully!"
+      else
+        # Handle the case when user creation fails
+        render :new
+      end
+    else
+      # Handle unauthorized access for non-admin users
+      redirect_to root_path, alert: "You are not authorized to perform this action."
+    end
+  end
 
   # GET /resource/edit
   # def edit

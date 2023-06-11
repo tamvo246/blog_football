@@ -7,27 +7,28 @@
             <h4 class="card-title">Tài khoản</h4>
             <%= form_for(resource, as: resource_name, url: registration_path(resource_name), class: "form-group") do |f| %>
 
-                <%= f.label :email %><br />
+                <%= f.label :email %>
                 <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control w-50" %>
-
-                <%= f.label :role, "Quyền" %><br />
-                <%= f.select :role_id, Role.all.map{|r| [r.name, r.id] }, class: "form-control w-50"%>
+                <br />
+                <%= f.label :role, "Quyền" %>
+                <%= f.select :role_id, Role.all.map{|r| [r.name, r.id] }, {}, { class: "form-control w-50" }%>
 
                 <br>
                 <%= f.label :password %>
                 <% if @minimum_password_length %>
-                <em>(<%= @minimum_password_length %> kí tự)</em>
+                <em>(8 kí tự)</em>
                 <% end %><br />
                 <%= f.password_field :password, autocomplete: "new-password", class: "form-control w-50" %>
-
-                <%= f.label :password_confirmation %><br />
+                <br />
+                <%= f.label :password_confirmation %>
                 <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control w-50" %>
-
+                <br />
+                <%= render "devise/shared/error_messages", resource: resource %>
               <div class="actions">
-                <%= f.submit "Tạo tài khoản" %>
+                <%= f.submit "Tạo tài khoản", class: "btn btn-action-form" %>
               </div>
             <% end %>
-            <%= render "devise/shared/error_messages", resource: resource %>
+
           </div>
         </div>
       </div>

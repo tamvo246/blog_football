@@ -15,10 +15,6 @@ Rails.application.routes.draw do
   }
   namespace :admin do
     get "/trang-chu", to: "home#admin_page", as: :home_page
-    resource :tests
-    get 'tests/:id', to: 'tests#show', as: 'test'
-    get 'tests/edit/:id', to: 'tests#edit'
-
     resources :abouts, path: 'gioi-thieu'
     resources :courses, path: 'khoa-hoc'
     resources :students, path: 'hoc-vien'
@@ -27,6 +23,7 @@ Rails.application.routes.draw do
     resources :album_images, path: 'hinh-anh'
     resources :contacts, path: 'lien-he', only: [:index, :destroy]
     resources :roles, path: 'phan-quyen'
+    resources :users, path: 'nguoi-dung', only: [:index, :destroy, :edit, :update]
     # devise_for :admin, controllers: {
     #   registration: 'tai-khoan',
     # }

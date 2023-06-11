@@ -122,3 +122,15 @@ height: 100%;
 -webkit-transition-timing-function: ease-out;
 transition-timing-function: ease-out;
 }
+
+.btn-action-form{
+  background-color: #4B49AC;
+  padding: 10px 20px;
+  border-radius: 20px;
+  color: white;
+
+  &:hover{
+    cursor: pointer;
+    color: white;
+  }
+}

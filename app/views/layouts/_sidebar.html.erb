@@ -53,19 +53,22 @@
         </li>
 
         </li>
-        <li class="nav-item">
-        <a class="nav-link" data-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
-            <i class="fa fa-key" aria-hidden="true"></i>
-            <span class="menu-title">Tài khoản - phân quyền</span>
-            <i class="menu-arrow"></i>
-        </a>
-        <div class="collapse" id="auth">
-            <ul class="nav flex-column sub-menu">
-            <li class="nav-item"> <a class="nav-link" href="/admin/phan-quyen">Phân quyền</a></li>
-            <li class="nav-item"> <a class="nav-link" href="/admin/tai-khoan/sign_up">Thêm tài khoản mới</a></li>
-            </ul>
-        </div>
-        </li>
+
+        <% if current_user.supper_admin? %>
+            <li class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
+                <i class="fa fa-key" aria-hidden="true"></i>
+                <span class="menu-title">Tài khoản - phân quyền</span>
+                <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="auth">
+                <ul class="nav flex-column sub-menu">
+                <li class="nav-item"> <a class="nav-link" href="/admin/phan-quyen">Phân quyền</a></li>
+                <li class="nav-item"> <a class="nav-link" href="/admin/nguoi-dung">Tài khoản</a></li>
+                </ul>
+            </div>
+            </li>
+        <% end %>
 
         <li class="nav-item">
         <a class="nav-link" data-toggle="collapse" href="#media" aria-expanded="false" aria-controls="auth">

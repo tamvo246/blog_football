@@ -22,6 +22,7 @@
                     <th scope="col">Nội dung</th>
                     <th scope="col">Thể loại tin</th>
                     <th scope="col">Thao tác</th>
+                    <th scope="col">Ngày tạo</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -30,7 +31,7 @@
                       <td><%= c.title %></td>
                       <td><%= c.slug %></td>
                       <td><%= c.intro %></td>
-                      <td><%= raw c.content%></td>
+                      <td><div class="row-content" style="max-height: 200px; overflow: auto;"><%= raw c.trick_content(c.content)%></div></td>
                       <td><%= c.category.name%></td>
                       <td>
                         <div>
@@ -38,6 +39,7 @@
                           <%= link_to '<i class="fa-solid fa-trash"></i>'.html_safe, admin_post_path(c),method: :delete, data: {confirm: 'Bạn có muốn xoá?' }, class: "btn btn-delete" %>
                         </div>
                       </td>
+                      <td><%= c.created_at.strftime('%d/%m/%Y') %></td>
                     </tr>
                   <% end %>
                 </tbody>

@@ -12,7 +12,7 @@
       <div class="container">
         <span class="created-day"><%= @post.created_at.strftime('%d/%m/%Y') %></span>
         <h2 class="title"><%= @post.title %></h2>
-        <div class="content"><%= raw @post.content %></div>
+        <div class="content"><%= raw @post.trick_content(@post.content) %></div>
       </div>
     </section>
     <section class="other-new">

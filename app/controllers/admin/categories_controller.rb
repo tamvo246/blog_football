@@ -2,7 +2,7 @@ class Admin::CategoriesController < Admin::BaseController
   load_and_authorize_resource
 
   def index
-    @categories = Category.order(created_at: :desc).page(params[:page]).per(10)
+    @categories = Category.order(created_at: :desc).page(params[:page]).per(10).order("created_at desc")
   end
 
   def new

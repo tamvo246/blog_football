@@ -1,6 +1,6 @@
 tinymce.init({
   selector: '.tinymce',
-  height: 500,
+  height: 700,
   plugins: [
     'image', "lists"
   ],

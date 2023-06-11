@@ -17,16 +17,17 @@
 
               <%= form.label :course, "Khoá học" %>
               <br>
-              <%= form.select :course_id, Course.all.map{|r| [r.name, r.id] }, class: "form-control"%>
-
-              <br>
-              <br>
+              <%= form.select :course_id, Course.all.map{|r| [r.name, r.id] }, {}, { class: "form-control w-50" }%>
               <%= form.label :avatar, "Ảnh đại diện" %>
               <br>
               <%= form.file_field :avatar, id: :student_image %>
               <br>
               <br>
-              <%= image_tag("", id: "preview", style: "display: none; height: 200px; with: 200px") %>
+              <% if @student&.avatar&.url %>
+                 <%= image_tag(@student.avatar.url, id: "preview", style: "height: 200px; with: 200px") %>
+              <% else %>
+                <%= image_tag("", id: "preview", style: "display: none; height: 200px; with: 200px") %>
+              <% end %>
               <br>
               <br>
 
@@ -39,4 +40,3 @@
   </div>
 </div>
 <%= javascript_pack_tag 'student_load_image'%>
-

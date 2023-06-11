@@ -2,7 +2,7 @@ class Admin::RolesController < Admin::BaseController
   load_and_authorize_resource
 
   def index
-    @roles = Role.order(created_at: :desc).page(params[:page]).per(10)
+    @roles = Role.order(created_at: :desc).page(params[:page]).per(10).order("created_at desc")
   end
 
   def new

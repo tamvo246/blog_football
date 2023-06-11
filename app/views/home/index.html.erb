@@ -13,7 +13,7 @@
                             <%= link_to(image_tag File.join(root_path, @about.show_random_image) ) %>
                             <figcaption>
                                 <h3><%= link_to "Giới thiệu", about_path(About.first.slug) %></h3>
-                                <div class="desc"><%= @about.title%></div>
+                                <div class="desc">Thông qua việc tuyển sinh khắp các tỉnh thành trong cả nước, Học viện góp phần thúc đẩy tình bóng đá, tinh thần thể thao cho các thế hệ trẻ...</div>
                                 <%= link_to 'Xem thêm <i class="fa fa-angle-right"></i>'.html_safe, about_path(About.first.slug), class: 'readmore', target: '_self', title: 'Giới thiệu' %>
                             </figcaption>
                         </figure>

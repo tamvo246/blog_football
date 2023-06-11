@@ -2,7 +2,7 @@ class Admin::AboutsController < Admin::BaseController
   load_and_authorize_resource
 
   def index
-    @abouts = About.page(params[:page]).per(10)
+    @abouts = About.page(params[:page]).per(10).order("created_at desc")
   end
 
   def new

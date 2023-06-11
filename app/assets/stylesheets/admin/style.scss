@@ -28550,11 +28550,12 @@ div.tagsinput span.tag a {
 }
 
 .sidebar .nav .nav-item .nav-link i.menu-arrow:before {
-  content: "\e649";
+  content: ">";
   font-family: "themify";
   font-style: normal;
   display: block;
-  font-size: 0.687rem;
+  font-size: 1rem;
+  font-weight: bold;
   line-height: 10px;
   -webkit-transition: all 0.2s ease-in;
   -moz-transition: all 0.2s ease-in;

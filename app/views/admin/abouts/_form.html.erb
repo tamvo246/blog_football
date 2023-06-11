@@ -15,9 +15,6 @@
               <%= form.label :content, "Nội dung" %>
               <%= form.text_area :content, class: "form-control tinymce" %>
               <br>
-              <%= form.label :hide_status, "Ẩn" %>
-              <%= form.check_box :hide_status, {}, true, false %>
-              <br>
              <%= form.submit form.object.new_record? ? "Thêm" : "Chỉnh sửa", class: "btn btn-action-form" %>
             <% end %>
           </div>
@@ -31,7 +28,7 @@
     tinymce.remove(); // Remove any existing instances of TinyMCE
     tinymce.init({
     selector: '.tinymce',
-    height: 500,
+    height: 700,
     plugins: [
       'image', "lists"
     ],
