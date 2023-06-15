@@ -7,10 +7,10 @@
             <h4 class="card-title">Giới thiệu</h4>
             <%= form_with(model: [:admin, @about], local: true, class: "form-group" ) do |form| %>
               <%= form.label :title, "Tiêu đề"%>
-              <%= form.text_field :title, class: "form-control" %>
+              <%= form.text_field :title, class: "form-control", id: "about-title-input" %>
 
               <%= form.label :slug, "Liên kết" %>
-              <%= form.text_field :slug, class: "form-control" %>
+              <%= form.text_field :slug, class: "form-control", id: "about-slug-input" %>
 
               <%= form.label :content, "Nội dung" %>
               <%= form.text_area :content, class: "form-control tinymce" %>
@@ -63,4 +63,24 @@
     }
     });
   });
+
+  const aboutTitleInput = document.getElementById('about-title-input');
+  const aboutSlugInput = document.getElementById('about-slug-input');
+
+  // Add an event listener to the title input for the "input" event
+  aboutTitleInput.addEventListener('input', function() {
+    const titleValue = aboutTitleInput.value;
+    const valueChange = titleValue.normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace("đ", "d")
+    const slugValue = slugify(valueChange);
+    aboutSlugInput.value = slugValue;
+  });
+
+  function slugify(text) {
+  return text
+    .toLowerCase()
+    .replace(/[^\w\s-]/g, '')
+    .replace(/\s+/g, '-')
+    .replace(/-+/g, '-')
+}
+
 </script>

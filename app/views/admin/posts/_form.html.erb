@@ -8,10 +8,10 @@
             <h4 class="card-title">Bài viết</h4>
             <%= form_with(model: [:admin, @post], local: true, class: "form-group" ) do |form| %>
               <%= form.label :title, "Tiêu đề" %>
-              <%= form.text_field :title, class: "form-control" %>
+              <%= form.text_field :title, class: "form-control", id: "title-input" %>
 
               <%= form.label :slug, "Liên kết" %>
-              <%= form.text_field :slug, class: "form-control" %>
+              <%= form.text_field :slug, class: "form-control", id: "slug-input" %>
 
               <%= form.label :intro, "Đoạn giới thiệu" %>
               <%= form.text_area :intro, class: "form-control" %>
@@ -70,5 +70,25 @@
     }
     });
   });
+
+  const titleInput = document.getElementById('title-input');
+  const slugInput = document.getElementById('slug-input');
+
+  // Add an event listener to the title input for the "input" event
+  titleInput.addEventListener('input', function() {
+    const titleValue = titleInput.value;
+    const valueChange = titleValue.normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+    const slugValue = slugify(valueChange);
+    slugInput.value = slugValue;
+  });
+
+  function slugify(text) {
+  return text
+    .toLowerCase()
+    .replace(/[^\w\s-]/g, '')
+    .replace(/\s+/g, '-')
+    .replace(/-+/g, '-')
+    .replace("đ", "d")
+}
 </script>
 

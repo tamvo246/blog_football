@@ -337,6 +337,10 @@ main {
     }
 }
 // -----Blog Item----- //
+.blog-item-student{
+    height: 400px !important;
+}
+
 .blog-item {
     margin-bottom: 25px;
     background-color: #fff;
@@ -344,6 +348,7 @@ main {
     border-radius: 15px;
     box-shadow: 0 0 40px 5px rgba(0, 0, 0, 0.05);
     transition: all 0.5s ease-in-out;
+    height: 540px;
     .blog-item-img {
         overflow: hidden;
         border-radius: 15px;
@@ -357,6 +362,11 @@ main {
     }
     .blog-item-info {
         padding: 15px;
+        height: 260px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: flex-start;
         .blog-title {
             font-size: 22px;
             margin-bottom: 15px;

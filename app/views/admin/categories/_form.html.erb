@@ -1,3 +1,24 @@
+<script>
+  const categoryTitleInput = document.getElementById('category-name-input');
+  const categorySlugInput = document.getElementById('category-slug-input');
+
+  // Add an event listener to the title input for the "input" event
+  categoryTitleInput.addEventListener('input', function() {
+    const titleValue = categoryTitleInput.value;
+    const valueChange = titleValue.normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+    const slugValue = slugify(valueChange);
+    categorySlugInput.value = slugValue;
+  });
+
+  function slugify(text) {
+  return text
+    .toLowerCase()
+    .replace(/[^\w\s-]/g, '')
+    .replace(/\s+/g, '-')
+    .replace(/-+/g, '-')
+    .replace("đ", "d")
+}
+</script>
 <div class="main-panel">
   <div class="content-wrapper">
     <div class="row">
@@ -7,10 +28,10 @@
             <h4 class="card-title">Thể loại tin</h4>
             <%= form_with(model: [:admin, @category], local: true, class: "form-group" ) do |form| %>
               <%= form.label :name, "Tên" %>
-              <%= form.text_field :name, class: "form-control" %>
+              <%= form.text_field :name, class: "form-control", id: "category-name-input" %>
 
               <%= form.label :slug, "Liên kết" %>
-              <%= form.text_field :slug, class: "form-control" %>
+              <%= form.text_field :slug, class: "form-control", id: "category-slug-input" %>
 
               <%= form.submit form.object.new_record? ? "Thêm" : "Chỉnh sửa", class: "btn btn-action-form" %>
             <% end %>

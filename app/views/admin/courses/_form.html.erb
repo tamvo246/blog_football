@@ -1,3 +1,24 @@
+<script>
+  const courseTitleInput = document.getElementById('course-name-input');
+  const courseSlugInput = document.getElementById('course-slug-input');
+
+  // Add an event listener to the title input for the "input" event
+  courseTitleInput.addEventListener('input', function() {
+    const titleValue = courseTitleInput.value;
+    const valueChange = titleValue.normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+    const slugValue = slugify(valueChange);
+    courseSlugInput.value = slugValue;
+  });
+
+  function slugify(text) {
+  return text
+    .toLowerCase()
+    .replace(/[^\w\s-]/g, '')
+    .replace(/\s+/g, '-')
+    .replace(/-+/g, '-')
+    .replace("đ", "d")
+}
+</script>
 <div class="main-panel">
   <div class="content-wrapper">
     <div class="row">
@@ -7,10 +28,10 @@
             <h4 class="card-title">Khoá học</h4>
             <%= form_with(model: [:admin, @course], local: true, class: "form-group" ) do |form| %>
               <%= form.label :name, "Tên khoá học" %>
-              <%= form.text_field :name, class: "form-control" %>
+              <%= form.text_field :name, class: "form-control", id: "course-name-input" %>
 
               <%= form.label :slug, "Liên kết" %>
-              <%= form.text_field :slug, class: "form-control" %>
+              <%= form.text_field :slug, class: "form-control", id: "course-slug-input" %>
 
               <%= form.submit form.object.new_record? ? "Thêm" : "Chỉnh sửa", class: "btn btn-action-form" %>
             <% end %>

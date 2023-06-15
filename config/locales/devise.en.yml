@@ -81,6 +81,8 @@ en:
               confirmation: "bạn nhập không khớp, vui lòng nhập lại Password"
             password_confirmation:
               blank: "không được để trống"
+            current_password:
+              blank: "không được để trống"
       messages:
         :taken: "đã tồn tại, vui lòng nhập lại email"
         :confirmation: "bạn nhập không khớp, vui lòng nhập lại Password"
