@@ -11,4 +11,9 @@ class Admin::ContactsController < Admin::BaseController
     @contact.destroy
     redirect_to admin_contacts_path
   end
+
+  def show
+    @contact = Contact.find(params[:id])
+    # redirect_to admin_contact_path
+  end
 end

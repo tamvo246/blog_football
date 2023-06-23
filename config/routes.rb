@@ -21,7 +21,7 @@ Rails.application.routes.draw do
     resources :categories, path: 'the-loai'
     resources :posts, path: 'bai-viet'
     resources :album_images, path: 'hinh-anh'
-    resources :contacts, path: 'lien-he', only: [:index, :destroy]
+    resources :contacts, path: 'lien-he', only: [:index, :destroy, :show]
     resources :roles, path: 'phan-quyen'
     resources :users, path: 'nguoi-dung', only: [:index, :destroy, :edit, :update]
     # devise_for :admin, controllers: {

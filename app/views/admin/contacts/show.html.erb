@@ -1,0 +1,47 @@
+<div class="main-panel">
+  <div class="content-wrapper">
+    <div class="row">
+      <div class="col-lg-12 grid-margin stretch-card">
+        <div class="card">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-9">
+                <h4 class="card-title">Liên hệ</h4>
+                <div class="details">
+                <div class="detail-row">
+                  <div class="detail-label">Tên:</div>
+                  <div class="detail-value"><%=@contact.full_name%></div>
+                </div>
+                <div class="detail-row">
+                  <div class="detail-label">Email:</div>
+                  <div class="detail-value"><%=@contact.email%></div>
+                </div>
+                <div class="detail-row">
+                  <div class="detail-label">Địa chỉ:</div>
+                  <div class="detail-value"><%=@contact.address%></div>
+                </div>
+                <div class="detail-row">
+                  <div class="detail-label">Điện thoại:</div>
+                  <div class="detail-value"><%=@contact.phone%></div>
+                </div>
+                <div class="detail-row">
+                  <div class="detail-label">Tiêu đề:</div>
+                  <div class="detail-value"><%=@contact.title%></div>
+                </div>
+                <div class="detail-row">
+                  <div class="detail-label">Nội dung:</div>
+                  <div class="detail-value"><%=@contact.content%></div>
+                </div>
+                <div class="detail-row">
+                  <div class="detail-label">Ngày gửi:</div>
+                  <div class="detail-value"><%=@contact.created_at.strftime('%d/%m/%Y')%></div>
+                </div>
+              </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

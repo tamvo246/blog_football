@@ -29,3 +29,20 @@
       }
   }
 }
+.details {
+    padding: 10px;
+  }
+
+  .detail-row {
+    display: flex;
+    margin-bottom: 10px;
+  }
+
+  .detail-label {
+    width: 100px;
+    font-weight: bold;
+  }
+
+  .detail-value {
+    flex: 1;
+  }

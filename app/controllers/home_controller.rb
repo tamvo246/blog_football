@@ -5,6 +5,22 @@ class HomeController < ApplicationController
     @post = Post.last
 
     @album_image = AlbumImage.last
+
+    set_meta_tags(
+      title: 'Product Name',
+      description: 'Product Description',
+      keywords: 'product, category, keywords',
+      author: 'Your Name',
+      og: {
+        title: 'Open Graph Title',
+        description: 'Open Graph Description',
+        image: 'http://example.com/image.jpg'
+      },
+      twitter: {
+        card: 'summary',
+        site: '@YourTwitterHandle'
+      }
+    )
   end
 
   def search

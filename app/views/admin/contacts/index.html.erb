@@ -32,6 +32,7 @@
                       <td><%= c.content%></td>
                       <td>
                         <div>
+                          <%= link_to '<i class="fas fa-eye"></i>'.html_safe,  admin_contact_path(c), class: "btn btn-show"%>
                           <%= link_to '<i class="fa-solid fa-trash"></i>'.html_safe, admin_contact_path(c),method: :delete, data: {confirm: 'Bạn có muốn xoá?' }, class: "btn btn-delete" %>
                         </div>
                       </td>
