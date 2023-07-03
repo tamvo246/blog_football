@@ -9,7 +9,7 @@
                 <h4 class="card-title">Giới thiệu</h4>
               </div>
               <div class="col-3 text-right">
-                <%= link_to "+ Thêm giới thiệu ",  new_admin_about_path(), class: "btn btn-new-item btn-icon-text"%>
+                <%# <%= link_to "+ Thêm giới thiệu ",  new_admin_about_path(), class: "btn btn-new-item btn-icon-text"%>
               </div>
             </div>
             <div class="table-responsive">
@@ -17,9 +17,10 @@
                 <thead>
                   <tr>
                     <th scope="col">Tiêu đề</th>
+                    <th scope="col">Giới thiệu</th>
+                    <th scope="col">Ảnh giới thiệu</th>
                     <th scope="col">Liên kết</th>
                     <th scope="col">Nội dung</th>
-                    <th scope="col">Ẩn</th>
                     <th scope="col">Thao tác</th>
                   </tr>
                 </thead>
@@ -27,13 +28,14 @@
                   <% @abouts.each do |a| %>
                     <tr>
                       <td><%= a.title%></td>
+                      <td><%= a.intro%></td>
+                      <td><%= image_tag a.image_intro.url%></td>
                       <td><%= raw a.slug%></td>
                       <td><%= raw a.trick_content(a.content)%></td>
-                      <td><%= a.hide_status%></td>
                       <td>
                         <div>
                           <%= link_to '<i class="fa-solid fa-pen-to-square"></i>'.html_safe,  edit_admin_about_path(a), class: "btn btn-edit"%>
-                          <%= link_to '<i class="fa-solid fa-trash"></i>'.html_safe, admin_about_path(a),method: :delete, data: {confirm: 'Bạn có muốn xoá?'}, class: "btn btn-delete"  %>
+                          <%# <%= link_to '<i class="fa-solid fa-trash"></i>'.html_safe, admin_about_path(a),method: :delete, data: {confirm: 'Bạn có muốn xoá?'}, class: "btn btn-delete"  %>
                         </div>
                       </td>
                     </tr>

@@ -7,14 +7,16 @@ import Rails from "@rails/ujs"
 import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
-import 'jquery'
 import 'bootstrap'
 import "./admin_page"
 import "./magnific_popup"
 import "./main"
+import "./owl.carousel.min"
+import "tinymce"
+// import "./coach_load_image"
 
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
 
-import "tinymce"
+

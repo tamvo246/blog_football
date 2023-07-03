@@ -1,5 +1,6 @@
 class About < ApplicationRecord
   validates :slug, uniqueness: true
+  mount_uploader :image_intro, ImageUploader
 
   def show_random_image
     doc = Nokogiri::HTML.parse(self.content)

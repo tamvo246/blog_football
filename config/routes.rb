@@ -24,6 +24,8 @@ Rails.application.routes.draw do
     resources :contacts, path: 'lien-he', only: [:index, :destroy, :show]
     resources :roles, path: 'phan-quyen'
     resources :users, path: 'nguoi-dung', only: [:index, :destroy, :edit, :update]
+    resources :coaches, path: 'huan-luyen-vien'
+    resources :banners
     # devise_for :admin, controllers: {
     #   registration: 'tai-khoan',
     # }

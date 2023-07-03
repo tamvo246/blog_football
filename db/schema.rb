@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_05_14_091653) do
+ActiveRecord::Schema.define(version: 2023_06_30_140128) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,11 +22,21 @@ ActiveRecord::Schema.define(version: 2023_05_14_091653) do
     t.boolean "hide_status"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "intro"
+    t.string "image_intro"
   end
 
   create_table "album_images", force: :cascade do |t|
     t.string "image"
     t.string "title"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "banners", force: :cascade do |t|
+    t.string "title"
+    t.string "content"
+    t.string "image"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -39,6 +49,26 @@ ActiveRecord::Schema.define(version: 2023_05_14_091653) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "coaches", force: :cascade do |t|
+    t.string "name"
+    t.datetime "birth_day"
+    t.string "address"
+    t.string "avatar"
+    t.text "achievements"
+    t.string "phone"
+    t.string "email"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "coaches_courses", id: false, force: :cascade do |t|
+    t.bigint "coach_id"
+    t.bigint "course_id"
+    t.index ["coach_id", "course_id"], name: "index_coaches_courses_on_coach_id_and_course_id"
+    t.index ["coach_id"], name: "index_coaches_courses_on_coach_id"
+    t.index ["course_id"], name: "index_coaches_courses_on_course_id"
+  end
+
   create_table "contacts", force: :cascade do |t|
     t.string "full_name"
     t.string "address"
@@ -48,6 +78,8 @@ ActiveRecord::Schema.define(version: 2023_05_14_091653) do
     t.text "content"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "course_id", null: false
+    t.index ["course_id"], name: "index_contacts_on_course_id"
   end
 
   create_table "courses", force: :cascade do |t|
@@ -55,6 +87,12 @@ ActiveRecord::Schema.define(version: 2023_05_14_091653) do
     t.string "slug"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.datetime "opened_date"
+    t.datetime "closed_date"
+    t.string "course_age"
+    t.string "target"
+    t.text "course_details"
+    t.string "cost"
   end
 
   create_table "posts", force: :cascade do |t|
@@ -65,7 +103,10 @@ ActiveRecord::Schema.define(version: 2023_05_14_091653) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "intro"
+    t.string "image_intro"
+    t.bigint "user_id"
     t.index ["category_id"], name: "index_posts_on_category_id"
+    t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
   create_table "roles", force: :cascade do |t|
@@ -83,6 +124,8 @@ ActiveRecord::Schema.define(version: 2023_05_14_091653) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "avatar"
+    t.datetime "gradurated_date"
+    t.text "achievements"
     t.index ["course_id"], name: "index_students_on_course_id"
   end
 
@@ -107,5 +150,7 @@ ActiveRecord::Schema.define(version: 2023_05_14_091653) do
     t.index ["role_id"], name: "index_users_on_role_id"
   end
 
+  add_foreign_key "contacts", "courses"
   add_foreign_key "posts", "categories"
+  add_foreign_key "posts", "users"
 end

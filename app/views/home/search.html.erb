@@ -1,15 +1,19 @@
 <main>
-    <section class="title-search">
-      <div class="container search-wapper">
-        <h2>TÌM KIẾM</h2>
-      </div>
-    </section>
+  <section class="site-breadcrumb">
+    <div class="container">
+      <h2 class="breadcrumb-title">Tìm kiếm</h2>
+      <ul class="breadcrumb-menu">
+          <li><a href="/">Trang chủ</a></li>
+          <li class="active">Tìm kiếm</li>
+      </ul>
+    </div>
+  </section>
     <section class="search-group">
       <div class="container search-wapper">
         <%if @posts.count > 0 %>
-          <div style="margin-bottom: 15px">Tổng cộng có <strong><%= @posts.count %></strong> kết quả được tìm thấy</div>
+          <div style="margin-bottom: 15px; font-family: 'Montserrat Regular'">Tổng cộng có <strong><%= @posts.count %></strong> kết quả được tìm thấy</div>
         <% else %>
-          <div style="margin-bottom: 15px; color: red">Không tìm thấy kết quả</div>
+          <div style="margin-bottom: 15px; color: red; font-family: 'Montserrat Regular'">Không tìm thấy kết quả</div>
         <% end %>
 
         <div class="search">
@@ -26,7 +30,7 @@
           <% @posts.each do |p| %>
           <div class="post-search-item">
             <%= link_to category_post_path(p.category.slug, p.slug), class: "link-to-post-item" do %>
-              <h4><%= p.category.name %> > <%=p.title %></h4>
+              <h4><%= p.category.name %> > <span style="color: grey"><%=p.title %></span></h4>
               <div><%= p.intro %></div>
             <% end %>
           </div>

@@ -1,0 +1,46 @@
+<div class="main-panel">
+  <div class="content-wrapper">
+    <div class="row">
+      <div class="col-lg-12 grid-margin stretch-card">
+        <div class="card">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-9">
+                <h4 class="card-title">Banner</h4>
+              </div>
+              <div class="col-3 text-right">
+                <%= link_to "+ Thêm banner ",  new_admin_banner_path(), class: "btn btn-new-item btn-icon-text"%>
+              </div>
+            </div>
+            <div class="table-responsive">
+              <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th scope="col">Tiêu đề</th>
+                    <th scope="col">Nội dung</th>
+                    <th scope="col">Ảnh</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% @banners.each do |b| %>
+                    <tr>
+                      <td><%= b.title%></td>
+                      <td><%= b.content%></td>
+                      <td><%= image_tag b.image.url %></td>
+                      <td>
+                        <div>
+                          <%= link_to '<i class="fa-solid fa-pen-to-square"></i>'.html_safe,  edit_admin_banner_path(b), class: "btn btn-edit"%>
+                          <%= link_to '<i class="fa-solid fa-trash"></i>'.html_safe, admin_banner_path(b),method: :delete, data: {confirm: 'Bạn có muốn xoá?' }, class: "btn btn-delete" %>
+                        </div>
+                      </td>
+                    </tr>
+                  <% end %>
+                </tbody>
+              </table>
+            <div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,39 +1,104 @@
-<main>
-    <section class="site-breadcrumb">
-        <div class="container">
-            <h2 class="breadcrumb-title"><%= @category.name %></h2>
-            <ul class="breadcrumb">
-                <li><%= link_to 'Trang chủ', '/'%></li>
-                <li class="breadcrumb-active"><%= @category.name %></li>
-            </ul>
-        </div>
-    </section>
-
-    <section class="section-blog py-120">
-        <div class="container">
+<main class="blog-category">
+  <section class="site-breadcrumb">
+    <div class="container">
+      <h2 class="breadcrumb-title"><%= @category.name %></h2>
+      <ul class="breadcrumb-menu">
+        <li><a href="/">Trang chủ</a></li>
+        <li class="active"><%= @category.name %></li>
+      </ul>
+    </div>
+  </section>
+  <section class="section-blog">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8">
+          <div class="box-content">
             <div class="row">
-            <% @posts.each do |p| %>
-                <div class="col-lg-4 col-md-6">
-                    <div class="blog-item">
-                        <div class="blog-item-img">
-                            <%= image_tag File.join(root_path, p.show_random_image) %>
+              <% @posts.each do |r|%>
+                <div class="col-md-6">
+                  <div class="blog-item">
+                    <div class="image">
+                        <% if r.image_intro.present? %>
+                          <%= link_to(image_tag r.image_intro.url) %>
+                        <% else %>
+                          <%= link_to(image_tag "") %>
+                        <% end %>
+                    </div>
+                    <div class="content">
+                      <h3 class="title">
+                        <%= link_to r.title, category_post_path(r.category.slug, r.slug) %>
+                      </h3>
+                      <p><%=r.intro %></p>
+                      <%= link_to "XEM THÊM", category_post_path(r.category.slug, r.slug), class: "read-more" %>
+                    </div>
+                  </div>
+                </div>
+              <% end %>
+            </div>
+            <div class="pagination-area">
+              <%= paginate @posts, outer_window: 2 %>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="sidebar-post">
+                <div class="single-sidebar">
+                    <h4 class="title">Tìm kiếm</h4>
+                    <form action="#" id="search-form">
+                        <input type="text" placeholder="Search" id="search-input-header">
+                        <button class="search-button">
+                          <%= link_to '<i class="fa fa-search"></i>'.html_safe, search_path() %>
+                        </button>
+                    </form>
+                </div>
+                <div class="single-sidebar">
+                    <h4 class="title">Danh mục</h4>
+                    <ul class="categories">
+                        <% Category.all.each do |c| %>
+                          <li>
+                            <%= link_to c.name+" (#{c.posts.count})", category_path(c.slug) %>
+                          </li>
+                        <% end %>
+                    </ul>
+                </div>
+                <div class="single-sidebar">
+                    <h4 class="title">Bài viết mới nhất</h4>
+                    <div class="lasted-post">
+                      <% @post_news.each do |post|%>
+                        <div class="post-item">
+                            <div class="post-img">
+                                <% if post.image_intro.present? %>
+                                  <%= link_to(image_tag post.image_intro.url) %>
+                                <% else %>
+                                  <%= link_to(image_tag "") %>
+                                <% end %>
+                            </div>
+                            <div class="post-content">
+                                <h3 class="post-title">
+                                    <%= link_to post.title, category_post_path(post.category.slug, post.slug) %>
+                                </h3>
+                                <p class="post-desc">
+                                    <%=post.intro %>
+                                </p>
+                            </div>
                         </div>
-                        <div class="blog-item-info">
-                            <h4 class="blog-title">
-                                <%= link_to p.title, category_post_path(@category.slug, p.slug)%>
-                            </h4>
-                            <p><%= p.intro %></p>
-                            <%= link_to 'Xem thêm <i class="fa fa-arrow-right"></i>'.html_safe, category_post_path(@category.slug, p.slug), class: 'btn-theme'%>
-                        </div>
+                      <% end%>
                     </div>
                 </div>
-            <% end %>
             </div>
         </div>
-    </section>
-    <section>
-        <div class="container">
-            <%= paginate @posts, outer_window: 2 %>
-        </div>
-    </section>
+      </div>
+    </div>
+  </section>
 </main>
+<script>
+  $(document).ready(function() {
+      $('.search-button').click(function(e) {
+      e.preventDefault();
+      var searchValue = $('#search-input-header').val();
+      var newPath = '<%=  search_path()%>';
+      newPath += '?search=' + encodeURIComponent(searchValue);
+      window.location.href = newPath;
+      });
+  });
+</script>

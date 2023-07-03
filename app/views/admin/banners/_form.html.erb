@@ -1,0 +1,36 @@
+<div class="main-panel">
+  <div class="content-wrapper">
+    <div class="row">
+      <div class="col-12 grid-margin stretch-card">
+        <div class="card">
+          <div class="card-body">
+            <h4 class="card-title">Banner</h4>
+            <%= form_with(model: [:admin, @banner], local: true, class: "form-group" ) do |form| %>
+              <%= form.label :title, "Tiêu đề" %>
+              <%= form.text_field :title, class: "form-control" %>
+
+              <%= form.label :content, "Nội dung" %>
+              <%= form.text_area :content, class: "form-control"%>
+
+              <%= form.label :image, "Ảnh đại diện" %>
+              <br>
+              <%= form.file_field :image, id: :banner_image %>
+              <br>
+              <br>
+              <% if @banner&.image&.url %>
+                 <%= image_tag(@banner.image.url, id: "image_preview", style: "height: 200px; with: 200px") %>
+              <% else %>
+                <%= image_tag("", id: "image_preview", style: "display: none; height: 200px; with: 200px") %>
+              <% end %>
+              <br>
+              <br>
+
+               <%= form.submit form.object.new_record? ? "Thêm" : "Chỉnh sửa", class: "btn btn-action-form" %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<%= javascript_pack_tag 'banner_load_image'%>

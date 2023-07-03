@@ -38,6 +38,6 @@ class Admin::AboutsController < Admin::BaseController
   private
 
   def about_params
-    params.require(:about).permit(:title, :content, :slug, :hide_status)
+    params.require(:about).permit(:title, :content, :slug, :intro, :image_intro)
   end
 end

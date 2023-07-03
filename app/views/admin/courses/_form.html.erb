@@ -28,10 +28,32 @@
             <h4 class="card-title">Khoá học</h4>
             <%= form_with(model: [:admin, @course], local: true, class: "form-group" ) do |form| %>
               <%= form.label :name, "Tên khoá học" %>
-              <%= form.text_field :name, class: "form-control", id: "course-name-input" %>
+              <%= form.text_field :name, class: "form-control w-50", id: "course-name-input" %>
 
               <%= form.label :slug, "Liên kết" %>
-              <%= form.text_field :slug, class: "form-control", id: "course-slug-input" %>
+              <%= form.text_field :slug, class: "form-control w-50", id: "course-slug-input" %>
+
+              <%= form.label :opened_date, "Ngày khai giảng" %>
+              <%= form.date_field :opened_date, class: "form-control w-50" %>
+
+              <%= form.label :closed_date, "Ngày kết thúc" %>
+              <%= form.date_field :closed_date, class: "form-control w-50" %>
+
+              <%= form.label :course_age, "Lứa tuổi" %>
+              <%= form.text_field :course_age, class: "form-control w-50" %>
+
+              <%# <%= form.label :coaches %>
+              <%# <% Coach.all.each do |coach| %>
+                <%# <div> %>
+                  <%# <%= form.check_box :coach_ids, { multiple: true }, coach.id, nil %>
+                  <%# <%= form.label "course_coach_#{coach.id}", coach.name %>
+                <%# </div> %>
+              <%# <% end %>
+              <%= form.label :target, "Mục tiêu" %>
+              <%= form.text_area :target, class: "form-control" %>
+
+              <%= form.label :course_details, "Chi tiết khoá học" %>
+              <%= form.text_area :course_details, class: "form-control tinymce" %>
 
               <%= form.submit form.object.new_record? ? "Thêm" : "Chỉnh sửa", class: "btn btn-action-form" %>
             <% end %>
@@ -41,3 +63,53 @@
     </div>
   </div>
 </div>
+<script>
+  document.addEventListener('turbolinks:load', function() {
+    tinymce.remove(); // Rem  ove any existing instances of TinyMCE
+    tinymce.init({
+    selector: '.tinymce',
+    height: 700,
+    plugins: [
+      'image', "lists", "table"
+    ],
+    toolbar: 'undo redo | formatselect | ' +
+    ' bold italic | alignleft aligncenter ' +
+    ' alignright alignjustify | bullist numlist outdent indent | ' +
+    ' removeformat | help | forecolor backcolor image | ',
+    table_sizing_mode: 'relative',
+    table_column_resizing: 'resizetable',
+    table_class_list: [
+    {title: 'None', value: ''},
+    {title: 'No Borders', value: 'table_no_borders'},
+    {title: 'Red borders', value: 'table_red_borders'},
+    {title: 'Blue borders', value: 'table_blue_borders'},
+    {title: 'Green borders', value: 'table_green_borders'}
+   ],
+    image_title: true,
+    automatic_uploads: true,
+    images_upload_url: '/text_images',
+    file_picker_types: 'image',
+
+    document_base_url: '/',
+
+    file_picker_callback: function(cb, value, meta) {
+      var input = document.createElement('input');
+      input.setAttribute('type', 'file');
+      input.setAttribute('accept', 'image/*');
+
+      input.onchange = function() {
+        var file = this.files[0];
+
+        var id = 'blobid' + (new Date()).getTime();
+        var blobCache = tinymce.activeEditor.editorUpload.blobCache;
+        var blobInfo = blobCache.create(id, file);
+        blobCache.add(blobInfo);
+
+        cb(blobInfo.blobUri(), { title: file.name });
+      };
+
+      input.click();
+    }
+    });
+  });
+</script>

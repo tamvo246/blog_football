@@ -13,11 +13,15 @@
               <%= form.text_field :address, class: "form-control" %>
 
               <%= form.label :birth_day, "Ngày sinh" %>
-              <%= form.date_field :birth_day, class: "form-control" %>
+              <%= form.date_field :birth_day, class: "form-control w-50" %>
 
               <%= form.label :course, "Khoá học" %>
               <br>
               <%= form.select :course_id, Course.all.map{|r| [r.name, r.id] }, {}, { class: "form-control w-50" }%>
+
+              <%= form.label :gradurated_date, "Ngày hoàn thành" %>
+              <%= form.date_field :gradurated_date, class: "form-control w-50" %>
+
               <%= form.label :avatar, "Ảnh đại diện" %>
               <br>
               <%= form.file_field :avatar, id: :student_image %>
@@ -30,7 +34,9 @@
               <% end %>
               <br>
               <br>
-
+              <%= form.label :achievements, "Thành tích" %>
+              <%= form.text_area :achievements, class: "form-control tinymce" %>
+               <br>
                <%= form.submit form.object.new_record? ? "Thêm" : "Chỉnh sửa", class: "btn btn-action-form" %>
             <% end %>
           </div>
@@ -40,3 +46,53 @@
   </div>
 </div>
 <%= javascript_pack_tag 'student_load_image'%>
+<script>
+  document.addEventListener('turbolinks:load', function() {
+    tinymce.remove(); // Rem  ove any existing instances of TinyMCE
+    tinymce.init({
+    selector: '.tinymce',
+    height: 700,
+    plugins: [
+      'image', "lists", "table"
+    ],
+    toolbar: 'undo redo | formatselect | ' +
+    ' bold italic | alignleft aligncenter ' +
+    ' alignright alignjustify | bullist numlist outdent indent | ' +
+    ' removeformat | help | forecolor backcolor image | ',
+    table_sizing_mode: 'relative',
+    table_column_resizing: 'resizetable',
+    table_class_list: [
+    {title: 'None', value: ''},
+    {title: 'No Borders', value: 'table_no_borders'},
+    {title: 'Red borders', value: 'table_red_borders'},
+    {title: 'Blue borders', value: 'table_blue_borders'},
+    {title: 'Green borders', value: 'table_green_borders'}
+   ],
+    image_title: true,
+    automatic_uploads: true,
+    images_upload_url: '/text_images',
+    file_picker_types: 'image',
+
+    document_base_url: '/',
+
+    file_picker_callback: function(cb, value, meta) {
+      var input = document.createElement('input');
+      input.setAttribute('type', 'file');
+      input.setAttribute('accept', 'image/*');
+
+      input.onchange = function() {
+        var file = this.files[0];
+
+        var id = 'blobid' + (new Date()).getTime();
+        var blobCache = tinymce.activeEditor.editorUpload.blobCache;
+        var blobInfo = blobCache.create(id, file);
+        blobCache.add(blobInfo);
+
+        cb(blobInfo.blobUri(), { title: file.name });
+      };
+
+      input.click();
+    }
+    });
+  });
+</script>

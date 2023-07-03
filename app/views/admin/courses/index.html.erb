@@ -18,6 +18,11 @@
                   <tr>
                     <th scope="col">Tên khoá học</th>
                     <th scope="col">Liên kết</th>
+                    <th scope="col">Khai giảng</th>
+                    <th scope="col">Kết thúc</th>
+                    <th scope="col">Lứa tuổi</th>
+                    <th scope="col">Mục tiêu</th>
+                    <th scope="col">Chi tiết</th>
                     <th scope="col">Thao tác</th>
                   </tr>
                 </thead>
@@ -26,6 +31,18 @@
                     <tr>
                       <td><%= c.name%></td>
                       <td><%= c.slug%></td>
+                      <td>
+                        <% if c.opened_date.present?%>
+                          <%= c.opened_date.strftime('%d/%m/%Y')%>
+                        <% end %></td>
+                      <td>
+                        <% if c.closed_date.present?%>
+                          <%= c.closed_date.strftime('%d/%m/%Y')%>
+                        <% end %>
+                      </td>
+                      <td><%= c.course_age%></td>
+                      <td><%= c.target%></td>
+                      <td><%= c.course_details%></td>
                       <td>
                         <div>
                           <%= link_to '<i class="fa-solid fa-pen-to-square"></i>'.html_safe,  edit_admin_course_path(c), class: "btn btn-edit"%>

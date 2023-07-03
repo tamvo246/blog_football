@@ -15,7 +15,18 @@
 
               <%= form.label :intro, "Đoạn giới thiệu" %>
               <%= form.text_area :intro, class: "form-control" %>
-
+              <%= form.label :image_intro, "Ảnh giới thiệu" %>
+              <br>
+              <%= form.file_field :image_intro, id: :post_image %>
+              <br>
+              <br>
+              <% if @post&.image_intro&.url %>
+                 <%= image_tag(@post.image_intro.url, id: "preview", style: "height: 200px; with: 200px") %>
+              <% else %>
+                <%= image_tag("", id: "preview", style: "display: none; height: 200px; with: 200px") %>
+              <% end %>
+              <br>
+              <br>
               <%= form.label :content, "Nội dung" %>
               <%= form.text_area :content, class: "form-control tinymce" %>
               <br>
@@ -37,12 +48,21 @@
     selector: '.tinymce',
     height: 700,
     plugins: [
-      'image', "lists"
+      'image', "lists", "table"
     ],
     toolbar: 'undo redo | formatselect | ' +
     ' bold italic | alignleft aligncenter ' +
     ' alignright alignjustify | bullist numlist outdent indent | ' +
-    ' removeformat | help | forecolor backcolor image',
+    ' removeformat | help | forecolor backcolor image | ',
+    table_sizing_mode: 'relative',
+    table_column_resizing: 'resizetable',
+    table_class_list: [
+    {title: 'None', value: ''},
+    {title: 'No Borders', value: 'table_no_borders'},
+    {title: 'Red borders', value: 'table_red_borders'},
+    {title: 'Blue borders', value: 'table_blue_borders'},
+    {title: 'Green borders', value: 'table_green_borders'}
+   ],
     image_title: true,
     automatic_uploads: true,
     images_upload_url: '/text_images',
@@ -89,6 +109,25 @@
     .replace(/\s+/g, '-')
     .replace(/-+/g, '-')
     .replace("đ", "d")
-}
+  }
+
+  const imageInput = document.getElementById("post_image");
+  const previewImg = document.getElementById("preview");
+
+  imageInput.addEventListener("change", function() {
+    const file = this.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = function(event) {
+        previewImg.src = event.target.result;
+      };
+      reader.readAsDataURL(file);
+      previewImg.style.display = "block";
+    } else {
+      previewImg.src = "#";
+      previewImg.style.display = "none";
+    }
+  });
+
 </script>
 

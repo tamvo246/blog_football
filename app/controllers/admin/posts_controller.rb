@@ -10,13 +10,19 @@ class Admin::PostsController < Admin::BaseController
   end
 
   def create
-    @post = Post.create(post_params)
-    redirect_to admin_posts_path
+    @post = Post.new(post_params)
+    @post.user = current_user
+    if @post.save
+      redirect_to admin_posts_path
+    else
+      render :new
+    end
+
   end
 
   def update
     authorize! :update, @post
-    if @post.update(post_params)
+    if @post.update(post_params.merge(user_id: current_user.id))
       redirect_to admin_posts_path
     else
       render :edit
@@ -38,6 +44,6 @@ class Admin::PostsController < Admin::BaseController
   private
 
   def post_params
-    params.require(:post).permit(:title, :content, :intro, :slug, :category_id, :hide_status)
+    params.require(:post).permit(:title, :content, :intro, :slug, :category_id, :hide_status, :image_intro)
   end
 end

@@ -16,6 +16,8 @@ class Ability
         can :manage, Category
         can :manage, Post
         can :manage, Contact
+        can :manage, Banner
+        can :manage, Coach
       end
     #
     # The first argument to `can` is the action you are giving the user

@@ -1,102 +1,48 @@
-<header class="site-header">
-        <div class="header-top">
-            <div class="container">
-                <div class="row align-items-center">
-                    <div class="col-lg-10">
-                      <%= link_to(image_tag asset_path('logo.jpg'))  %>
-                    </div>
-                    <div class="col-lg-2">
-                        <div class="box-languages-search">
-                            <div class="language">
-                                <div class="box-language">
-                                    <ul>
-                                        <li>
-                                            <a href="#">
-                                              <img src="assets/images/vn.gif" alt="">
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <img src="assets/images/us.gif" alt="">
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <%= link_to(image_tag asset_path('nutifood-logo1.png')) %>
-                            </div>
-                            <div class="search">
-                                <div class="search-box">
-                                    <input type="text" title="Tìm kiếm" id="search-input-header" class="search-input" placeholder="Tìm kiếm">
-                                    <button class="search-button">
-
-                                        <%= link_to '<i class="fa fa-search"></i>'.html_safe, search_path() %>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+<header id="site-header" class="site-header">
         <div class="header-main">
             <div class="container">
                 <div class="main-navigation">
                     <div class="box-wrapper">
+                        <a href="#" class="site-logo-mb">
+                            TN
+                        </a>
                         <button class="toggle-menu">
-                            <i class="fa fa-list-ul"></i>
+                            <i class="fa-regular fa-bars"></i>
                         </button>
-                        <div class="social-link-mb">
-                            <ul>
-                                <li>
-                                  <%= image_tag asset_path('facebook-icon.png') %>
-                                </li>
-                                <li>
-                                  <%= image_tag asset_path('youtube-icon.png') %>
-                                </li>
-                            </ul>
-                        </div>
                     </div>
+                    <a href="#" class="site-logo-desk">
+                        TN
+                    </a>
                     <ul id="top-menu">
                         <li>
-                          <%= link_to 'TRANG CHỦ', '/' %>
+                          <%= link_to 'Trang chủ', '/' %>
                         </li>
                         <li>
-                          <%= link_to 'GIỚI THIỆU', about_path(About.first.slug) %>
+                            <%= link_to 'Giới thiệu', about_path(About.first.slug) %>
                         </li>
                         <li>
-                            <%= link_to 'HỌC VIÊN', course_path(Course.first.slug) %>
+                          <%= link_to 'Khoá học', course_path(Course.first.slug) %>
                         </li>
-                        <% Category.all.each do |c| %>
-                          <li>
-                            <%= link_to c.name, category_path(c.slug) %>
-                          </li>
-                        <% end %>
                         <li>
-                          <%= link_to 'LIÊN HỆ', contact_path %>
+                            <a href="#">
+                                Thư viện
+                            </a>
+                            <span class="btn-arrow">
+                                <i class="fa fa-angle-down" aria-hidden="true"></i>
+                            </span>
+                            <ul class="sub-menu">
+                              <% Category.all.each do |c| %>
+                                <li>
+                                  <%= link_to c.name, category_path(c.slug) %>
+                                </li>
+                              <% end %>
+                            </ul>
+                        </li>
+                        <li>
+                            <%= link_to 'Liên hệ', contact_path %>
                         </li>
                     </ul>
-                    <div class="social-link">
-                        <ul>
-                            <li>
-                              <%= image_tag asset_path('facebook-icon.png') %>
-                            </li>
-                            <li>
-                              <%= image_tag asset_path('youtube-icon.png') %>
-                            </li>
-                        </ul>
-                    </div>
                 </div>
             </div>
         </div>
     </header>
-    <script>
-        $(document).ready(function() {
-            $('.search-button').click(function(e) {
-            e.preventDefault();
-            var searchValue = $('#search-input-header').val();
-            var newPath = '<%=  search_path()%>';
-            newPath += '?search=' + encodeURIComponent(searchValue);
-            window.location.href = newPath;
-            });
-        });
-    </script>

@@ -39,6 +39,6 @@ class Admin::StudentsController < Admin::BaseController
   private
 
   def student_params
-    params.require(:student).permit(:name, :birth_day, :address, :course_id, :avatar)
+    params.require(:student).permit(:name, :birth_day, :address, :course_id, :avatar, :gradurated_date, :achievements)
   end
 end
