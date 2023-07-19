@@ -38,6 +38,8 @@ Rails.application.routes.draw do
   get '/media/hinh-anh', to: 'album_images#show', as: :album_image
   get '/the-loai/:slug', to: 'categories#show', as: :category
   get '/the-loai/:category_slug/:slug', to: 'posts#show', as: :category_post
+  get 'hoc-vien/:id', to: 'students#show', as: :student
+  get 'huan-luyen-vien/:id', to: 'coaches#show', as: :coach
   get '/tim-kiem', to: 'home#search', as: :search
   match "text_images" => "text_images#create", via: :post
 

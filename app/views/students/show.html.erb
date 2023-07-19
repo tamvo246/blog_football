@@ -1,0 +1,54 @@
+<main class="student-single">
+  <section class="site-breadcrumb">
+    <div class="container">
+      <h2 class="breadcrumb-title"><%= @student.name %></h2>
+      <ul class="breadcrumb-menu">
+          <li><a href="/">Trang chủ</a></li>
+          <li class="active">Học viên</li>
+      </ul>
+    </div>
+  </section>
+  <section class="section-student">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-5">
+          <div class="image-wapper">
+            <%= image_tag(@student.avatar.url)%>
+          </div>
+        </div>
+        <div class="col-lg-7">
+          <div class="info-wapper">
+            <div class="student-name">
+              <div class="info-title">Tên</div>
+              <div class="info-content"><%= @student.name%></div>
+            </div>
+            <div class="student-address">
+              <div class="info-title">Địa chỉ</div>
+              <div class="info-content"><%= @student.address%></div>
+            </div>
+            <div class="student-birth-day">
+              <div class="info-title">Ngày sinh</div>
+              <div class="info-content"><%= @student.birth_day.strftime('%d/%m/%Y')%></div>
+            </div>
+            <div class="student-course">
+              <div class="info-title">Khoá học</div>
+              <div class="info-content"><%= @student.course.name%></div>
+            </div>
+            <div class="student-gradurated-date">
+              <div class="info-title">Ngày tốt nghiệp</div>
+              <%if @student.gradurated_date.present?%>
+                <div class="info-content"><%= @student.gradurated_date.strftime('%d/%m/%Y')%></div>
+              <% else %>
+                <div class="info-content">Chưa hoàn thành khóa học</div>
+              <% end %>
+            </div>
+            <div class="student-achievements">
+              <div class="info-title">Thành tích</div>
+              <div><%= raw @student.achievements %></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>

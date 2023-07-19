@@ -1,29 +1,15 @@
-<main>
+<main class="blog-category">
   <section class="site-breadcrumb">
     <div class="container">
-        <h2 class="breadcrumb-title">GIỚI THIỆU</h2>
-        <ul class="breadcrumb">
-          <li><%= link_to 'Trang chủ', '/'%></li>
-          <li><%= link_to 'Giới thiệu', about_path(About.first.slug)%></li>
-          <li class="breadcrumb-active"><%= @about.title %></li>
-        </ul>
+      <h2 class="breadcrumb-title">GIỚI THIỆU</h2>
+      <ul class="breadcrumb-menu">
+        <li><a href="/">Trang chủ</a></li>
+        <li class="active">Giới thiệu</li>
+      </ul>
     </div>
   </section>
-  <section>
-    <div class="container">
-      <div class="about">
-        <nav>
-          <ul>
-            <% @abouts.each do |a|%>
-              <li><%= link_to a.title, about_path(a.slug), class: (a.slug == params["slug"] ? "about-active" : "")%></li>
-            <% end %>
-          </ul>
-        </nav>
-      </div>
-    </div>
-  </section>
-  <section>
-    <div class="container">
+  <section class="section-about-content">
+    <div class="container" style="padding: 20px 0px">
       <%= raw @about.trick_content(@about.content)%>
     </div>
   </section>

@@ -4,10 +4,12 @@ tinymce.init({
   plugins: [
     'image', "lists"
   ],
-  toolbar: 'undo redo | formatselect | ' +
+  toolbar: 'undo redo | formatselect fontsize| ' +
   ' bold italic | alignleft aligncenter ' +
   ' alignright alignjustify | bullist numlist outdent indent | ' +
   ' removeformat | help | forecolor backcolor image',
+  font_size_formats:
+    "8pt 9pt 10pt 11pt 12pt 13pt 14pt 15pt 16pt 18pt 24pt 30pt 36pt 48pt 60pt 72pt",
   image_title: true,
   automatic_uploads: true,
   images_upload_url: '/text_images',

@@ -6,8 +6,8 @@ class ContactsController < ApplicationController
 
   def create
     @contact = Contact.create(contact_params)
-    flash[:notice] = "Gửi thông tin liên hệ thành công"
-    redirect_to contact_path
+    flash[:contact] = "Gửi thông tin liên hệ thành công"
+    redirect_back(fallback_location: root_path)
   end
 
   private

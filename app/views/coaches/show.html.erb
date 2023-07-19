@@ -1,0 +1,54 @@
+<main class="coach-single">
+  <section class="site-breadcrumb">
+    <div class="container">
+      <h2 class="breadcrumb-title"><%= @coach.name %></h2>
+      <ul class="breadcrumb-menu">
+          <li><a href="/">Trang chủ</a></li>
+          <li class="active">Huấn luyện viên</li>
+      </ul>
+    </div>
+  </section>
+  <section class="section-coach">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-5">
+          <div class="image-wapper">
+            <%= image_tag(@coach.avatar.url)%>
+          </div>
+        </div>
+        <div class="col-lg-7">
+          <div class="info-wapper">
+            <div class="coach-name">
+              <div class="info-title">Tên</div>
+              <div class="info-content"><%= @coach.name%></div>
+            </div>
+            <div class="coach-address">
+              <div class="info-title">Địa chỉ</div>
+              <div class="info-content"><%= @coach.address%></div>
+            </div>
+            <div class="coach-birth-day">
+              <div class="info-title">Ngày sinh</div>
+              <div class="info-content"><%= @coach.birth_day.strftime('%d/%m/%Y')%></div>
+            </div>
+            <div class="coach-phone">
+              <div class="info-title">Điện thoại</div>
+              <div class="info-content"><%= @coach.phone%></div>
+            </div>
+            <div class="coach-email">
+              <div class="info-title">Email</div>
+              <div class="info-content"><%= @coach.email%></div>
+            </div>
+            <div class="coach-course">
+              <div class="info-title">Khoá đào tạo</div>
+              <div class="info-content"><%= @coach.courses.pluck(:name).join(" , ")%></div>
+            </div>
+            <div class="coach-achievements">
+              <div class="info-title">Thành tích</div>
+              <div><%= raw @coach.achievements %></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>

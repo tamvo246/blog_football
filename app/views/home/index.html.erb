@@ -1,112 +1,118 @@
 <main class="homepage">
   <section class="section-banner">
-      <div class="slider-banner-home owl-carousel owl-theme">
-        <% @banners.each do |b| %>
-          <div class="banner-item">
-              <%# <img src="assets/images/banner-home-1.png" alt=""> %>
-              <%= image_tag b.image&.url %>
-                <div class="banner-content-main">
-                  <div class="container">
-                    <div class="row">
-                      <div class="banner-content col-lg-10 col-12">
-                        <h1><%= b.title %></h1>
-                        <p><%= b.content %></p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+    <div class="slider-banner-home owl-carousel owl-theme">
+      <% @banners.each do |b| %>
+      <div class="banner-item">
+        <%# <img src="assets/images/banner-home-1.png" alt=""> %>
+        <%= image_tag b.image&.url %>
+        <div class="banner-content-main">
+          <div class="container">
+            <div class="row">
+              <div class="banner-content col-lg-10 col-12">
+                <h1><%= b.title %></h1>
+                <p><%= b.content %></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <% end %>
+    </div>
+  </section>
+  <section class="section-about">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-5 col-12">
+          <div class="about-image">
+            <%= image_tag @about.image_intro.url %>
+          </div>
+        </div>
+        <div class="col-lg-7 col-12">
+          <div class="about-content">
+            <h4>GIỚI THIỆU</h4>
+            <h2><%= @about.title %></h2>
+            <p><%= @about.intro %></p>
+            <%= link_to "Xem Thêm", about_path(@about.slug)%>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="section-gallery" style="background-image: url(<%= asset_path('bg-gallery.jpg') %>);">
+    <div class="container">
+      <!-- Section Title -->
+      <div class="box-heading">
+        <h2 class="title">photo gallery</h2>
+      </div>
+      <div class="row">
+        <% @album_images.each do |a| %>
+          <div class="col-lg-4 col-md-6 col-12">
+            <%= link_to(File.join(root_path, a.image.url), class: 'gallery-item overlay gallery-popup') do %>
+              <%= image_tag File.join(root_path, a.image.url) %>
+              <div class="expand">
+                <i class="fas fa-expand"></i>
+              </div>
+            <% end%>
           </div>
         <% end %>
       </div>
+      <div class="row button-read-more"> <%= link_to "Xem Thêm", album_image_path() %></div>
+    </div>
   </section>
-  <section class="section-about">
-      <div class="container">
-          <div class="row">
-              <div class="col-lg-5 col-12">
-                  <div class="about-image">
-                      <%= image_tag @about.image_intro.url %>
-                  </div>
-              </div>
-              <div class="col-lg-7 col-12">
-                  <div class="about-content">
-                      <h4>GIỚI THIỆU</h4>
-                      <h2><%= @about.title %></h2>
-                      <p><%= @about.intro %></p>
-                      <%= link_to "Xem Thêm", about_path(@about.slug)%>
-                  </div>
-              </div>
-          </div>
+  <section class="section-course">
+    <div class="container">
+      <div class="box-heading">
+        <h2 class="title">
+          KHÓA HỌC
+        </h2>
       </div>
-  </section>
-  <section class="section-gallery" style="background-image: url(<%= asset_path('bg-gallery.jpg') %>);">
-      <div class="container">
-          <!-- Section Title -->
-          <div class="box-heading">
-              <h2 class="title">photo gallery</h2>
-          </div>
-          <div class="row">
-            <% @album_images.each do |a| %>
-              <div class="col-lg-4 col-md-6 col-12">
-                  <%= link_to(File.join(root_path, a.image.url), class: 'gallery-item overlay gallery-popup') do %>
-                      <%= image_tag File.join(root_path, a.image.url) %>
-                      <div style="color: white; font-family: 'Montserrat Regular'"><%=a.title%></div>
-                      <div class="expand">
-                          <i class="fas fa-expand"></i>
-                      </div>
-                  <% end%>
-              </div>
-            <% end %>
-            <% @album_images.each do |a| %>
-              <div class="col-lg-4 col-md-6 col-12">
-                  <%= link_to(File.join(root_path, a.image.url), class: 'gallery-item overlay gallery-popup') do %>
-                      <%= image_tag File.join(root_path, a.image.url) %>
-                      <div style="color: white; font-family: 'Montserrat Regular'"><%=a.title%></div>
-                      <div class="expand">
-                          <i class="fas fa-expand"></i>
-                      </div>
-                  <% end%>
-              </div>
-            <% end %>
-            <% @album_images.each do |a| %>
-              <div class="col-lg-4 col-md-6 col-12">
-                  <%= link_to(File.join(root_path, a.image.url), class: 'gallery-item overlay gallery-popup') do %>
-                      <%= image_tag File.join(root_path, a.image.url) %>
-                      <div style="color: white; font-family: 'Montserrat Regular'"><%=a.title%></div>
-                      <div class="expand">
-                          <i class="fas fa-expand"></i>
-                      </div>
-                  <% end%>
-              </div>
-            <% end %>
-          </div>
+      <div class="box-content">
+        <table>
+          <tbody>
+          <% @courses.each do |c|  %>
+            <tr>
+              <td>
+                <h6><%= c.name%></h6>
+                <p>Chương trình huấn luyện</p>
+              </td>
+              <td>
+                <h4><%= c.course_age%></h4>
+              </td>
+              <td><%= c.target%></td>
+              <td><%= link_to "Chi tiết", course_path(c.slug), class: "sc_button"%></td>
+            </tr>
+          <% end %>
+          </tbody>
+        </table>
       </div>
-  </section>
+    </div>
+   </section>
   <div class="section-blog">
-      <div class="container">
-          <div class="box-heading">
-              <h2 class="title">Bài viết mới nhất</h2>
-          </div>
-          <div class="row">
-            <% @posts.each do |post| %>
-              <div class="col-lg-4 col-md-6">
-                  <div class="blog-item">
-                      <div class="image">
-                            <% if post.image_intro.present? %>
-                                <%= image_tag post.image_intro.url %>
-                            <% else %>
-                                <%= image_tag "" %>
-                            <% end %>
-                      </div>
-                      <div class="content">
-                          <h3 class="title"><%= link_to post.title, category_post_path(post.category.slug, post.slug)%>
-                          </h3>
-                          <p><%=post.intro %></p>
-                          <%= link_to "Read More", category_post_path(post.category.slug, post.slug), class: "read-more"%>
-                      </div>
-                  </div>
-              </div>
-            <% end %>
-          </div>
+    <div class="container">
+      <div class="box-heading">
+          <h2 class="title">Bài viết mới nhất</h2>
       </div>
+      <div class="row">
+        <% @posts.each do |post| %>
+        <div class="col-lg-4 col-md-6">
+          <div class="blog-item">
+            <div class="image">
+              <% if post.image_intro.present? %>
+                <%= image_tag post.image_intro.url %>
+              <% else %>
+                <%= image_tag "" %>
+              <% end %>
+            </div>
+            <div class="content">
+              <h3 class="title"><%= link_to post.title, category_post_path(post.category.slug, post.slug)%>
+              </h3>
+              <p><%=post.intro %></p>
+              <%= link_to "Read More", category_post_path(post.category.slug, post.slug), class: "read-more"%>
+            </div>
+          </div>
+        </div>
+        <% end %>
+      </div>
+    </div>
   </div>
 </main>

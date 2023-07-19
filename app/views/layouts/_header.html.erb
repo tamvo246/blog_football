@@ -21,7 +21,19 @@
                             <%= link_to 'Giới thiệu', about_path(About.first.slug) %>
                         </li>
                         <li>
-                          <%= link_to 'Khoá học', course_path(Course.first.slug) %>
+                          <a href="#">
+                                Khoá học
+                            </a>
+                            <span class="btn-arrow">
+                                <i class="fa fa-angle-down" aria-hidden="true"></i>
+                            </span>
+                            <ul class="sub-menu">
+                              <% Course.all.each do |c| %>
+                                <li>
+                                  <%= link_to c.name, course_path(c.slug) %>
+                                </li>
+                              <% end %>
+                            </ul>
                         </li>
                         <li>
                             <a href="#">

@@ -15,7 +15,7 @@
           <div class="box-content">
               <h1 class="blog-title"><%= @post.title %></h1>
               <div class="created-day"><%= @post.created_at.strftime('%d/%m/%Y') %></div>
-              <%= raw @post.trick_content(@post.content) %>
+              <div class="post-content"><%= raw @post.trick_content(@post.content) %></div>
           </div>
           <div class="related-post">
               <h3 class="title">Bài viết khác</h3>

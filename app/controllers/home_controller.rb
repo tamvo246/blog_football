@@ -9,6 +9,8 @@ class HomeController < ApplicationController
     @about = About.first
 
     @banners = Banner.all
+
+    @courses = Course.all
     set_meta_tags(
       title: 'Product Name',
       description: 'Product Description',
