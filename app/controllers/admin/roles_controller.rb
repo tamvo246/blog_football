@@ -10,15 +10,23 @@ class Admin::RolesController < Admin::BaseController
   end
 
   def create
-    @role = Role.create(role_params)
-    redirect_to admin_roles_path
+    @role = Role.new(role_params)
+    if @role.save
+      flash[:success] = "Thêm quyền thành công"
+      redirect_to admin_roles_path
+    else
+      flash[:error] = @role.errors.full_messages[0].to_s
+      render :new
+    end
   end
 
   def update
     authorize! :update, @role
     if @role.update(role_params)
+      flash[:success] = "Sửa quyền thành công"
       redirect_to admin_roles_path
     else
+      flash[:error] = @role.errors.full_messages[0].to_s
       render :edit
     end
   end
@@ -32,6 +40,7 @@ class Admin::RolesController < Admin::BaseController
     @role = Role.find(params[:id])
     authorize! :destroy, @role
     @role.destroy
+    flash[:success] = "Xoá quyền thành công"
     redirect_to admin_roles_path
   end
 

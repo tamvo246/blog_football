@@ -5,7 +5,7 @@
         <div class="card">
           <div class="card-body">
             <h4 class="card-title">Giới thiệu</h4>
-            <%= form_with(model: [:admin, @about], local: true, class: "form-group" ) do |form| %>
+            <%= form_with(model: [:admin, @about], local: true, class: "form-group", id: "form_about" ) do |form| %>
               <%= form.label :title, "Tiêu đề"%>
               <%= form.text_field :title, class: "form-control", id: "about-title-input" %>
 
@@ -113,3 +113,4 @@
 
 </script>
 <%= javascript_pack_tag 'about_load_image'%>
+<%= javascript_pack_tag 'validation/about' %>

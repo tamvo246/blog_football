@@ -6,19 +6,34 @@
           <div class="card-body">
             <h4 class="card-title">Tài khoản</h4>
             <%= form_with(model: [:admin, @user], local: true, class: "form-group" ) do |form| %>
+              <%= form.label :name, "Tên" %>
+              <br>
+              <%= form.text_field :name, class: "form-control w-50" %>
               <%= form.label :email %><br />
               <%= form.email_field :email, autofocus: true, autocomplete: "email", class: "form-control w-50" %>
 
               <%= form.label :role %><br />
               <%= form.select :role_id, Role.all.map{|r| [r.description, r.id] }, {}, { class: "form-control w-50" }%>
 
-              <%= form.label :password %>
+              <%= form.label :avatar, "Ảnh đại diện" %>
+              <br>
+              <%= form.file_field :avatar, id: :user_image_edit %>
+              <br>
+              <br>
+              <% if @user&.avatar&.url %>
+                <%= image_tag(@user.avatar.url, id: "preview", style: "height: 200px; with: 200px") %>
+              <% else %>
+                <%= image_tag("", id: "preview", style: "display: none; height: 200px; with: 200px") %>
+              <% end %>
+              <br>
+              <br>
+              <%= form.label :password, "Mật khẩu( để trống nếu bạn không muốn thay đổi)" %>
               <% if @minimum_password_length %>
               <em>(Ít nhất <%= @minimum_password_length %>) 8 kí tự</em>
               <% end %><br />
               <%= form.password_field :password, autocomplete: "new-password", class: "form-control w-50"%>
 
-              <%= form.label :password_confirmation %><br />
+              <%= form.label :password_confirmation, "Mật khẩu xác thực" %><br />
               <%= form.password_field :password_confirmation, autocomplete: "new-password", class: "form-control w-50" %>
 
               <%= render "devise/shared/error_messages", resource: @user %>
@@ -30,5 +45,23 @@
     </div>
   </div>
 </div>
-<%= javascript_pack_tag 'student_load_image'%>
+<script>
+  const imageInput = document.getElementById("user_image_edit");
+  const previewImg = document.getElementById("preview");
 
+  imageInput.addEventListener("change", function() {
+    const file = this.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = function(event) {
+        previewImg.src = event.target.result;
+      };
+      reader.readAsDataURL(file);
+      previewImg.style.display = "block";
+    } else {
+      previewImg.src = "#";
+      previewImg.style.display = "none";
+    }
+  });
+
+</script>

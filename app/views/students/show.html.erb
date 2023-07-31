@@ -13,7 +13,9 @@
       <div class="row">
         <div class="col-lg-5">
           <div class="image-wapper">
-            <%= image_tag(@student.avatar.url)%>
+            <% if @student.avatar.present? %>
+              <%= image_tag(@student.avatar.url)%>
+            <% end %>
           </div>
         </div>
         <div class="col-lg-7">

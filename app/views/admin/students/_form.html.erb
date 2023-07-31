@@ -4,9 +4,9 @@
       <div class="col-12 grid-margin stretch-card">
         <div class="card">
           <div class="card-body">
-            <h4 class="card-title">Khoá học</h4>
-            <%= form_with(model: [:admin, @student], local: true, class: "form-group" ) do |form| %>
-              <%= form.label :name, "Tên" %>
+            <h4 class="card-title">Học viên</h4>
+            <%= form_with(model: [:admin, @student], local: true, class: "form-group", id: "form_student" ) do |form| %>
+              <%= form.label :name, "Tên(*)" %>
               <%= form.text_field :name, class: "form-control" %>
 
               <%= form.label :address, "Địa chỉ" %>
@@ -98,3 +98,12 @@
     });
   });
 </script>
+<script>
+  var flashMessages = {
+    success: '<%= j flash[:success] %>',
+    error: '<%= j flash[:error] %>',
+    // Add other types of flash messages if needed
+  };
+</script>
+<%= javascript_pack_tag 'show_toast'%>
+<%= javascript_pack_tag 'validation/student' %>

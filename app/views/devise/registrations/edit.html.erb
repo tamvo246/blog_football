@@ -6,17 +6,32 @@
           <div class="card-body">
             <h4 class="card-title">Tài khoản</h4>
               <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-
+                  <%= f.label :name, "Tên" %>
+                  <br>
+                  <%= f.text_field :name, class: "form-control w-50" %>
+                  <br>
                   <%= f.label :email %><br />
                   <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control w-50" %>
                   <br>
-                  <%= f.label :password %> <i>(để trống nếu bạn không muốn thay đổi)</i><br />
+                  <%= f.label :avatar, "Ảnh đại diện" %>
+                  <br>
+                  <%= f.file_field :avatar, id: :user_image %>
+                  <br>
+                  <br>
+                  <% if resource&.avatar&.url %>
+                    <%= image_tag(resource.avatar.url, id: "preview", style: "height: 200px; with: 200px") %>
+                  <% else %>
+                    <%= image_tag("", id: "preview", style: "display: none; height: 200px; with: 200px") %>
+                  <% end %>
+                  <br>
+                  <br>
+                  <%= f.label :password, "Mật khẩu" %><br />
                   <%= f.password_field :password, autocomplete: "new-password", class: "form-control w-50" %>
                   <br />
-                  <%= f.label :password_confirmation %><br />
+                  <%= f.label :password_confirmation, "Mật khẩu xác thực" %><br />
                   <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control w-50" %>
                   <br>
-                  <%= f.label :current_password %> <i>(Cần nhập password hiện tại)</i><br />
+                  <%= f.label :current_password, "Mật khẩu hiện tại" %><br />
                   <%= f.password_field :current_password, autocomplete: "current-password", class: "form-control w-50" %>
 
                   <br/>
@@ -31,3 +46,23 @@
     </div>
   </div>
 </div>
+<script>
+  const imageInput = document.getElementById("user_image");
+  const previewImg = document.getElementById("preview");
+
+  imageInput.addEventListener("change", function() {
+    const file = this.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = function(event) {
+        previewImg.src = event.target.result;
+      };
+      reader.readAsDataURL(file);
+      previewImg.style.display = "block";
+    } else {
+      previewImg.src = "#";
+      previewImg.style.display = "none";
+    }
+  });
+
+</script>

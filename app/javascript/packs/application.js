@@ -13,7 +13,9 @@ import "./magnific_popup"
 import "./main"
 import "./owl.carousel.min"
 import "tinymce"
-// import "./coach_load_image"
+import "./carousel"
+import jquery from 'jquery';
+window.$ = window.jquery = jquery;
 
 Rails.start()
 Turbolinks.start()

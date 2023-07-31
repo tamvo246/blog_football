@@ -59,6 +59,20 @@ img {
 .container {
     max-width: 1200px !important;
 }
+label.error{
+    color:red;
+    font-family: "Montserrat Medium";
+    display: block;
+}
+label.error::after {
+    /* Add the content property to display a line break */
+    content: "\A";
+    /* Adjust the size of the line break if needed */
+    line-height: 1.5em;
+    /* Adjust the color and font-family of the line break if needed */
+    color: red;
+    font-family: "Montserrat Medium";
+  }
 
 // ----- Header ----- //
 .site-header {
@@ -646,6 +660,9 @@ main.homepage {
     }
 }
 .course-detail {
+    .container{
+        padding: 40px 0px;
+    }
     .section-intro {
         background: #f4f4f4;
         .box-content {
@@ -664,6 +681,7 @@ main.homepage {
                 margin-bottom: 4px;
                 font-family: "Montserrat Bold";
                 text-transform: uppercase;
+                font-weight: bold;
                 @media screen and (max-width: 767px) {
                     font-size: 18px;
                 }
@@ -673,6 +691,7 @@ main.homepage {
                 color: #444;
                 margin-bottom: 20px;
                 font-family: "Montserrat Bold";
+                font-weight: bold;
                 text-transform: uppercase;
                 @media screen and (max-width: 1399px) {
                     font-size: 36px;
@@ -688,6 +707,7 @@ main.homepage {
                 color: #848992;
                 font-family: "Montserrat Regular";
                 margin-bottom: 0;
+                font-size: 17px;
             }
         }
     }
@@ -846,7 +866,6 @@ main.homepage {
         }
     }
     .section-content {
-        padding-top: 50px;
         @media screen and (max-width: 991px) {
             padding-top: 50px;
         }
@@ -971,6 +990,7 @@ main.homepage {
         background-size: cover;
         background-repeat: no-repeat;
         background-position: center bottom;
+        background-image: asset-url("banner-home-2.png");
         @media screen and (max-width: 767px) {
             padding: 50px 0;
         }
@@ -1471,6 +1491,238 @@ main.coach-single{
     }
 }
 
+.page-about-us {
+    .section-about-intro {
+        padding: 50px 0;
+        @media screen and (max-width: 767px) {
+            padding: 30px 0;
+        }
+        .box-img {
+            margin-bottom: 15px;
+            img {
+                width: 100%;
+                min-height: 300px;
+                max-height: 300px;
+                object-fit: cover;
+                @media screen and (max-width: 991px) {
+                    min-height: 160px;
+                    max-height: 160px;
+                }
+                @media screen and (max-width: 767px) {
+                    min-height: unset;
+                    max-height: unset;
+                }
+            }
+        }
+        .vision-mission {
+            margin-top: 40px;
+            @media screen and (max-width: 767px) {
+                margin-top: 20px;
+            }
+            h2 {
+                font-size: 32px;
+                font-family: "Montserrat Bold";
+                margin-bottom: 15px;
+                color: #000;
+            }
+            p {
+                font-size: 16px;
+                font-family: "Montserrat Regular";
+                margin-bottom: 0;
+                color: #797e87;
+                margin-bottom: 10px;
+            }
+            .box-bg {
+                background: #097e52;
+                padding: 24px;
+                h2 {
+                    color: #ffffff;
+                }
+                p {
+                    margin-bottom: 0;
+                    color: #ffffff;
+                }
+            }
+        }
+    }
+    .section-coach {
+        padding: 100px 0;
+        @media screen and (max-width: 991px) {
+            padding: 50px 0;
+        }
+        @media screen and (max-width: 767px) {
+            padding: 30px 0;
+        }
+        .box-heading {
+            text-align: center;
+            margin-bottom: 50px;
+            @media screen and (max-width: 767px) {
+                margin-bottom: 30px;
+            }
+            .title {
+                font-size: 40px;
+                color: #000;
+                font-family: "Montserrat Bold";
+                margin-bottom: 0;
+                text-transform: uppercase;
+                span {
+                    font-size: 20px;
+                    color: $second-color;
+                }
+                @media screen and (max-width: 767px) {
+                    font-size: 28px;
+                }
+            }
+        }
+        .slider-coach {
+            .owl-stage-outer {
+                .coach-item {
+                    img{
+                        height: 300px;
+                        object-fit: cover;
+                    }
+                    .box-thumbnail {
+                        position: relative;
+                        margin-bottom: 10px;
+                        .overplay {
+                            position: absolute;
+                            top: 0;
+                            right: 0;
+                            bottom: 0;
+                            left: 0;
+                            background-color: rgba(8, 18, 36, 0.5);
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            display: none;
+                            .social-link {
+                                display: flex;
+                                li {
+                                    margin-right: 8px;
+                                    &:last-child {
+                                        margin-right: 0;
+                                    }
+                                    a {
+                                        display: block;
+                                        width: 50px;
+                                        height: 50px;
+                                        border: 1px solid #fff;
+                                        display: flex;
+                                        align-items: center;
+                                        justify-content: center;
+                                        text-decoration: none;
+                                        color: #fff;
+                                        font-size: 20px;
+                                        -webkit-transition: all 0.3s ease 0s;
+                                        transition: all 0.3s ease 0s;
+                                        &:hover {
+                                            background-color: #fff;
+                                            color: $second-color;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        &:hover {
+                            .overplay {
+                                display: flex;
+                            }
+                        }
+                    }
+                    .box-content {
+                        .coach-name {
+                            font-size: 18px;
+                            font-family: "Montserrat Bold";
+                            color: #000;
+                        }
+                        .coach-position {
+                            font-size: 14px;
+                            font-family: "Montserrat Bold";
+                            color: $second-color;
+                        }
+                    }
+                }
+            }
+            .owl-nav {
+                .owl-prev {
+                    position: absolute;
+                    top: 36%;
+                    font-size: 20px;
+                    left: 0;
+                    width: 40px;
+                    height: 40px;
+                    line-height: 40px;
+                    text-align: center;
+                    border: 1px solid #444;
+                    background-color: transparent;
+                    color: #444;
+                    border-radius: 50%;
+                    -webkit-border-radius: 50%;
+                    -moz-border-radius: 50%;
+                }
+                .owl-next {
+                    position: absolute;
+                    top: 36%;
+                    font-size: 20px;
+                    right: 0;
+                    width: 40px;
+                    height: 40px;
+                    line-height: 40px;
+                    text-align: center;
+                    border: 1px solid #444;
+                    background-color: transparent;
+                    color: #444;
+                    border-radius: 50%;
+                    -webkit-border-radius: 50%;
+                    -moz-border-radius: 50%;
+                }
+            }
+            .owl-dots {
+                margin-top: 30px !important;
+                .owl-dot {
+                    span {
+                        background: transparent;
+                        border: 2px solid $second-color;
+                        margin: 5px;
+                        border-radius: 50px;
+                        width: 12px;
+                        height: 12px;
+                        display: inline-block;
+                        transition: all 0.5s ease-in-out;
+                    }
+                    &.active {
+                        span {
+                            background: $second-color;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .section-blog {
+        padding: 50px 0;
+        @media screen and (max-width: 767px) {
+            padding: 30px 0;
+        }
+        .box-heading {
+            margin-bottom: 50px;
+            text-align: center;
+            @media screen and (max-width: 767px) {
+                margin-bottom: 30px;
+            }
+            .title {
+                color: #4d4d4d;
+                font-family: "Montserrat Bold";
+                font-size: 34px;
+                text-transform: uppercase;
+                margin-bottom: 0;
+                @media screen and (max-width: 767px) {
+                    font-size: 30px;
+                }
+            }
+        }
+    }
+}
 //single sidebar
 .sidebar-post{
     .single-sidebar {
@@ -1575,6 +1827,9 @@ main.coach-single{
                         font-size: 14px;
                         font-family: "Montserrat Regular";
                         text-align: justify;
+                        display: -webkit-box;
+                        -webkit-line-clamp: 3;
+                        -webkit-box-orient: vertical;
                     }
                 }
             }

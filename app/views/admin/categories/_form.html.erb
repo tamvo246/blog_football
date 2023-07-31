@@ -26,11 +26,11 @@
         <div class="card">
           <div class="card-body">
             <h4 class="card-title">Thể loại tin</h4>
-            <%= form_with(model: [:admin, @category], local: true, class: "form-group" ) do |form| %>
-              <%= form.label :name, "Tên" %>
+            <%= form_with(model: [:admin, @category], local: true, class: "form-group", id: "form_category" ) do |form| %>
+              <%= form.label :name, "Tên(*)" %>
               <%= form.text_field :name, class: "form-control", id: "category-name-input" %>
 
-              <%= form.label :slug, "Liên kết" %>
+              <%= form.label :slug, "Liên kết(*)" %>
               <%= form.text_field :slug, class: "form-control", id: "category-slug-input" %>
 
               <%= form.submit form.object.new_record? ? "Thêm" : "Chỉnh sửa", class: "btn btn-action-form" %>
@@ -41,3 +41,12 @@
     </div>
   </div>
 </div>
+<script>
+  var flashMessages = {
+    success: '<%= j flash[:success] %>',
+    error: '<%= j flash[:error] %>',
+    // Add other types of flash messages if needed
+  };
+</script>
+<%= javascript_pack_tag 'show_toast'%>
+<%= javascript_pack_tag 'validation/category' %>

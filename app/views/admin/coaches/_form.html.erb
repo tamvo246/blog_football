@@ -5,8 +5,8 @@
         <div class="card">
           <div class="card-body">
             <h4 class="card-title">Huấn luyện viên</h4>
-            <%= form_with(model: [:admin, @coach], local: true, class: "form-group" ) do |form| %>
-              <%= form.label :name, "Tên" %>
+            <%= form_with(model: [:admin, @coach], local: true, class: "form-group", id: "form_coach") do |form| %>
+              <%= form.label :name, "Tên(*)" %>
               <%= form.text_field :name, class: "form-control" %>
 
               <%= form.label :address, "Địa chỉ" %>
@@ -15,10 +15,10 @@
               <%= form.label :birth_day, "Ngày sinh" %>
               <%= form.date_field :birth_day, class: "form-control w-50" %>
 
-              <%= form.label :phone, "Điện thoại" %>
+              <%= form.label :phone, "Điện thoại(*)" %>
               <%= form.text_field :phone, class: "form-control w-50" %>
 
-              <%= form.label :email, "Email" %>
+              <%= form.label :email, "Email(*)" %>
               <%= form.email_field :email, class: "form-control w-50" %>
 
               <%= form.label :avatar, "Ảnh đại diện" %>
@@ -33,7 +33,7 @@
               <% end %>
               <br>
               <br>
-              <%= form.label :coaches, "Khoá đào tạo" %>
+              <%= form.label :coaches, "Khoá đào tạo(*)" %>
               <% Course.all.each do |course| %>
                 <div>
                  <div>
@@ -108,3 +108,12 @@
     });
   });
 </script>
+<script>
+  var flashMessages = {
+    success: '<%= j flash[:success] %>',
+    error: '<%= j flash[:error] %>',
+    // Add other types of flash messages if needed
+  };
+</script>
+<%= javascript_pack_tag 'show_toast'%>
+<%= javascript_pack_tag 'validation/coach' %>

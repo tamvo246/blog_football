@@ -26,11 +26,11 @@
         <div class="card">
           <div class="card-body">
             <h4 class="card-title">Khoá học</h4>
-            <%= form_with(model: [:admin, @course], local: true, class: "form-group" ) do |form| %>
-              <%= form.label :name, "Tên khoá học" %>
+            <%= form_with(model: [:admin, @course], local: true, class: "form-group", id: "form_course"  ) do |form| %>
+              <%= form.label :name, "Tên khoá học(*)" %>
               <%= form.text_field :name, class: "form-control w-50", id: "course-name-input" %>
 
-              <%= form.label :slug, "Liên kết" %>
+              <%= form.label :slug, "Liên kết(*)" %>
               <%= form.text_field :slug, class: "form-control w-50", id: "course-slug-input" %>
 
               <%= form.label :opened_date, "Ngày khai giảng" %>
@@ -115,3 +115,12 @@
     });
   });
 </script>
+<script>
+  var flashMessages = {
+    success: '<%= j flash[:success] %>',
+    error: '<%= j flash[:error] %>',
+    // Add other types of flash messages if needed
+  };
+</script>
+<%= javascript_pack_tag 'show_toast'%>
+<%= javascript_pack_tag 'validation/course' %>

@@ -1,4 +1,4 @@
-<main class="blog-category">
+<main class="page-about-us">
   <section class="site-breadcrumb">
     <div class="container">
       <h2 class="breadcrumb-title">GIỚI THIỆU</h2>
@@ -8,11 +8,99 @@
       </ul>
     </div>
   </section>
-  <section class="section-about-content">
-    <div class="container" style="padding: 20px 0px">
-      <%= raw @about.trick_content(@about.content)%>
+  <section class="section-about-intro">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-md-3">
+              <div class="box-img">
+                <%= image_tag asset_path('about-banner-1.jpg') %>
+              </div>
+            </div>
+            <div class="col-lg-6 col-md-6">
+              <div class="box-img">
+                <%= image_tag asset_path('about-banner-2.jpg') %>
+              </div>
+            </div>
+            <div class="col-lg-3 col-md-3">
+              <div class="box-img">
+                <%= image_tag asset_path('about-banner-3.jpg') %>
+              </div>
+            </div>
+        </div>
+        <div class="vision-mission">
+            <div class="row">
+                <div class="col-lg-8">
+                    <h2>Tầm Nhìn</h2>
+                    <p>Tầm nhìn của website cộng đồng bóng đá cho trẻ em là tạo nên một môi trường trực tuyến an toàn và giáo dục,
+                        khuyến khích sự giao lưu và tương tác tích cực.</p>
+                    <p> Chúng tôi hướng đến việc cung cấp nội dung học tập đa dạng về bóng đá,
+                        đồng thời khám phá và phát triển tài năng của các em. Điều này sẽ giúp tạo nên một cộng đồng đoàn kết và truyền cảm hứng
+                        cho các em nhỏ yêu thích môn thể thao này.</p>
+                </div>
+                <div class="col-lg-4">
+                    <div class="box-bg">
+                        <h2>Sứ Mệnh</h2>
+                    <p>Sứ mệnh của website cộng đồng bóng đá cho trẻ em là tạo nên một môi trường an toàn và giáo dục,
+                        khuyến khích đam mê và tài năng bóng đá, đồng thời xây dựng cộng đồng đoàn kết và tạo cơ hội cho hoạt động thể chất.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-  </section>
+</section>
+<section class="section-coach">
+  <div class="container">
+    <div class="box-heading">
+      <h2 class="title">
+        <span>Đội ngũ</span><br /> huấn luyện
+      </h2>
+    </div>
+    <div class="slider-coach owl-carousel owl-theme">
+      <% @coaches.each do |c|%>
+        <div class="coach-item">
+          <%= link_to coach_path(c.id) do%>
+            <div class="box-thumbnail">
+            <%= image_tag(c.avatar.url)%>
+            <div class="overplay">
+            </div>
+            </div>
+            <div class="box-content">
+                <h3 class="coach-name"><%= c.name %></h3>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</section>
+<div class="section-blog">
+    <div class="container">
+      <div class="box-heading">
+          <h2 class="title">Bài viết mới nhất</h2>
+      </div>
+      <div class="row">
+        <% @posts.each do |post| %>
+        <div class="col-lg-4 col-md-6">
+          <div class="blog-item">
+            <div class="image">
+              <% if post.image_intro.present? %>
+                <%= image_tag post.image_intro.url %>
+              <% else %>
+                <%= image_tag "" %>
+              <% end %>
+            </div>
+            <div class="content">
+              <h3 class="title"><%= link_to post.title, category_post_path(post.category.slug, post.slug)%>
+              </h3>
+              <p><%=post.intro %></p>
+              <%= link_to "Read More", category_post_path(post.category.slug, post.slug), class: "read-more"%>
+            </div>
+          </div>
+        </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
 </main>
 
 

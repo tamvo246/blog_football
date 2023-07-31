@@ -13,14 +13,17 @@ class Admin::AlbumImagesController < Admin::BaseController
     authorize! :create, @album_image
     @album_image = AlbumImage.new(album_image_params)
     @album_image.save
+    flash[:success] = "Thêm album ảnh thành công"
     redirect_to admin_album_images_path
   end
 
   def update
     authorize! :update, @album_image
     if @album_image.update(album_image_params)
+      flash[:success] = "Sửa album ảnh thành công"
       redirect_to admin_album_images_path
     else
+      flash[:error] = @album_image.errors.full_messages[0].to_s
       render :edit
     end
   end
@@ -34,7 +37,8 @@ class Admin::AlbumImagesController < Admin::BaseController
     @album_image = AlbumImage.find(params[:id])
     authorize! :destroy, @album_image
     @album_image.destroy
-    redirect_to admin_album_image_path
+    flash[:success] = "Xoá ảnh thành công"
+    redirect_to admin_album_images_path
   end
 
   private

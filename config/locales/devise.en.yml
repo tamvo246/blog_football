@@ -72,17 +72,19 @@ en:
         user:
           attributes:
             email:
-              blank: "không được để trống"
-              taken: "đã tồn tại, vui lòng nhập lại email"
+              blank: "Email không được để trống"
+              taken: "Email đã tồn tại, vui lòng nhập lại email"
               invalid: "Please Specify a valid Email id"
             password:
-              too_short: "quá ngắn (tối thiểu 8 kí tự)"
-              blank: "không được để trống"
-              confirmation: "bạn nhập không khớp, vui lòng nhập lại Password"
+              too_short: "Mật khẩu quá ngắn (tối thiểu 8 kí tự)"
+              blank: "Mật khẩu không được để trống"
+              confirmation: "Mật khẩu bạn nhập không khớp, vui lòng nhập lại mật khẩu"
             password_confirmation:
-              blank: "không được để trống"
+              blank: "Mật khẩu không được để trống"
+              invalid: "Mật khẩu bạn nhập không khớp, vui lòng nhập lại mật khẩu"
             current_password:
-              blank: "không được để trống"
+              blank: "Mật khẩu không được để trống"
+              invalid: "Mật khẩu hiện tại không đúng"
       messages:
-        :taken: "đã tồn tại, vui lòng nhập lại email"
-        :confirmation: "bạn nhập không khớp, vui lòng nhập lại Password"
+        :taken: "Email đã tồn tại, vui lòng nhập lại email"
+        :confirmation: "Mật khẩu bạn nhập không khớp, vui lòng nhập lại mật khẩu"

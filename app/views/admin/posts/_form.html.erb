@@ -6,11 +6,11 @@
         <div class="card">
           <div class="card-body">
             <h4 class="card-title">Bài viết</h4>
-            <%= form_with(model: [:admin, @post], local: true, class: "form-group" ) do |form| %>
-              <%= form.label :title, "Tiêu đề" %>
+            <%= form_with(model: [:admin, @post], local: true, class: "form-group", id: "form_post" ) do |form| %>
+              <%= form.label :title, "Tiêu đề(*)" %>
               <%= form.text_field :title, class: "form-control", id: "title-input" %>
 
-              <%= form.label :slug, "Liên kết" %>
+              <%= form.label :slug, "Liên kết(*)" %>
               <%= form.text_field :slug, class: "form-control", id: "slug-input" %>
 
               <%= form.label :intro, "Đoạn giới thiệu" %>
@@ -130,6 +130,14 @@
       previewImg.style.display = "none";
     }
   });
-
 </script>
+<script>
+  var flashMessages = {
+    success: '<%= j flash[:success] %>',
+    error: '<%= j flash[:error] %>',
+    // Add other types of flash messages if needed
+  };
+</script>
+<%= javascript_pack_tag 'show_toast'%>
+<%= javascript_pack_tag 'validation/post' %>
 

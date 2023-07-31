@@ -5,9 +5,15 @@ class ContactsController < ApplicationController
   end
 
   def create
-    @contact = Contact.create(contact_params)
-    flash[:contact] = "Gửi thông tin liên hệ thành công"
-    redirect_back(fallback_location: root_path)
+    @contact = Contact.new(contact_params)
+    if  @contact.save
+      flash[:contact] = "Gửi thông tin liên hệ thành công"
+      redirect_back(fallback_location: root_path)
+    else
+      flash[:error] = @contact.errors.full_messages[0].to_s
+      redirect_back(fallback_location: root_path)
+    end
+
   end
 
   private

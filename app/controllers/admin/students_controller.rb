@@ -11,15 +11,23 @@ class Admin::StudentsController < Admin::BaseController
 
   def create
     @student = Student.new(student_params)
-    @student.save
-    redirect_to admin_students_path
+    if @student.save
+      flash[:success] = "Thêm học viên thành công"
+      redirect_to admin_students_path
+    else
+      flash[:error] = @student.errors.full_messages[0].to_s
+      render :new
+    end
+
   end
 
   def update
     authorize! :update, @student
     if @student.update(student_params)
+      flash[:success] = "Sửa học viên thành công"
       redirect_to admin_students_path
     else
+      flash[:error] = @student.errors.full_messages[0].to_s
       render :edit
     end
   end
@@ -33,6 +41,7 @@ class Admin::StudentsController < Admin::BaseController
     @student = Student.find(params[:id])
     authorize! :destroy, @student
     @student.destroy
+    flash[:success] = "Xoá học viên thành công"
     redirect_to admin_students_path
   end
 

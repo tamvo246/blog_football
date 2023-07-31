@@ -10,15 +10,24 @@ class Admin::CoursesController < Admin::BaseController
   end
 
   def create
-    @course = Course.create(course_params)
-    redirect_to admin_courses_path
+    @course = Course.new(course_params)
+    if @course.save
+      flash[:success] = "Thêm khoá học thành công"
+      redirect_to admin_courses_path
+    else
+      flash[:error] = @course.errors.full_messages[0].to_s
+      render :new
+    end
+
   end
 
   def update
     authorize! :update, @course
     if @course.update(course_params)
+      flash[:success] = "Sửa khoá học thành công"
       redirect_to admin_courses_path
     else
+      flash[:error] = @course.errors.full_messages[0].to_s
       render :edit
     end
   end
@@ -32,6 +41,7 @@ class Admin::CoursesController < Admin::BaseController
     @course = Course.find(params[:id])
     authorize! :destroy, @course
     @course.destroy
+    flash[:success] = "Xoá khoá học thành công"
     redirect_to admin_courses_path
   end
 

@@ -26,7 +26,11 @@
                     <tr>
                       <td><%= b.title%></td>
                       <td><%= b.content%></td>
-                      <td><%= image_tag b.image.url %></td>
+                      <td>
+                        <% if b.image.present? %>
+                          <%= image_tag b.image.url %>
+                        <% end %>
+                      </td>
                       <td>
                         <div>
                           <%= link_to '<i class="fa-solid fa-pen-to-square"></i>'.html_safe,  edit_admin_banner_path(b), class: "btn btn-edit"%>
@@ -44,3 +48,11 @@
     </div>
   </div>
 </div>
+<script>
+  var flashMessages = {
+    success: '<%= j flash[:success] %>',
+    error: '<%= j flash[:error] %>',
+    // Add other types of flash messages if needed
+  };
+</script>
+<%= javascript_pack_tag 'show_toast'%>

@@ -20,7 +20,6 @@
                     <th scope="col">Giới thiệu</th>
                     <th scope="col">Ảnh giới thiệu</th>
                     <th scope="col">Liên kết</th>
-                    <th scope="col">Nội dung</th>
                     <th scope="col">Thao tác</th>
                   </tr>
                 </thead>
@@ -29,9 +28,12 @@
                     <tr>
                       <td><%= a.title%></td>
                       <td><%= a.intro%></td>
-                      <td><%= image_tag a.image_intro.url%></td>
+                      <td>
+                        <% if a.image_intro.url.present? %>
+                          <%= image_tag a.image_intro.url%>
+                        <% end %>
+                      </td>
                       <td><%= raw a.slug%></td>
-                      <td><%= raw a.trick_content(a.content)%></td>
                       <td>
                         <div>
                           <%= link_to '<i class="fa-solid fa-pen-to-square"></i>'.html_safe,  edit_admin_about_path(a), class: "btn btn-edit"%>
@@ -50,5 +52,11 @@
     </div>
   </div>
 </div>
-
-
+<script>
+  var flashMessages = {
+    success: '<%= j flash[:success] %>',
+    error: '<%= j flash[:error] %>',
+    // Add other types of flash messages if needed
+  };
+</script>
+<%= javascript_pack_tag 'show_toast'%>

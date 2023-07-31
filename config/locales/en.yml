@@ -35,3 +35,5 @@ en:
     submit:
       create: "Create"
       update: "Update"
+  errors:
+    format: "%{message}"

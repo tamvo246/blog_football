@@ -1,5 +1,5 @@
 class About < ApplicationRecord
-  validates :slug, uniqueness: true
+  validates :slug, uniqueness: { message: "Liên kết này đã tồn tại" }
   mount_uploader :image_intro, ImageUploader
 
   def show_random_image

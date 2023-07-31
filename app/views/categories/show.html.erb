@@ -78,7 +78,7 @@
                                     <%= link_to post.title, category_post_path(post.category.slug, post.slug) %>
                                 </h3>
                                 <p class="post-desc">
-                                    <%=post.intro %>
+                                    <%= post.intro.truncate_words(10, omission: '...') %>
                                 </p>
                             </div>
                         </div>

@@ -22,7 +22,6 @@
                     <th scope="col">Khoá học</th>
                     <th scope="col">Ảnh đại diện</th>
                     <th scope="col">Ngày tốt nghiệp</th>
-                    <th scope="col">Thành tích</th>
                     <th scope="col">Thao tác</th>
                   </tr>
                 </thead>
@@ -37,13 +36,16 @@
                         <% end %>
                       </td>
                       <td><%= c.course.name%></td>
-                      <td><%= image_tag c.avatar.url %></td>
+                      <% if c.avatar.present?%>
+                        <td><%= image_tag c.avatar.url %></td>
+                      <% else %>
+                        <td></td>
+                      <% end %>
                       <td>
                         <% if c.gradurated_date.present?%>
                             <%= c.gradurated_date.strftime('%d/%m/%Y') %>
                         <% end %>
                       </td>
-                      <td><%= raw c.achievements %></td>
                       <td>
                         <div>
                           <%= link_to '<i class="fa-solid fa-pen-to-square"></i>'.html_safe,  edit_admin_student_path(c), class: "btn btn-edit"%>
@@ -62,3 +64,11 @@
     </div>
   </div>
 </div>
+<script>
+  var flashMessages = {
+    success: '<%= j flash[:success] %>',
+    error: '<%= j flash[:error] %>',
+    // Add other types of flash messages if needed
+  };
+</script>
+<%= javascript_pack_tag 'show_toast'%>

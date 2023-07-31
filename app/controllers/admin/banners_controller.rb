@@ -10,15 +10,24 @@ class Admin::BannersController < Admin::BaseController
   end
 
   def create
-    @category = Banner.create(banner_params)
-    redirect_to admin_banners_path
+    @banner = Banner.new(banner_params)
+    if @banner.save
+      flash[:success] = "Thêm banner thành công"
+      redirect_to admin_banners_path
+    else
+      flash[:error] = @banner.errors.full_messages[0].to_s
+      render :new
+    end
+
   end
 
   def update
     authorize! :update, @banner
     if @banner.update(banner_params)
+      flash[:success] = "Sửa banner thành công"
       redirect_to admin_banners_path
     else
+      flash[:error] = @about.errors.full_messages[0].to_s
       render :edit
     end
   end
@@ -32,6 +41,7 @@ class Admin::BannersController < Admin::BaseController
     @banner = Banner.find(params[:id])
     authorize! :destroy, @banner
     @banner.destroy
+    flash[:success] = "Xoá banner thành công"
     redirect_to admin_banners_path
   end
 

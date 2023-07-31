@@ -9,6 +9,7 @@ class Admin::ContactsController < Admin::BaseController
     @contact = Contact.find(params[:id])
     authorize! :destroy, @contact
     @contact.destroy
+    flash[:success] = "Xoá liên thành công"
     redirect_to admin_contacts_path
   end
 

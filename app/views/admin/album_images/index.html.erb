@@ -25,7 +25,11 @@
                   <% @album_images.each do |a| %>
                     <tr>
                       <td><%= a.title%></td>
-                      <td><%= image_tag a.image.url %></td>
+                      <td>
+                        <% if a.image.present? %>
+                          <%= image_tag a.image.url %>
+                        <% end %>
+                      </td>
                       <td>
                         <div>
                           <%= link_to '<i class="fa-solid fa-pen-to-square"></i>'.html_safe,  edit_admin_album_image_path(a), class: "btn btn-edit"%>
@@ -44,3 +48,11 @@
     </div>
   </div>
 </div>
+<script>
+  var flashMessages = {
+    success: '<%= j flash[:success] %>',
+    error: '<%= j flash[:error] %>',
+    // Add other types of flash messages if needed
+  };
+</script>
+<%= javascript_pack_tag 'show_toast'%>

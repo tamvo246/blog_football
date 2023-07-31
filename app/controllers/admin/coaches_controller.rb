@@ -16,8 +16,14 @@ class Admin::CoachesController < Admin::BaseController
       course_ids = generate_course_ids(params[:coach][:course_ids])
       @coach.course_ids = course_ids
     end
-    @coach.save
-    redirect_to admin_coaches_path
+    if @coach.save
+      flash[:success] = "Thêm HLV thành công"
+      redirect_to admin_coaches_path
+    else
+      flash[:error] = @coach.errors.full_messages[0].to_s
+      render :new
+    end
+
   end
 
   def update
@@ -27,8 +33,10 @@ class Admin::CoachesController < Admin::BaseController
       @coach.course_ids = course_ids
     end
     if @coach.update(coach_params)
+      flash[:success] = "Sửa HLV thành công"
       redirect_to admin_coaches_path
     else
+      flash[:error] = @coach.errors.full_messages[0].to_s
       render :edit
     end
   end
@@ -42,6 +50,7 @@ class Admin::CoachesController < Admin::BaseController
     @coach = Coach.find(params[:id])
     authorize! :destroy, @coach
     @coach.destroy
+    flash[:success] = "Xoá HLV thành công"
     redirect_to admin_coaches_path
   end
 

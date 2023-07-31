@@ -5,7 +5,7 @@ class Post < ApplicationRecord
   belongs_to :user
   mount_uploader :image_intro, ImageUploader
 
-  validates :slug, uniqueness: true
+  validates :slug, uniqueness: { message: "Liên kết này đã tồn tại" }
 
   def show_random_image
   doc = Nokogiri::HTML.parse(self.content)

@@ -5,14 +5,14 @@
         <div class="card">
           <div class="card-body">
             <h4 class="card-title">Banner</h4>
-            <%= form_with(model: [:admin, @banner], local: true, class: "form-group" ) do |form| %>
+            <%= form_with(model: [:admin, @banner], local: true, class: "form-group", id: "form_banner" ) do |form| %>
               <%= form.label :title, "Tiêu đề" %>
               <%= form.text_field :title, class: "form-control" %>
 
               <%= form.label :content, "Nội dung" %>
               <%= form.text_area :content, class: "form-control"%>
 
-              <%= form.label :image, "Ảnh đại diện" %>
+              <%= form.label :image, "Ảnh(*)" %>
               <br>
               <%= form.file_field :image, id: :banner_image %>
               <br>
@@ -33,4 +33,12 @@
     </div>
   </div>
 </div>
+<script>
+  var flashMessages = {
+    success: '<%= j flash[:success] %>',
+    error: '<%= j flash[:error] %>',
+    // Add other types of flash messages if needed
+  };
+</script>
+<%= javascript_pack_tag 'show_toast'%>
 <%= javascript_pack_tag 'banner_load_image'%>

@@ -17,8 +17,10 @@ class Admin::AboutsController < Admin::BaseController
   def update
     authorize! :update, @about
     if @about.update(about_params)
+      flash[:success] = "Sửa giới thiệu thành công"
       redirect_to admin_abouts_path
     else
+      flash[:error] = @about.errors.full_messages[0].to_s
       render :edit
     end
   end
