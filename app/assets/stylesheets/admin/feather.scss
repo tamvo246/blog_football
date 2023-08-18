@@ -532,7 +532,10 @@
 }
 
 .icon-menu:before {
-  content: "\e120";
+  content: "\f0c9";
+  font-family: "Font Awesome 6 Free"; /* Specify the font-family that includes the icon */
+  font-style: normal; /* Required to ensure the icon is displayed */
+  font-weight: 900;
 }
 
 .icon-archive:before {

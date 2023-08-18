@@ -17,7 +17,7 @@
 
               <%= form.label :course, "Khoá học" %>
               <br>
-              <%= form.select :course_id, Course.all.map{|r| [r.name, r.id] }, {}, { class: "form-control w-50" }%>
+              <%= form.select :course_id, Course.all.activated.map{|r| [r.name, r.id] }, {}, { class: "form-control w-50" }%>
 
               <%= form.label :gradurated_date, "Ngày hoàn thành" %>
               <%= form.date_field :gradurated_date, class: "form-control w-50" %>

@@ -11088,6 +11088,13 @@ fieldset:disabled .wizard > .actions a,
   border-radius: 20px !important;
   font-size: 0.875rem !important;
 }
+.btn-filter-item{
+  color: #fff !important;
+  background-color: #c2c1c1 !important;
+  border-color: #c2c1c1 !important;
+  border-radius: 20px !important;
+  font-size: 0.875rem !important;
+}
 
 .btn-new-item:hover, .wizard > .actions a:hover {
   color: #fff;
@@ -28550,9 +28557,9 @@ div.tagsinput span.tag a {
 }
 
 .sidebar .nav .nav-item .nav-link i.menu-arrow:before {
-  content: ">";
-  font-family: "themify";
-  font-style: normal;
+  content: "\f078";
+  font-family: "Font Awesome 6 Free"; /* Specify the font-family that includes the icon */
+  font-style: normal; /* Required to ensure the icon is displayed */
   display: block;
   font-size: 1rem;
   font-weight: bold;
@@ -28605,7 +28612,10 @@ div.tagsinput span.tag a {
 }
 
 .sidebar .nav .nav-item.active > .nav-link i.menu-arrow::before {
-  content: "\e64b";
+  content: "\f078";
+  font-family: "Font Awesome 6 Free"; /* Specify the font-family that includes the icon */
+  font-style: normal; /* Required to ensure the icon is displayed */
+  font-weight: 900;
 }
 
 .sidebar .nav .nav-item:hover > .nav-link i,

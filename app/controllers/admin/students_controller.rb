@@ -2,7 +2,13 @@ class Admin::StudentsController < Admin::BaseController
   load_and_authorize_resource
 
   def index
-    @students = Student.order(created_at: :desc).page(params[:page]).per(10).order("created_at desc")
+    @students = Student.order(created_at: :desc)
+
+    if params[:course_id].present?
+      @students = @students.where(course_id: params[:course_id])
+    end
+
+    @students = @students.page(params[:page]).per(10).order("created_at desc")
   end
 
   def new

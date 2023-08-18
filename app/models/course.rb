@@ -5,4 +5,6 @@ class Course < ApplicationRecord
   validates :slug, uniqueness: { message: "Liên kết này đã tồn tại" }
 
   default_scope {order("created_at DESC")}
+
+  scope :activated, ->{where hide_status: false}
 end

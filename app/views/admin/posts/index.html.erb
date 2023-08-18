@@ -6,12 +6,39 @@
           <div class="card-body">
             <div class="row">
               <div class="col-9">
-                <h4 class="card-title">Bài viết</h4>
+              <h4 class="card-title">Bài viết</h4>
+                <%= form_tag(admin_posts_path, method: "get") do %>
+                  <div class="row">
+                    <div class="col-4">
+                      <%= date_field_tag :created_from, params[:created_from], class: "form-control"  %>
+                    </div>
+
+                    <div class="col-4">
+                      <%= date_field_tag :created_to, params[:created_to],class: "form-control"  %>
+                    </div>
+
+                    <div class="col-4">
+                      <%= select_tag :category_id, options_for_select(Category.all.map { |c| [c.name, c.id] }, params[:category_id]), include_blank: true, class: "form-control"  %>
+                    </div>
+                  </div>
+                  <div class="row" style="padding: 10px 0;">
+                     <div class="col-4">
+                      <%= select_tag :user_id, options_for_select(User.all.map { |c| [c.name, c.id] }, params[:user_id]), include_blank: true, class: "form-control"  %>
+                    </div>
+                    <div class="col-4">
+                      <%= select_tag :hide_status, options_for_select([['Không', false], ['Có', true]], params[:hide_status]), include_blank: true, class: "form-control" %>
+                    </div>
+                    <div class="col-4">
+                      <%= submit_tag "Lọc bài viết", class: "btn btn-filter-item btn-icon-text" %>
+                    </div>
+                  </div>
+                </div>
+                <% end %>
+
+                <div class="col-3 btn-group-form">
+                  <%= link_to "+ Thêm bài viết ",  new_admin_post_path(), class: "btn btn-new-item btn-icon-text"%>
+                </div>
               </div>
-              <div class="col-3 text-right">
-                <%= link_to "+ Thêm bài viết ",  new_admin_post_path(), class: "btn btn-new-item btn-icon-text"%>
-              </div>
-            </div>
             <div class="table-responsive">
               <table class="table table-hover">
                 <thead>
@@ -22,6 +49,7 @@
                     <th scope="col">Thể loại tin</th>
                     <th scope="col">Người tạo</th>
                     <th scope="col">Ngày tạo</th>
+                    <th scope="col">Ẩn</th>
                     <th scope="col">Thao tác</th>
                   </tr>
                 </thead>
@@ -36,8 +64,15 @@
                         <td></td>
                       <% end %>
                       <td><%= c.category.name%></td>
-                      <td><%= c.user.email %></td>
+                      <td><%= c.user.name %></td>
                       <td><%= c.created_at.strftime('%d/%m/%Y') %></td>
+                      <td>
+                          <% if c.hide_status %>
+                            Có
+                          <% else %>
+                            Không
+                          <% end %>
+                      </td>
                       <td>
                         <div>
                           <%= link_to '<i class="fa-solid fa-pen-to-square"></i>'.html_safe,  edit_admin_post_path(c), class: "btn btn-edit" %>

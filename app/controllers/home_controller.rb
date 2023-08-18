@@ -2,7 +2,7 @@ class HomeController < ApplicationController
   def index
     @about = About.first
 
-    @posts = Post.last(3)
+    @posts = Post.activated.last(3)
 
     @album_images = AlbumImage.all.limit(6)
 
@@ -10,7 +10,7 @@ class HomeController < ApplicationController
 
     @banners = Banner.all
 
-    @courses = Course.all
+    @courses = Course.all.activated
     set_meta_tags(
       title: 'Product Name',
       description: 'Product Description',

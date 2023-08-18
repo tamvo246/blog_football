@@ -5,8 +5,24 @@
         <div class="card">
           <div class="card-body">
             <div class="row">
-              <div class="col-9">
+              <div class="col-12">
                 <h4 class="card-title">Liên hệ</h4>
+                <%= form_tag(admin_contacts_path, method: "get") do %>
+                  <div class="row">
+                    <div class="col-3">
+                      <%= select_tag :course_id, options_for_select(Course.all.map { |c| [c.name, c.id] }, params[:course_id]), include_blank: true, class: "form-control"  %>
+                    </div>
+                    <div class="col-3">
+                      <%= date_field_tag :created_from, params[:created_from], class: "form-control"  %>
+                    </div>
+
+                    <div class="col-3">
+                      <%= date_field_tag :created_to, params[:created_to],class: "form-control"  %>
+                    </div>
+
+                      <%= submit_tag "Lọc liên hệ", class: "btn btn-filter-item btn-icon-text" %>
+                  </div>
+                 <% end %>
               </div>
             </div>
             <div class="table-responsive">
@@ -18,6 +34,8 @@
                     <th scope="col">Email</th>
                     <th scope="col">Điện thoại</th>
                     <th scope="col">Tiêu đề</th>
+                    <th scope="col">Khoá</th>
+                    <th scope="col">Ngày tạo</th>
                     <th scope="col">Nội dung</th>
                   </tr>
                 </thead>
@@ -29,6 +47,8 @@
                       <td><%= c.email %></td>
                       <td><%= c.phone%></td>
                       <td><%= c.title%></td>
+                      <td><%= c.course.name%></td>
+                      <td><%= c.created_at.strftime('%d/%m/%Y') %></td>
                       <td><%= c.content%></td>
                       <td>
                         <div>

@@ -14,25 +14,29 @@
         <div class="col-lg-8">
           <div class="box-content">
             <div class="row">
-              <% @posts.each do |r|%>
-                <div class="col-md-6">
-                  <div class="blog-item">
-                    <div class="image">
-                        <% if r.image_intro.present? %>
-                          <%= link_to(image_tag r.image_intro.url) %>
-                        <% else %>
-                          <%= link_to(image_tag "") %>
-                        <% end %>
-                    </div>
-                    <div class="content">
-                      <h3 class="title">
-                        <%= link_to r.title, category_post_path(r.category.slug, r.slug) %>
-                      </h3>
-                      <p><%=r.intro %></p>
-                      <%= link_to "XEM THÊM", category_post_path(r.category.slug, r.slug), class: "read-more" %>
+              <% if @posts.count > 0%>
+                <% @posts.each do |r|%>
+                  <div class="col-md-6">
+                    <div class="blog-item">
+                      <div class="image">
+                          <% if r.image_intro.present? %>
+                            <%= link_to(image_tag r.image_intro.url) %>
+                          <% else %>
+                            <%= link_to(image_tag "") %>
+                          <% end %>
+                      </div>
+                      <div class="content">
+                        <h3 class="title">
+                          <%= link_to r.title, category_post_path(r.category.slug, r.slug) %>
+                        </h3>
+                        <p><%=r.intro %></p>
+                        <%= link_to "XEM THÊM", category_post_path(r.category.slug, r.slug), class: "read-more" %>
+                      </div>
                     </div>
                   </div>
-                </div>
+                <% end %>
+              <% else %>
+                <h6>Không có bài viết nào</h6>
               <% end %>
             </div>
             <div class="pagination-area">
@@ -56,7 +60,7 @@
                     <ul class="categories">
                         <% Category.all.each do |c| %>
                           <li>
-                            <%= link_to c.name+" (#{c.posts.count})", category_path(c.slug) %>
+                            <%= link_to c.name+" (#{c.posts.activated.count})", category_path(c.slug) %>
                           </li>
                         <% end %>
                     </ul>

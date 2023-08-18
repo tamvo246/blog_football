@@ -7,6 +7,8 @@ class Post < ApplicationRecord
 
   validates :slug, uniqueness: { message: "Liên kết này đã tồn tại" }
 
+  scope :activated, ->{where hide_status: false}
+
   def show_random_image
   doc = Nokogiri::HTML.parse(self.content)
   image_urls = doc.css('img').map { |img| img['src'] }

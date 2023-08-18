@@ -2,7 +2,13 @@ class Admin::CoachesController < Admin::BaseController
   load_and_authorize_resource
 
   def index
-    @coachs = Coach.order(created_at: :desc).page(params[:page]).per(10).order("created_at desc")
+    @coachs = Coach.order(created_at: :desc)
+
+    if params[:course_id].present?
+      @coachs = @coachs.joins(:courses).where("courses.id = ?", params[:course_id])
+    end
+
+    @coachs = @coachs.page(params[:page]).per(10).order("created_at desc")
   end
 
   def new

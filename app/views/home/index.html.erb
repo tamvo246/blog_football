@@ -80,7 +80,7 @@
                 <p style="color: red">Kết thúc: <%= c.closed_date.strftime("%d/%m/%Y")%></p>
               </td>
               <td>
-                <h4><%= raw c.course_age%></h4>
+                <h6>Lứa tuổi<br><%= raw c.course_age%></h6>
               </td>
               <td><%= c.target.truncate_words(30, omission: '...')%></td>
               <td><%= link_to "Chi tiết", course_path(c.slug), class: "sc_button"%></td>

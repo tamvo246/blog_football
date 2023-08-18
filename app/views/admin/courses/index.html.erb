@@ -22,6 +22,7 @@
                     <th scope="col">Kết thúc</th>
                     <th scope="col">Lứa tuổi</th>
                     <th scope="col">Mục tiêu</th>
+                    <th scope="col">Ẩn</th>
                     <th scope="col">Thao tác</th>
                   </tr>
                 </thead>
@@ -41,6 +42,13 @@
                       </td>
                       <td><%= c.course_age%></td>
                       <td><%= c.target%></td>
+                      <td>
+                          <% if c.hide_status %>
+                            Có
+                          <% else %>
+                            Không
+                          <% end %>
+                      </td>
                       <td>
                         <div>
                           <%= link_to '<i class="fa-solid fa-pen-to-square"></i>'.html_safe,  edit_admin_course_path(c), class: "btn btn-edit"%>

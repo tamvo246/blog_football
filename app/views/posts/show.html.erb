@@ -14,7 +14,12 @@
         <div class="col-lg-8">
           <div class="box-content">
               <h1 class="blog-title"><%= @post.title %></h1>
-              <div class="created-day"><%= @post.created_at.strftime('%d/%m/%Y') %></div>
+              <div class="d-flex align-items-center post-info-wapper">
+                  <div class="created-day" style="margin-right: 8px"><%= @post.created_at.strftime('%d/%m/%Y') %></div>
+                  <i class="fa-regular fa-eye" style="margin-right: 4px"></i>
+                  <div class="view-count d-flex"><%= @post.views_count %></div>
+              </div>
+
               <div class="post-content"><%= raw @post.trick_content(@post.content) %></div>
           </div>
           <div class="related-post">
@@ -60,7 +65,7 @@
                     <ul class="categories">
                         <% Category.all.each do |c| %>
                           <li>
-                            <%= link_to c.name+" (#{c.posts.count})", category_path(c.slug) %>
+                            <%= link_to c.name+" (#{c.posts.activated.count})", category_path(c.slug) %>
                           </li>
                         <% end %>
                     </ul>

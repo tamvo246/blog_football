@@ -42,19 +42,17 @@
               <%= form.label :course_age, "Lứa tuổi" %>
               <%= form.text_field :course_age, class: "form-control w-50" %>
 
-              <%# <%= form.label :coaches %>
-              <%# <% Coach.all.each do |coach| %>
-                <%# <div> %>
-                  <%# <%= form.check_box :coach_ids, { multiple: true }, coach.id, nil %>
-                  <%# <%= form.label "course_coach_#{coach.id}", coach.name %>
-                <%# </div> %>
-              <%# <% end %>
+              <%= form.label :hide_status, "Ẩn khoá học " %>
+              <br>
+              <%= form.select :hide_status, [['Không', false], ['Có', true]], { prompt: 'Chọn trạng thái' }, class: "form-control w-50" %>
+
               <%= form.label :target, "Mục tiêu" %>
-              <%= form.text_area :target, class: "form-control" %>
+              <%= form.text_area :target, class: "form-control", rows: 5 %>
 
               <%= form.label :course_details, "Chi tiết khoá học" %>
               <%= form.text_area :course_details, class: "form-control tinymce" %>
 
+              <br>
               <%= form.submit form.object.new_record? ? "Thêm" : "Chỉnh sửa", class: "btn btn-action-form" %>
             <% end %>
           </div>

@@ -13,10 +13,6 @@ $("#form_coach").validate({
     "coach[phone]":{
       required: true,
     },
-   "coach[course_ids][]":{
-      required: true,
-   }
-
   },
   messages: {
     "coach[name]": {
@@ -28,9 +24,6 @@ $("#form_coach").validate({
     },
     "coach[phone]":{
       required: "Vui lòng nhập số điện thoại",
-    },
-    "coach[course_ids][]":{
-      required: "Vui lòng chọn khoá học", 
-   }
+    }
   }
 });

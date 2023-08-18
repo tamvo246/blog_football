@@ -14,7 +14,7 @@
               <%= form.text_field :slug, class: "form-control", id: "slug-input" %>
 
               <%= form.label :intro, "Đoạn giới thiệu" %>
-              <%= form.text_area :intro, class: "form-control" %>
+              <%= form.text_area :intro, class: "form-control", rows: 5 %>
               <%= form.label :image_intro, "Ảnh giới thiệu" %>
               <br>
               <%= form.file_field :image_intro, id: :post_image %>
@@ -27,12 +27,16 @@
               <% end %>
               <br>
               <br>
-              <%= form.label :content, "Nội dung" %>
-              <%= form.text_area :content, class: "form-control tinymce" %>
-              <br>
               <%= form.label :category, "Thể loại bài viết" %>
               <br>
               <%= form.select :category_id, Category.all.map{|r| [r.name, r.id] },  {}, { class: "form-control w-50" }%>
+              <%= form.label :hide_status, "Ẩn bài viết " %>
+              <br>
+              <%= form.select :hide_status, [['Không', false], ['Có', true]], { prompt: 'Chọn trạng thái' }, class: "form-control w-50" %>
+
+              <%= form.label :content, "Nội dung" %>
+              <%= form.text_area :content, class: "form-control tinymce" %>
+              <br>
               <%= form.submit form.object.new_record? ? "Thêm" : "Chỉnh sửa", class: "btn btn-action-form" %>
             <% end %>
           </div>

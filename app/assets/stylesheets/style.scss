@@ -618,7 +618,7 @@ main.homepage {
                     }
                     td {
                         border: 1px solid #e3e3e3;
-                        min-width: 120px;
+                        min-width: 150px;
                         padding: 20px 30px;
                         &:first-child {
                             min-width: 260px;
@@ -1374,9 +1374,8 @@ main.blog-single {
             }
 
         }
-        .created-day{
+        .post-info-wapper{
             padding-bottom: 15px;
-            width: 100%;
             border-bottom: 1px solid #ccc;
             margin-bottom: 15px;
             font-family: "Montserrat Regular";

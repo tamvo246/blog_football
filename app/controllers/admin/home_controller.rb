@@ -7,5 +7,7 @@ class Admin::HomeController < Admin::BaseController
     @category_count = Category.all.count
     @image_count = AlbumImage.all.count
     @contact_count = Contact.all.count
+    @coach_count = Coach.all.count
+    @view_count = Post.sum(:views_count)
   end
 end
