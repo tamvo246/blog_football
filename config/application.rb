@@ -22,6 +22,6 @@ module Football
     # config.eager_load_paths << Rails.root.join("extras")
     config.public_file_server.enabled = true
 
-    config.hosts << "bangladesh-temporarily-numeric-mainly.trycloudflare.com"
+    config.hosts << "bong-da-my-tho-161e1585b061.herokuapp.com"
   end
 end
