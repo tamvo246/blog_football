@@ -21,6 +21,7 @@ module Football
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
     config.public_file_server.enabled = true
-    config.hosts << "familiar-jeep-obvious-karaoke.trycloudflare.com"
+
+    config.hosts << "bangladesh-temporarily-numeric-mainly.trycloudflare.com"
   end
 end

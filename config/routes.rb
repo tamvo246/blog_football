@@ -14,7 +14,7 @@ Rails.application.routes.draw do
 
   }
   namespace :admin do
-    get "/trang-chu", to: "home#admin_page", as: :home_page
+    get "/", to: "home#admin_page", as: :home_page
     resources :abouts, path: 'gioi-thieu'
     resources :courses, path: 'khoa-hoc'
     resources :students, path: 'hoc-vien'

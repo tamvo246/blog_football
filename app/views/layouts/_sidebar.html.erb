@@ -1,7 +1,7 @@
 <nav class="sidebar sidebar-offcanvas" id="sidebar">
     <ul class="nav">
-        <li class="nav-item">
-        <a class="nav-link" href="/admin/trang-chu">
+        <li class="nav-item nav-item-home">
+        <a class="nav-link" href="/admin">
             <i class="fas fa-tachometer-average"></i>
             <span class="menu-title">Dashboard</span>
         </a>
@@ -112,14 +112,10 @@
     //Active class can be hard coded directly in html file also as required
 
     function addActiveClass(element) {
-      if (current === "") {
+      if (current === "admin") {
         //for root url
-        if (element.attr('href').indexOf("index.html") !== -1) {
-          element.parents('.nav-item').last().addClass('active');
-          if (element.parents('.sub-menu').length) {
-            element.closest('.collapse').addClass('show');
-            element.addClass('active');
-          }
+        if (element.attr('href').indexOf("/") !== -1) {
+          element.parents('.nav-item-home').last().addClass('active');
         }
       } else {
         //for other url

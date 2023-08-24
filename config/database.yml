@@ -25,4 +25,5 @@ test:
 
 production:
   <<: *default
-  database: football_blog_development
+  database: football_blog_production
+  username: myapp
