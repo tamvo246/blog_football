@@ -1,25 +1,41 @@
+require 'carrierwave/storage/fog'
+
 class ImageUploader < CarrierWave::Uploader::Base
   # Include RMagick or MiniMagick support:
   include CarrierWave::RMagick
   # include CarrierWave::MiniMagick
-
   # Choose what kind of storage to use for this uploader:
-  storage :file
+  storage :fog
+
+  # Configuration for Amazon S3
+  configure do |config|
+
+    config.fog_credentials = {
+      provider: 'AWS',
+      aws_access_key_id: ENV['AWS_ACCESS_KEY_ID'],
+      aws_secret_access_key: ENV['AWS_SECRET_ACCESS_KEY'],
+      region: ENV['AWS_REGION'], # Your desired region
+    }
+    config.fog_directory = ENV['S3_BUCKET_NAME']
+    config.storage = :fog
+    config.fog_provider = 'fog/aws'
+  end
+
   # storage :fog
 
   # Override the directory where uploaded files will be stored.
   # This is a sensible default for uploaders that are meant to be mounted:
-  def store_dir
-    "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
-  end
+  # def store_dir
+  #   "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
+  # end
 
-  version :thumb do
-    process resize_to_fill: [200, 200]
-  end
+  # version :thumb do
+  #   process resize_to_fill: [200, 200]
+  # end
 
-  version :avatar_thumb do
-    process resize_to_fill: [250, 200]
-  end
+  # version :avatar_thumb do
+  #   process resize_to_fill: [250, 200]
+  # end
 
   # Provide a default URL as a default if there hasn't been a file uploaded:
   # def default_url(*args)

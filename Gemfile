@@ -85,3 +85,9 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'ruby-graphviz', '~> 1.2', '>= 1.2.3'
 
+gem "fog-aws"
+
+gem 'aws-sdk'
+
+gem 'dotenv-rails', groups: [:development, :test]
+
