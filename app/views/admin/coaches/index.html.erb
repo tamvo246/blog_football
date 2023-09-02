@@ -49,7 +49,7 @@
 
                       <td>
                         <% if c.avatar.present?%>
-                          <%= image_tag c.avatar.url %>
+                          <%= image_tag c.avatar.thumb&.url %>
                         <% end %>
                       </td>
                       <td>

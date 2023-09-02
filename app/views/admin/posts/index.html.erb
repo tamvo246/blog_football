@@ -59,7 +59,7 @@
                       <td><%= c.title %></td>
                       <td><%= c.intro %></td>
                       <% if c.image_intro.present?%>
-                        <td><%= image_tag c.image_intro.url %></td>
+                        <td><%= image_tag c.image_intro.thumb.url %></td>
                       <% else %>
                         <td></td>
                       <% end %>

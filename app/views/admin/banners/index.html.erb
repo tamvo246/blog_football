@@ -28,7 +28,7 @@
                       <td><%= b.content%></td>
                       <td>
                         <% if b.image.present? %>
-                          <%= image_tag b.image.url %>
+                          <%= image_tag b.image.thumb.url %>
                         <% end %>
                       </td>
                       <td>

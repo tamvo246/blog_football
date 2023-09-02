@@ -29,8 +29,8 @@
                       <td><%= a.title%></td>
                       <td><%= a.intro%></td>
                       <td>
-                        <% if a.image_intro.url.present? %>
-                          <%= image_tag a.image_intro.url%>
+                        <% if a.image_intro.present? %>
+                          <%= image_tag a.image_intro.thumb.url%>
                         <% end %>
                       </td>
                       <td><%= raw a.slug%></td>

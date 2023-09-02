@@ -45,7 +45,7 @@
                       </td>
                       <td><%= c.course.name%></td>
                       <% if c.avatar.present?%>
-                        <td><%= image_tag c.avatar.url %></td>
+                        <td><%= image_tag c.avatar.thumb.url %></td>
                       <% else %>
                         <td></td>
                       <% end %>
