@@ -9,8 +9,8 @@ class ContactsController < ApplicationController
       keywords: 'product, category, keywords',
       author: 'Your Name',
       og: {
-        title: @contact.name.present? ? @contact.name.truncate_words(10, omission: '...'): "",
-        description: @contact.target.present? ? @contact.name.truncate_words(10, omission: '...'): "",
+        title: "Thông tin liên hệ",
+        description: "Thông tin liên hệ",
         image: 'https://blog-football.s3.amazonaws.com/uploads/contact-us-1908762_640.png'
       }
     )
