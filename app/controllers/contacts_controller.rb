@@ -2,6 +2,18 @@ class ContactsController < ApplicationController
 
   def new
     @contact = Contact.new
+
+    set_meta_tags(
+      title: 'Bóng đá cộng đồng',
+      description: 'Bóng đá cộng đồng',
+      keywords: 'product, category, keywords',
+      author: 'Your Name',
+      og: {
+        title: @course.name.truncate_words(10, omission: '...'),
+        description: @course.target.truncate_words(10, omission: '...'),
+        image: 'https://blog-football.s3.amazonaws.com/uploads/contact-us-1908762_640.png'
+      }
+    )
   end
 
   def create

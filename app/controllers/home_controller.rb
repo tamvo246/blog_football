@@ -6,24 +6,19 @@ class HomeController < ApplicationController
 
     @album_images = AlbumImage.all.limit(6)
 
-    @about = About.first
-
     @banners = Banner.all
 
     @courses = Course.all.activated
+
     set_meta_tags(
-      title: 'Product Name',
+      title: 'Bóng đá cộng đồng',
       description: 'Product Description',
       keywords: 'product, category, keywords',
       author: 'Your Name',
       og: {
-        title: 'Open Graph Title',
-        description: 'Open Graph Description',
-        image: 'http://example.com/image.jpg'
-      },
-      twitter: {
-        card: 'summary',
-        site: '@YourTwitterHandle'
+        title: "Bóng đá cộng đồng",
+        description: 'Bóng đá cộng đồng',
+        image: "https://blog-football.s3.amazonaws.com/uploads/banner-home-2.png"
       }
     )
   end

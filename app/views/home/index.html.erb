@@ -49,8 +49,8 @@
       <div class="row">
         <% @album_images.each do |a| %>
           <div class="col-lg-4 col-md-6 col-12">
-            <%= link_to(File.join(root_path, a.image.url), class: 'gallery-item overlay gallery-popup') do %>
-              <%= image_tag File.join(root_path, a.image.url) %>
+            <%= link_to a.image.url, class: 'gallery-item overlay gallery-popup' do %>
+              <%= image_tag a.image.url %>
               <div class="expand">
                 <i class="fas fa-expand"></i>
               </div>
@@ -76,13 +76,13 @@
               <td>
                 <h6><%= c.name%></h6>
                 <p>Chương trình huấn luyện</p>
-                <p style="color: green">Khai giảng: <%= c.opened_date.strftime("%d/%m/%Y")%></p>
-                <p style="color: red">Kết thúc: <%= c.closed_date.strftime("%d/%m/%Y")%></p>
+                <p style="color: green">Khai giảng: <% if c.opened_date.present? %><%= c.opened_date.strftime("%d/%m/%Y")%><%end%></p>
+                <p style="color: red">Kết thúc: <% if c.closed_date.present? %><%= c.closed_date.strftime("%d/%m/%Y")%><%end%></p>
               </td>
               <td>
                 <h6>Lứa tuổi<br><%= raw c.course_age%></h6>
               </td>
-              <td><%= c.target.truncate_words(30, omission: '...')%></td>
+              <td><% if c.target.present? %><%= c.target.truncate_words(30, omission: '...')%><%end%></td>
               <td><%= link_to "Chi tiết", course_path(c.slug), class: "sc_button"%></td>
             </tr>
           <% end %>

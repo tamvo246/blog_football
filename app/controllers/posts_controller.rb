@@ -11,5 +11,17 @@ class PostsController < ApplicationController
       # Set a cookie to indicate that the user has viewed this post.
       cookies["post_viewed_#{params[:id]}"] = { value: 'yes', expires: 1.hour.from_now, httponly: true }
     end
+
+    set_meta_tags(
+      title: 'Bóng đá cộng đồng',
+      description: 'Bóng đá cộng đồng',
+      keywords: 'product, category, keywords',
+      author: 'Your Name',
+      og: {
+        title: @post.intro.truncate_words(10, omission: '...'),
+        description: @post.intro.truncate_words(10, omission: '...'),
+        image: @post.image_intro.url
+      }
+    )
   end
 end
