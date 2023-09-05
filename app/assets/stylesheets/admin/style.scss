@@ -11096,6 +11096,10 @@ fieldset:disabled .wizard > .actions a,
   font-size: 0.875rem !important;
 }
 
+.btn-filter-item:hover{
+  background-color: #8b8989 !important;
+}
+
 .btn-new-item:hover, .wizard > .actions a:hover {
   color: #fff;
   background-color: #3f3e91;

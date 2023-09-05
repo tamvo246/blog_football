@@ -10,7 +10,7 @@
                 <%= form_tag(admin_contacts_path, method: "get") do %>
                   <div class="row">
                     <div class="col-3">
-                      <%= select_tag :course_id, options_for_select(Course.all.map { |c| [c.name, c.id] }, params[:course_id]), include_blank: true, class: "form-control"  %>
+                      <%= select_tag :course_id, options_for_select(Course.all.map { |c| [c.name, c.id] }, params[:course_id]), include_blank: "Khoá học", class: "form-control"  %>
                     </div>
                     <div class="col-3">
                       <%= date_field_tag :created_from, params[:created_from], class: "form-control"  %>

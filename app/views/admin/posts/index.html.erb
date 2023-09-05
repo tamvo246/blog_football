@@ -14,19 +14,19 @@
                     </div>
 
                     <div class="col-4">
-                      <%= date_field_tag :created_to, params[:created_to],class: "form-control"  %>
+                      <%= date_field_tag :created_to, params[:created_to],class: "form-control" %>
                     </div>
 
                     <div class="col-4">
-                      <%= select_tag :category_id, options_for_select(Category.all.map { |c| [c.name, c.id] }, params[:category_id]), include_blank: true, class: "form-control"  %>
+                      <%= select_tag :category_id, options_for_select(Category.all.map { |c| [c.name, c.id] }, params[:category_id]), include_blank: "Thể loại", class: "form-control" %>
                     </div>
                   </div>
                   <div class="row" style="padding: 10px 0;">
                      <div class="col-4">
-                      <%= select_tag :user_id, options_for_select(User.all.map { |c| [c.name, c.id] }, params[:user_id]), include_blank: true, class: "form-control"  %>
+                      <%= select_tag :user_id, options_for_select(User.all.map { |c| [c.name, c.id] }, params[:user_id]), include_blank: "Người tạo", class: "form-control"  %>
                     </div>
                     <div class="col-4">
-                      <%= select_tag :hide_status, options_for_select([['Không', false], ['Có', true]], params[:hide_status]), include_blank: true, class: "form-control" %>
+                      <%= select_tag :hide_status, options_for_select([['Không', false], ['Có', true]], params[:hide_status]), include_blank: "Ẩn bài viết", class: "form-control" %>
                     </div>
                     <div class="col-4">
                       <%= submit_tag "Lọc bài viết", class: "btn btn-filter-item btn-icon-text" %>
