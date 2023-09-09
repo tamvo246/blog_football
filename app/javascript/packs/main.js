@@ -7,6 +7,19 @@ document.addEventListener('turbolinks:load', function() {
         );
     });
 
+    var toggleMenu = $(
+        ".header-main .main-navigation .box-wrapper .toggle-menu"
+    );
+    var topMenu = $("#top-menu");
+    toggleMenu.click(function () {
+        $(this).find("i").toggleClass("fa-x fa-bars");
+        topMenu.toggleClass("active");
+
+    });
+    $("#top-menu .btn-arrow").click(function () {
+        $(this).next().toggle();
+    });
+
     var galleryPopup = $('.gallery-popup');
     galleryPopup.magnificPopup({
         type: 'image',
@@ -41,7 +54,8 @@ document.addEventListener('turbolinks:load', function() {
 
     $('.slider-banner-home').owlCarousel({
         loop: true,
-        margin: 10,
+        margin: 0,
+        autoplay: true,
         nav: true,
         navText: [
             '<i class="fas fa-chevron-left"></i>',
@@ -49,6 +63,7 @@ document.addEventListener('turbolinks:load', function() {
         ],
         items: 1,
         dots: false,
-
+        autoplayTimeout: 3000,
+        autoplayHoverPause: true
     });
 });

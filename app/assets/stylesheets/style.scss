@@ -300,7 +300,7 @@ main.homepage {
                                 .banner-content {
                                     h1 {
                                         font-size: 72px;
-                                        font-family: "Montserrat Bold";
+                                        font-family: "Montserrat SemiBold";
                                         color: #ffffff;
                                         text-transform: uppercase;
                                         margin-bottom: 18px;
@@ -661,7 +661,7 @@ main.homepage {
 }
 .course-detail {
     .container{
-        padding: 40px 0px;
+        padding: 40px 15px;
     }
     .section-intro {
         background: #f4f4f4;
@@ -712,13 +712,6 @@ main.homepage {
         }
     }
     .section-coach {
-        padding: 100px 0;
-        @media screen and (max-width: 991px) {
-            padding: 50px 0;
-        }
-        @media screen and (max-width: 767px) {
-            padding: 30px 0;
-        }
         .box-heading {
             text-align: center;
             margin-bottom: 50px;
