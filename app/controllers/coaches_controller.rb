@@ -13,7 +13,5 @@ class CoachesController < ApplicationController
         image: @coach.avatar.url
       }
     )
-
-  end
   end
 end
