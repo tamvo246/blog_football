@@ -28452,6 +28452,10 @@ div.tagsinput span.tag a {
   display: flex;
   -webkit-flex-direction: column;
   flex-direction: column;
+
+  #image-home-admin{
+    border-radius: 20px;
+  }
 }
 
 @media (max-width: 991px) {

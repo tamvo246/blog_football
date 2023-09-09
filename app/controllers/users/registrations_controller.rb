@@ -8,7 +8,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   skip_before_action :require_no_authentication, only: [:new, :create]
   before_action :configure_permitted_parameters
 
-  protected
+  # protected
   layout 'admin'
   # def sign_up(resource_name, resource)
   #   # Skip the sign-in after sign up
@@ -70,8 +70,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
 
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :avatar])
-    devise_parameter_sanitizer.permit(:account_update, keys: [:name, :avatar])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :avatar, :role_id])
+    devise_parameter_sanitizer.permit(:account_update, keys: [:name, :avatar, :role_id])
   end
 
   # If you have extra params to permit, append them to the sanitizer.
