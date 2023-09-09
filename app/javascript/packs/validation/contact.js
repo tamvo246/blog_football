@@ -15,12 +15,6 @@ $("#form_contact").validate({
     },
     "contact[course_id]":{
       required: true,
-    },
-    "contact[phone]": {
-      required: "true",
-      pattern: {
-          value: /^\d{10}$/i,
-      }
     }
   },
   messages: {
@@ -36,13 +30,7 @@ $("#form_contact").validate({
     }
     ,
     "contact[course_id]":{
-      required: "Vui lòng chọ khoá học",
-    },
-    "contact[phone]": {
-      required: "Vui lòng nhập số điện thoại",
-      pattern: {
-          message: "Số điện thoại không hợp lệ. Vui lòng nhập 10 chữ số."
-      }
+      required: "Vui lòng chọn khoá học",
     }
   }
 });
