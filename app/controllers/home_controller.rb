@@ -2,7 +2,7 @@ class HomeController < ApplicationController
   def index
     @about = About.first
 
-    @posts = Post.activated.last(3)
+    @posts = Post.activated.order(created_at: :desc).last(3)
 
     @album_images = AlbumImage.all.limit(6)
 

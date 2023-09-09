@@ -2,7 +2,7 @@ class AboutsController < ApplicationController
   def show
     @abouts = About.all.order(:created_at)
     @about = About.find_by(slug: params[:slug])
-    @posts = Post.activated.last(3)
+    @posts = Post.activated.order(created_at: :desc).page(params[:page]).per(9)
     @coaches = Coach.all
 
     set_meta_tags(
