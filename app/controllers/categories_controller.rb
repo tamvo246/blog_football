@@ -2,7 +2,7 @@ class CategoriesController < ApplicationController
   def show
     @category = Category.find_by(slug: params[:slug])
     @posts = @category.posts.activated.order(created_at: :desc).page(params[:page]).per(6)
-    @post_news = Post.activated.order(created_at: :desc).last(3)
+    @post_news = Post.activated.order(created_at: :desc).take(3)
 
     set_meta_tags(
       title: 'Bóng đá cộng đồng',
