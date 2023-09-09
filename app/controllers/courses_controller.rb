@@ -9,7 +9,7 @@ class CoursesController < ApplicationController
     @contact = Contact.new
 
     set_meta_tags(
-      title: 'Bóng đá cộng đồng',
+      title: @course.name + " | " + 'Bóng đá cộng đồng',
       description: 'Bóng đá cộng đồng',
       keywords: 'product, category, keywords',
       author: 'Your Name',

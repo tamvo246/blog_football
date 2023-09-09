@@ -13,12 +13,12 @@ class PostsController < ApplicationController
     end
 
     set_meta_tags(
-      title: 'Bóng đá cộng đồng',
+      title: @post.title,
       description: 'Bóng đá cộng đồng',
       keywords: 'product, category, keywords',
       author: 'Your Name',
       og: {
-        title: @post.intro.truncate_words(10, omission: '...'),
+        title: @post.title.truncate_words(10, omission: '...'),
         description: @post.intro.truncate_words(10, omission: '...'),
         image: @post.image_intro.url
       }

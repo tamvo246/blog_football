@@ -5,7 +5,7 @@ class CategoriesController < ApplicationController
     @post_news = Post.activated.order(created_at: :desc).take(3)
 
     set_meta_tags(
-      title: 'Bóng đá cộng đồng',
+      title: @category.name + ' | '+'Bóng đá cộng đồng',
       description: 'Bóng đá cộng đồng',
       keywords: 'product, category, keywords',
       author: 'Your Name',

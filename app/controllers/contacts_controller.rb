@@ -4,7 +4,7 @@ class ContactsController < ApplicationController
     @contact = Contact.new
 
     set_meta_tags(
-      title: 'Bóng đá cộng đồng',
+      title: 'Liên hệ | Bóng đá cộng đồng',
       description: 'Bóng đá cộng đồng',
       keywords: 'product, category, keywords',
       author: 'Your Name',

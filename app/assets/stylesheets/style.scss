@@ -989,7 +989,7 @@ main.homepage {
             }
         }
     }
-    #form-submit-register.section-register {
+    #form-submit-register {
         background-size: cover;
         background-repeat: no-repeat;
         background-position: center bottom;
@@ -1054,6 +1054,9 @@ main.homepage {
                                     padding: 12px 30px;
                                 }
                             }
+                        }
+                        .course-contact{
+                            padding: 8px 20px;
                         }
                     }
                 }
@@ -1152,6 +1155,9 @@ main.homepage {
                     color: #fff;
                     border: none;
                 }
+            }
+            .course-contact{
+                padding: 8px 20px;
             }
         }
     }
