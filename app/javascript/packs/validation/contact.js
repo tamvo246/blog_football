@@ -15,6 +15,10 @@ $("#form_contact").validate({
     },
     "contact[course_id]":{
       required: true,
+    },
+    "contact[phone]": {
+      digits: true,       // Ensure it contains only digits
+      customphoneformat: true  // Custom rule for starting with "0"
     }
   },
   messages: {
@@ -31,6 +35,15 @@ $("#form_contact").validate({
     ,
     "contact[course_id]":{
       required: "Vui lòng chọn khoá học",
+    },
+    "contact[phone]": {
+      digits: "Số điện thoại chỉ được chứa các chữ số",
+      customphoneformat: "Số điện thoại phải bắt đầu bằng số 0 và có 10 chữ số"
     }
   }
+});
+
+jQuery.validator.addMethod('customphoneformat', function (value) {
+  var regex = /^0\d{9}$/;
+  return value.match(regex);
 });
