@@ -34,7 +34,9 @@
                       <td>
                         <div>
                           <%= link_to '<i class="fa-solid fa-pen-to-square"></i>'.html_safe,  edit_admin_banner_path(b), class: "btn btn-edit"%>
-                          <%= link_to '<i class="fa-solid fa-trash"></i>'.html_safe, admin_banner_path(b),method: :delete, data: {confirm: 'Bạn có muốn xoá?' }, class: "btn btn-delete" %>
+                          <% if current_user.supper_admin?%>
+                            <%= link_to '<i class="fa-solid fa-trash"></i>'.html_safe, admin_banner_path(b),method: :delete, data: {confirm: 'Bạn có muốn xoá?' }, class: "btn btn-delete" %>
+                          <% end %>
                         </div>
                       </td>
                     </tr>
