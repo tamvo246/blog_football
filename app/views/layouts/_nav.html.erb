@@ -14,6 +14,11 @@
           <% else %>
             <%= image_tag "https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2960&q=80" %>
           <% end %>
+          <% if current_user.name.present?%>
+            <span>
+              <%= current_user.name %>
+            </span>
+          <% end %>
         </a>
         <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
           <%= link_to current_user.email, edit_user_registration_path(), class: "dropdown-item"%>
